@@ -220,7 +220,7 @@ const start = (aruga = new Client()) => {
                 const mediaData = await decryptMedia(encryptMedia, uaOverride)
                 const imageBase64 = `data:${_mimetype};base64,${mediaData.toString('base64')}`
                 aruga.sendImageAsSticker(from, imageBase64).then(() => {
-                    aruga.reply(from, 'Here\'s your sticker')
+                    aruga.reply(from, 'Aqui esta tu sticker')
                     console.log(`Sticker Processed for ${processTime(t, moment())} Second`)
                 })
             } else if (args[0] === 'nobg') {
@@ -243,7 +243,7 @@ const start = (aruga = new Client()) => {
                 if (!isUrl(url)) { await aruga.reply(from, 'Maaf, link yang kamu kirim tidak valid.', id) }
                 aruga.sendStickerfromUrl(from, url).then((r) => (!r && r !== undefined)
                     ? aruga.sendText(from, 'Maaf, link yang kamu kirim tidak memuat gambar.')
-                    : aruga.reply(from, 'Here\'s your sticker')).then(() => console.log(`Sticker Processed for ${processTime(t, moment())} Second`))
+                    : aruga.reply(from, 'Aqui esta tu sticker')).then(() => console.log(`Sticker Processed for ${processTime(t, moment())} Second`))
             } else {
                 await aruga.reply(from, `Tidak ada gambar! Untuk menggunakan ${prefix}sticker\n\n\nKirim gambar dengan caption\n${prefix}sticker <biasa>\n${prefix}sticker nobg <tanpa background>\n\natau Kirim pesan dengan\n${prefix}sticker <link_gambar>`, id)
             }
