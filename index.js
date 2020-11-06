@@ -183,7 +183,7 @@ const start = (aruga = new Client()) => {
             break
         case 'ownerbot':
             await aruga.sendContact(from, ownerNumber)
-            .then(() => aruga.sedText(from, 'Si desea solicitar una función, ¡chatee con el número de propietario +543757437404!'))
+            .then(() => aruga.sedText(from, 'Si desea donar lo puede hacer por PayPal https://www.paypal.com/paypalme/cabegus?locale.x=es_XC!'))
             break
         case 'join':
             if (args.length == 0) return aruga.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link del grupo]`, id)
@@ -474,14 +474,6 @@ const start = (aruga = new Client()) => {
             await aruga.reply(from, daerahq, id)
             break
 
-        //Premium
-        case 'pornhub':
-            aruga.reply(from, `Ini merupakan commands untuk mendownload video dari pornhub\nFitur ini masih bersifat premium\n\nLebih jelasnya silahkan lihat web ini:\ngithub.com/ArugaZ/whatsapp-bot`, id)
-            break
-        case 'simsimi':
-            aruga.reply(from, `Ini merupakan commands untuk mengaktifkan simi-simi chat bot\nFitur ini masih bersifat premium\n\nLebih jelasnya silahkan lihat web ini:\ngithub.com/ArugaZ/whatsapp-bot`, id)
-            break
-
         //Media
         case 'instagram':
             if (args.length == 0) return aruga.reply(from, `Untuk mendownload gambar atau video dari instagram\nketik: ${prefix}instagram [link_ig]`, id)
@@ -692,18 +684,19 @@ req.end(function (res) {
             break
 
         // Comando para Admins del grupo (group admin only)
-	    case 'agregar':
-            if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
-            if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
-	        if (args.length !== 1) return aruga.reply(from, `Untuk menggunakan ${prefix}add\nPenggunaan: ${prefix}add <nomor>\ncontoh: ${prefix}add 628xxx`, id)
-                try {
-                    await aruga.addParticipant(from,`${args[0]}@c.us`)
-		            .then(() => aruga.reply(from, 'Hai selamat datang', id))
-                } catch {
-                    aruga.reply(from, 'Tidak dapat menambahkan target', id)
+	    async function add (client, from, chat, message, author, isGroupMsg) {
+            var admins = await client.getGroupAdmins(chat.id)
+            if (isGroupMsg){
+                if (args.length >=2){
+                    const part = args[1]
+                    if (admins.includes(author) == true) {
+                        await client.addParticipant(from, part+'@c.us')
+                    }else{ 
+                        await client.reply(from, 'only admins can use this command', message)
+                    }
                 }
-            break
+            }
+        }
         case 'eliminar':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
