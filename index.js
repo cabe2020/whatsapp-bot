@@ -499,6 +499,24 @@ const start = (aruga = new Client()) => {
             await aruga.sendFileFromUrl(from, mp4, '', '', id)
             break
 
+        case 'nsfw':
+            var unirest = require("unirest");
+
+var req = unirest("POST", "https://nsfw1.p.rapidapi.com/nsfw");
+
+req.headers({
+	"x-rapidapi-key": "SIGN-UP-FOR-KEY",
+	"x-rapidapi-host": "nsfw1.p.rapidapi.com",
+	"useQueryString": true
+});
+
+
+req.end(function (res) {
+	if (res.error) throw new Error(res.error);
+
+	console.log(res.body);
+});
+
         // Random Kata
         case 'fakta':
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/faktaunix.txt')
