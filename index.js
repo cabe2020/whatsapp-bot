@@ -70,20 +70,20 @@ const start = (aruga = new Client()) => {
 	const groups = await aruga.getAllGroups()
 	// kodisi ketika batas group bot telah tercapat, ubah di file settings/setting.json
 	if (groups.length > groupLimit) {
-	await aruga.sendText(chat.id, `Sorry, the group on this bot is full\nMax Group is: ${groupLimit}`).then(() => {
+	await aruga.sendText(chat.id, `Lo sentimos, el grupo de este bot está completo \ El grupo máximo es: ${groupLimit}`).then(() => {
 	      aruga.leaveGroup(chat.id)
 	      aruga.deleteChat(chat.id)
 	  }) 
 	} else {
 	// kondisi ketika batas member group belum tercapai, ubah di file settings/setting.json
 	    if (chat.groupMetadata.participants.length < memberLimit) {
-	    await aruga.sendText(chat.id, `Sorry, Sorry, BOT comes out if the group members do not exceed ${memberLimit} people`).then(() => {
+	    await aruga.sendText(chat.id, `Lo siento, lo siento, BOT sale si los miembros del grupo no exceden ${memberLimit} people`).then(() => {
 	      aruga.leaveGroup(chat.id)
 	      aruga.deleteChat(chat.id)
 	    })
 	    } else {
         await aruga.simulateTyping(chat.id, true).then(async () => {
-          await aruga.sendText(chat.id, `Hai minna~, Im Aruga BOT. To find out the commands on this bot type ${prefix}menu`)
+          await aruga.sendText(chat.id, `Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu`)
         })
 	    }
 	}
@@ -92,15 +92,15 @@ const start = (aruga = new Client()) => {
     // ketika seseorang masuk/keluar dari group
     aruga.onGlobalParicipantsChanged(async (event) => {
         // kondisi ketika seseorang diinvite/join group lewat link
-        if (event.action === 'add' || event.action === 'invite') await aruga.sendTextWithMentions(event.chat, `Hello, Welcome to the group @${event.who.replace('@c.us', '')} \n\nHave fun with us✨`)
+        if (event.action === 'add' || event.action === 'invite') await aruga.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nHave fun with us✨`)
 
         // kondisi ketika seseorang dikick/keluar dari group
-	    if (event.action === 'remove' || event.action === 'leave') await aruga.sendTextWithMentions(event.chat, `Good bye @${event.who.replace('@c.us', '')}, We'll miss you`)
+	    if (event.action === 'remove' || event.action === 'leave') await aruga.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos`)
     })
 
     aruga.onIncomingCall(async (callData) => {
         // ketika seseorang menelpon nomor bot akan mengirim pesan
-        await aruga.sendText(callData.peerJid, 'Maaf sedang tidak bisa menerima panggilan.\n\n-bot')
+        await aruga.sendText(callData.peerJid, 'Lo siento, no puedo recibir llamadas de.\n\n-bot')
         .then(async () => {
             // bot akan memblock nomor itu
             await aruga.contactBlock(callData.peerJid)
@@ -169,11 +169,11 @@ const start = (aruga = new Client()) => {
         case 'menu':
         case 'help':
             await aruga.sendText(from, menuId.textMenu(pushname))
-            .then(() => ((isGroupMsg) && (isGroupAdmins)) ? aruga.sendText(from, `Menu Admin Grup: *${prefix}menuadmin*`) : null)
+            .then(() => ((isGroupMsg) && (isGroupAdmins)) ? aruga.sendText(from, `Menú de admins del grupo: *${prefix}menuadmin*`) : null)
             break
         case 'menuadmin':
-            if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
+            if (!isGroupMsg) return aruga.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id)
+            if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id)
             await aruga.sendText(from, menuId.textAdmin())
             break
             
@@ -183,30 +183,30 @@ const start = (aruga = new Client()) => {
             break
         case 'ownerbot':
             await aruga.sendContact(from, ownerNumber)
-            .then(() => aruga.sedText(from, 'Jika kalian ingin request fitur silahkan chat nomor owner!'))
+            .then(() => aruga.sedText(from, 'Si desea solicitar una función, ¡chatee con el número de propietario +543757437404!'))
             break
         case 'join':
-            if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
+            if (args.length == 0) return aruga.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link group]`, id)
             let linkgrup = body.slice(6)
             let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
             let chekgrup = await aruga.inviteInfo(islink)
-            if (!islink) return aruga.reply(from, 'Maaf link group-nya salah! sialahkan kirim link yang benar', id)
+            if (!islink) return aruga.reply(from, 'Lo sentimos, el enlace del grupo es incorrecto, enviar el enlace correcto', id)
             if (isOwnerBot) {
                 await aruga.joinGroupViaLink(linkgrup)
                       .then(async () => {
-                          await aruga.sendText(from, 'Berhasil join grup via link!')
-                          await aruga.sendText(chekgrup.id, `Hai minna~, Im Aruga BOT. To find out the commands on this bot type ${prefix}menu`)
+                          await aruga.sendText(from, '¡Se unió al grupo con éxito a través del enlace!')
+                          await aruga.sendText(chekgrup.id, `Hola , soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu`)
                       })
             } else {
                 let cgrup = await aruga.getAllGroups()
-                if (cgrup.length > groupLimit) return aruga.reply(from, `Sorry, the group on this bot is full\nMax Group is: ${groupLimit}`, id)
-                if (cgrup.size < memberLimit) return aruga.reply(from, `Sorry, Sorry, BOT wil not join if the group members do not exceed ${memberLimit} people`, id)
+                if (cgrup.length > groupLimit) return aruga.reply(from, `Lo sentimos, el grupo de este bot está completo \ El grupo máximo es: ${groupLimit}`, id)
+                if (cgrup.size < memberLimit) return aruga.reply(from, `Lo siento, lo siento, BOT no se unirá si los miembros del grupo no superan las${memberLimit} personas`, id)
                 await aruga.joinGroupViaLink(linkgrup)
                       .then(async () =>{
-                          await aruga.reply(from, 'Berhasil join grup via link!', id)
+                          await aruga.reply(from, '¡Se unió al grupo con éxito a través del enlace!', id)
                       })
                       .catch(() => {
-                          aruga.reply(from, 'Gagal!', id)
+                          aruga.reply(from, '¡Ha fallado!', id)
                       })
             }
             break
@@ -221,7 +221,7 @@ const start = (aruga = new Client()) => {
                 const imageBase64 = `data:${_mimetype};base64,${mediaData.toString('base64')}`
                 aruga.sendImageAsSticker(from, imageBase64).then(() => {
                     aruga.reply(from, 'Aqui esta tu sticker')
-                    console.log(`Sticker Processed for ${processTime(t, moment())} Second`)
+                    console.log(`Sticker procesado por ${processTime(t, moment())} Segundo`)
                 })
             } else if (args[0] === 'nobg') {
             if (isMedia || isQuotedImage) {
@@ -236,16 +236,16 @@ const start = (aruga = new Client()) => {
                     await aruga.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`)
                 } catch(err) {
                     console.log(err)
-	   	    await aruga.reply(from, 'maaf batas penggunaan hari ini sudah maksimal', id)
+	   	    await aruga.reply(from, 'lo siento, el límite de uso de hoy es máximo', id)
                 }
             }
             } else if (args.length === 1) {
-                if (!isUrl(url)) { await aruga.reply(from, 'Maaf, link yang kamu kirim tidak valid.', id) }
+                if (!isUrl(url)) { await aruga.reply(from, 'Lo sentimos, el enlace que envió no es válido.', id) }
                 aruga.sendStickerfromUrl(from, url).then((r) => (!r && r !== undefined)
-                    ? aruga.sendText(from, 'Maaf, link yang kamu kirim tidak memuat gambar.')
-                    : aruga.reply(from, 'Here\'s your sticker')).then(() => console.log(`Sticker Processed for ${processTime(t, moment())} Second`))
+                    ? aruga.sendText(from, 'Lo sentimos, el enlace que envió no contiene una imagen.')
+                    : aruga.reply(from, 'Aqui esta tu sticker')).then(() => console.log(`Sticker Procesado por ${processTime(t, moment())} Segundo`))
             } else {
-                await aruga.reply(from, `Tidak ada gambar! Untuk menggunakan ${prefix}sticker\n\n\nKirim gambar dengan caption\n${prefix}sticker <biasa>\n${prefix}sticker nobg <tanpa background>\n\natau Kirim pesan dengan\n${prefix}sticker <link_gambar>`, id)
+                await aruga.reply(from, `¡Sin imagen! Usar ${prefix}sticker\n\n\nEnviar imágenes con subtítulos\n${prefix}sticker <usual>\n${prefix}sticker nobg <sin fondo>\n\n o enviar mensaje con\n${prefix}sticker <link>`, id)
             }
             break
         }
