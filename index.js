@@ -77,7 +77,7 @@ const start = (aruga = new Client()) => {
 	} else {
 	// kondisi ketika batas member group belum tercapai, ubah di file settings/setting.json
 	    if (chat.groupMetadata.participants.length < memberLimit) {
-	    await aruga.sendText(chat.id, `Lo siento, lo siento, BOT sale si los miembros del grupo no exceden ${memberLimit} people`).then(() => {
+	    await aruga.sendText(chat.id, `Lo siento, lo siento, BOT sale si los miembros del grupo no exceden ${memberLimit} personas`).then(() => {
 	      aruga.leaveGroup(chat.id)
 	      aruga.deleteChat(chat.id)
 	    })
@@ -186,7 +186,7 @@ const start = (aruga = new Client()) => {
             .then(() => aruga.sedText(from, 'Si desea solicitar una función, ¡chatee con el número de propietario +543757437404!'))
             break
         case 'join':
-            if (args.length == 0) return aruga.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link group]`, id)
+            if (args.length == 0) return aruga.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link del grupo]`, id)
             let linkgrup = body.slice(6)
             let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
             let chekgrup = await aruga.inviteInfo(islink)
@@ -264,38 +264,38 @@ const start = (aruga = new Client()) => {
 			
                     })
                   } else {
-                    aruga.reply(from, `[❗] Kirim gif dengan caption *${prefix}stickergif* max 10 sec!`, id)
+                    aruga.reply(from, `[❗] Enviar un gif con el título*${prefix}stickergif* max 10 seg!`, id)
                    }
                 } else {
-		    aruga.reply(from, `[❗] Kirim gif dengan caption *${prefix}stickergif*`, id)
+		    aruga.reply(from, `[❗] Enviar un gif con el titulo *${prefix}stickergif*`, id)
 	        }
             break
         }
         case 'stikergiphy':
         case 'stickergiphy':
 	 {
-            if (args.length !== 1) return aruga.reply(from, `Maaf, format pesan salah.\nKetik pesan dengan ${prefix}stickergiphy <link_giphy>`, id)
+            if (args.length !== 1) return aruga.reply(from, `Lo sentimos, el formato del mensaje es incorrecto. \nescribe el mensaje con${prefix}stickergiphy <link de giphy https://giphy.com/>`, id)
             const isGiphy = url.match(new RegExp(/https?:\/\/(www\.)?giphy.com/, 'gi'))
             const isMediaGiphy = url.match(new RegExp(/https?:\/\/media.giphy.com\/media/, 'gi'))
             if (isGiphy) {
                 const getGiphyCode = url.match(new RegExp(/(\/|\-)(?:.(?!(\/|\-)))+$/, 'gi'))
-                if (!getGiphyCode) { return aruga.reply(from, 'Gagal mengambil kode giphy', id) }
+                if (!getGiphyCode) { return aruga.reply(from, 'No se pudo recuperar el código giphy', id) }
                 const giphyCode = getGiphyCode[0].replace(/[-\/]/gi, '')
                 const smallGifUrl = 'https://media.giphy.com/media/' + giphyCode + '/giphy-downsized.gif'
                 aruga.sendGiphyAsSticker(from, smallGifUrl).then(() => {
-                    aruga.reply(from, 'Here\'s your sticker')
-                    console.log(`Sticker Processed for ${processTime(t, moment())} Second`)
+                    aruga.reply(from, 'Aqui esta tu sticker')
+                    console.log(`Sticker Procesado por ${processTime(t, moment())} Segundo`)
                 }).catch((err) => console.log(err))
             } else if (isMediaGiphy) {
                 const gifUrl = url.match(new RegExp(/(giphy|source).(gif|mp4)/, 'gi'))
-                if (!gifUrl) { return aruga.reply(from, 'Gagal mengambil kode giphy', id) }
+                if (!gifUrl) { return aruga.reply(from, 'No se pudo recuperar el código giphy', id) }
                 const smallGifUrl = url.replace(gifUrl[0], 'giphy-downsized.gif')
                 aruga.sendGiphyAsSticker(from, smallGifUrl).then(() => {
-                    aruga.reply(from, 'Here\'s your sticker')
-                    console.log(`Sticker Processed for ${processTime(t, moment())} Second`)
+                    aruga.reply(from, 'Aqui esta tu sticker')
+                    console.log(`Sticker Procesado ${processTime(t, moment())} Segundo`)
                 }).catch((err) => console.log(err))
             } else {
-                await aruga.reply(from, 'maaf, commands sticker giphy hanya bisa menggunakan link dari giphy.  [Giphy Only]', id)
+                await aruga.reply(from, 'lo siento, los comandos de la etiqueta giphy solo pueden usar enlaces de giphy.  [Solo Giphy]', id)
             }
             break
         }
@@ -308,10 +308,10 @@ const start = (aruga = new Client()) => {
                 const getUrl = await uploadImages(mediaData, false)
                 const ImageBase64 = await meme.custom(getUrl, top, bottom)
                 aruga.sendFile(from, ImageBase64, 'image.png', '', null, true)
-                    .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                    .then((serialized) => console.log(`Envío exitoso de archivos con ID: ${serialized} procesada durante ${processTime(t, moment())}`))
                     .catch((err) => console.error(err))
             } else {
-                await aruga.reply(from, `Tidak ada gambar! Silahkan kirim gambar dengan caption ${prefix}meme <teks_atas> | <teks_bawah>\ncontoh: ${prefix}meme teks atas | teks bawah`, id)
+                await aruga.reply(from, `¡Sin imagen! Envíe una imagen con la descripcion. ${prefix}meme <texto superior> | <texto abajo>\nejemplo: ${prefix}meme texto superior | texto de abajo `, id)
             }
             break
         case 'quotemaker':
@@ -325,7 +325,7 @@ const start = (aruga = new Client()) => {
                     const hasilqmaker = await images.quote(quotes, author, theme)
                     aruga.sendFileFromUrl(from, `${hasilqmaker}`, '', 'ini kak..', id)
                 } catch {
-                    aruga.reply('yahh proses gagal, kakak isinya sudah benar blm?..', id)
+                    aruga.reply('bueno, el proceso falló, hermano, el contenido es correcto, ¿no?..', id)
                 }
             } else {
                 aruga.reply(from, `Pemakaian ${prefix}quotemaker |isi quote|author|theme\n\ncontoh: ${prefix}quotemaker |aku sayang kamu|-aruga|random\n\nuntuk theme nya pakai random ya kak..`)
