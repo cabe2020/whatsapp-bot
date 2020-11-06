@@ -342,7 +342,7 @@ const start = (aruga = new Client()) => {
                         hehex += '╠➥ '
                         hehex += response.data.data[i].name.transliteration.id.toLowerCase() + '\n'
                             }
-                        hehex += '╚═〘 *A R U G A  B O T* 〙'
+                        hehex += '╚═〘 *CABE BOT* 〙'
                     aruga.reply(from, hehex, id)
                 })
             } catch(err) {
