@@ -1,22 +1,7 @@
-<p align="center">
-<img src="https://avatars2.githubusercontent.com/u/53950128?s=460&u=09f530e3326f710c4e0f9106f094eeea5429f86d&v=4" width="128" height="128"/>
-</p>
-<p align="center">
-<a href="#"><img title="Whatsapp-Bot" src="https://img.shields.io/badge/Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
-</p>
-<p align="center">
-<a href="https://github.com/ArugaZ"><img title="Author" src="https://img.shields.io/badge/AUTHOR-ARUGAZ-orange.svg?style=for-the-badge&logo=github"></a>
-</p>
-<p align="center">
-<a href="https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/overview/master"><img title="Rating" src="https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/badge/master"></a>
-</p>
-<p align="center">
-<a href="https://github.com/arugaz/followers"><img title="Followers" src="https://img.shields.io/github/followers/arugaz?color=blue&style=flat-square"></a>
-<a href="https://github.com/arugaz/whatsapp-bot/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/arugaz/whatsapp-bot?color=red&style=flat-square"></a>
-<a href="https://github.com/arugaz/whatsapp-bot/network/members"><img title="Forks" src="https://img.shields.io/github/forks/arugaz/whatsapp-bot?color=red&style=flat-square"></a>
-<a href="https://github.com/arugaz/whatsapp-bot/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/arugaz/whatsapp-bot?label=Watchers&color=blue&style=flat-square"></a>
-</p>
 <div align="center">
+ 
+# Whatsapp Bot - Node Js
+[![CodeFactor](https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/badge/master)](https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/overview/master)
 <details>
  <summary>🥟 Help me!</summary>
  
@@ -25,7 +10,7 @@
 </details>
 
 bantu kontribusi dengan cara pull request atau request di issues, makasi
-[My Whatsapp](https://wa.me/6281290142115?text=aruga?)
+[`Whastapp saya`](https://wa.me/6281908330577?text=ini%20aruga?)
 </div>
 
 ## Getting Started
@@ -43,8 +28,8 @@ Clone this project
 Install the dependencies:
 
 ```bash
-> npm install 
 > npm install gify-cli -g
+> npm install
 ```
 
 ### Usage
@@ -69,10 +54,14 @@ pls dont remove my github link:)
 
 ## Features
 
-| Proses |bantu star|
+| Fitur premium |bantu klik star|
 | ------------- | ------------- |
-| Pornhub|50|
-| Simi-simi|50|
+| nekopoi search link| ✅|
+| pornhub downloads| sampe 45|
+| redtube downloads| sampe 40|
+| sex.com downloads| sampe 40|
+| simi-simi chat bot| sampe 50|
+| nekopoi search video| sampe 50|
 
 | Creator |Yes|
 | ------------- | ------------- |
@@ -83,7 +72,6 @@ pls dont remove my github link:)
 | Respond giphy url to sticker|✅|
 | Make a meme from photo|✅|
 | Quotes maker result pict|✅|
-| Nulis Bot|✅|
 
 | Islam |Yes|
 | ------------- | ------------- |
@@ -110,8 +98,6 @@ pls dont remove my github link:)
 | Wikipedia |✅|
 | Cuaca |✅|
 | Chord music |✅|
-| Screen Crot!|✅|
-| Play music|✅|
 
 | Random text |Yes|
 | ------------- | ------------- |
@@ -173,4 +159,3 @@ Fix Stuck on linux, install google chrome stable:
 ## Thanks to
 - [WA-Automate](https://github.com/open-wa/wa-automate-nodejs)
 - [YogaSakti](https://github.com/YogaSakti/imageToSticker)
-- [MhankBarBar](https://github.com/MhankBarBar/whatsapp-bot)
