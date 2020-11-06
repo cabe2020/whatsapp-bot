@@ -686,7 +686,7 @@ const start = (aruga = new Client()) => {
                     aruga.reply(from, 'Tidak dapat menambahkan target', id)
                 }
             break
-        case 'ekiminar':
+        case 'eliminar':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
@@ -730,7 +730,7 @@ const start = (aruga = new Client()) => {
             aruga.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
             break
         case 'lista':
-        case 'everyone':
+        case 'lista':
             if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
             const groupMem = await aruga.getGroupMembers(groupId)
@@ -739,7 +739,7 @@ const start = (aruga = new Client()) => {
                 hehex += '╠➥'
                 hehex += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
             }
-            hehex += '╚═〘 *A R U G A  B O T* 〙'
+            hehex += '╚═〘 *CABE  B O T* 〙'
             await aruga.sendTextWithMentions(from, hehex)
             break
         case 'botstat': {
