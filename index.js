@@ -255,7 +255,7 @@ const start = (aruga = new Client()) => {
             if (isMedia || isQuotedVideo) {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     var mediaData = await decryptMedia(message, uaOverride)
-                    aruga.reply(from, '[WAIT] Sedang di proses⏳ silahkan tunggu ± 1 min!', id)
+                    aruga.reply(from, '[ESPERAR] En curso⏳ espere ± 1 min.', id)
                     var filename = `./media/stickergif.${mimetype.split('/')[1]}`
                     await fs.writeFileSync(filename, mediaData)
                     await exec(`gify ${filename} ./media/stickergf.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
@@ -320,22 +320,22 @@ const start = (aruga = new Client()) => {
                 const quotes = qmaker[1]
                 const author = qmaker[2]
                 const theme = qmaker[3]
-                aruga.reply(from, 'Proses kak..', id)
+                aruga.reply(from, 'Prosas como', id)
                 try {
                     const hasilqmaker = await images.quote(quotes, author, theme)
-                    aruga.sendFileFromUrl(from, `${hasilqmaker}`, '', 'ini kak..', id)
+                    aruga.sendFileFromUrl(from, `${hasilqmaker}`, '', 'Este es hermano ...', id)
                 } catch {
                     aruga.reply('bueno, el proceso falló, hermano, el contenido es correcto, ¿no?..', id)
                 }
             } else {
-                aruga.reply(from, `Pemakaian ${prefix}quotemaker |isi quote|author|theme\n\ncontoh: ${prefix}quotemaker |aku sayang kamu|-aruga|random\n\nuntuk theme nya pakai random ya kak..`)
+                aruga.reply(from, `Usar ${prefix}quotemaker |cita de isi|autor|tema \n\n ejemplo: ${prefix}quotemaker |Te amo|CabeBot|aleatorio \n\n para el tema usar random sí hermano..`)
             }
             break
             case 'nulis':
-                if (args.length == 0) return aruga.reply(from, `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`, id)
+                if (args.length == 0) return aruga.reply(from, `Haz que el bot escriba el texto que se envía como imagen \ n Usando: ${prefix}escribir [texto] \n\n ejemplo: ${prefix}nulis te amo 3000`, id)
                 const nulisq = body.slice(7)
                 const nulisp = await rugaapi.tulis(nulisq)
-                await aruga.sendImage(from, `${nulisp}`, '', 'Nih...', id)
+                await aruga.sendImage(from, `${nulisp}`, '', 'Aquí esta', id)
                 break
                 
         //Islam Command
@@ -482,17 +482,17 @@ const start = (aruga = new Client()) => {
 
         //Media
         case 'instagram':
-            if (args.length == 0) return aruga.reply(from, `Untuk mendownload gambar atau video dari instagram\nketik: ${prefix}instagram [link_ig]`, id)
+            if (args.length == 0) return aruga.reply(from, `Para descargar imágenes o videos de instagram \n escriba: ${prefix}instagram [link_ig]`, id)
             const instag = await rugaapi.insta(args[0])
             await aruga.sendFileFromUrl(from, instag, '', '', id)
             break
         case 'ytmp3':
-            if (args.length == 0) return aruga.reply(from, `Untuk mendownload lagu dari youtube\nketik: ${prefix}ytmp3 [link_yt]`, id)
+            if (args.length == 0) return aruga.reply(from, `Para descargar videos de youtube \n escriba: ${prefix}ytmp3 [link_yt]`, id)
             const mp3 = await rugaapi.ytmp3(args[0])
             await aruga.sendFileFromUrl(from, mp3, '', '', id)
             break
         case 'ytmp4':
-            if (args.length == 0) return aruga.reply(from, `Untuk mendownload video dari youtube\nketik: ${prefix}ytmp3 [link_yt]`)
+            if (args.length == 0) return aruga.reply(from, `Para descargar videos de youtube \n escriba: ${prefix}ytmp4 [link_yt]`)
             const mp4 = await rugaapi.ytmp4(args[0])
             await aruga.sendFileFromUrl(from, mp4, '', '', id)
             break
