@@ -1,45 +1,45 @@
 <div align="center">
  
 # Whatsapp CabeBot - Node Js
-[![CodeFactor](https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/badge/master)](https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/cabe2020/whatsapp-cabebot)](https://www.codefactor.io/repository/github/cabe2020/whatsapp-cabebot)
 <details>
- <summary>🥟 Help me!</summary>
+ <summary> Ayudame!</summary>
  
- [Trakteer](https://trakteer.id/arugabot)
+ [Trakteer](https://trakteer.id/Cabeguss-wuzfc)
+ [PayPal](https://paypal.me/cabegus?locale.x=es_XC)
  
 </details>
 
-bantu kontribusi dengan cara pull request atau request di issues, makasi
-[`Whastapp saya`](https://wa.me/6281908330577?text=ini%20aruga?)
+ayudar a contribuir extrayendo solicitudes o solicitudes sobre problemas, gracias
 </div>
 
-## Getting Started
+## Empezando
 
-This project require NodeJS v12.
+Este proyecto requiere NodeJS v12.
 
-### Install
-Clone this project
+### Instalar en pc
+Clonar este proyecto
 
 ```bash
-> git clone https://github.com/ArugaZ/whatsapp-bot.git
-> cd whatsapp-bot
+> git clone https://github.com/cabe2020/whatsapp-Cabebot.git
+> cd whatsapp-Cabebot
 ```
 
-Install the dependencies:
+Instale las dependencias:
 
 ```bash
 > npm install gify-cli -g
 > npm install
 ```
 
-### Usage
-Run the Whatsapp bot
+### Usar
+Ejecuta el bot de Whatsapp
 
 ```bash
 > npm start
 ```
 
-after running it you need to scan the qr
+Después de ejecutarlo, debe escanear el qr
 
 ### Information
 - Change ownerNumber on settings/setting.json
@@ -140,22 +140,21 @@ pls dont remove my github link:)
 | Banned user|✅|
 
 
-## To-Do
- - Add Media Downloader
- - Add More Feature
- - More refactoring
+## Que hacer?
+- Agregar descargador de medios
+- Agregar más función
+- Más refactorización
  
 ---
 
-## Troubleshooting
-Make sure all the necessary dependencies are installed: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+## Solución de problemas
+Asegúrese de que todas las dependencias necesarias estén instaladas: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
-Fix Stuck on linux, install google chrome stable: 
+Arregle Stuck en linux, instale google chrome estable: 
 ```bash
 > wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 > sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
 
-## Thanks to
-- [WA-Automate](https://github.com/open-wa/wa-automate-nodejs)
-- [YogaSakti](https://github.com/YogaSakti/imageToSticker)
+## Gracias A
+- [ArugaZ](https://github.com/ArugaZ)
