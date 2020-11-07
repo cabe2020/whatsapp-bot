@@ -92,7 +92,7 @@ const start = (aruga = new Client()) => {
     // ketika seseorang masuk/keluar dari group
     aruga.onGlobalParicipantsChanged(async (event) => {
         // kondisi ketika seseorang diinvite/join group lewat link
-        if (event.action === 'add' || event.action === 'invite') await aruga.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nHave fun with us✨`)
+        if (event.action === 'add' || event.action === 'invite') await aruga.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
 
         // kondisi ketika seseorang dikick/keluar dari group
 	    if (event.action === 'remove' || event.action === 'leave') await aruga.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos`)
@@ -165,6 +165,9 @@ const start = (aruga = new Client()) => {
             break
         case 'tnc':
             await aruga.sendText(from, menuId.textTnC())
+            break
+            case 'Insig':
+            await aruga.sendText(from, menuId.textInsig())
             break
         case 'menu':
         case 'help':
