@@ -332,7 +332,7 @@ const start = (aruga = new Client()) => {
             }
             break
             case 'nulis':
-                if (args.length == 0) return aruga.reply(from, `Haz que el bot escriba el texto que se envía como imagen \ n Usando: ${prefix}escribir [texto] \n\n ejemplo: ${prefix}nulis te amo 3000`, id)
+                if (args.length == 0) return aruga.reply(from, `Haz que el bot escriba el texto que se envía como imagen \n Usando: ${prefix}nulis [texto] \n\n ejemplo: ${prefix}nulis te amo 3000`, id)
                 const nulisq = body.slice(7)
                 const nulisp = await rugaapi.tulis(nulisq)
                 await aruga.sendImage(from, `${nulisp}`, '', 'Aquí esta', id)
