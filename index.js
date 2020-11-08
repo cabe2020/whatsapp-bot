@@ -773,11 +773,11 @@ const start = (aruga = new Client()) => {
         //Owner Bot
         case 'ban':
             if (!isOwnerBot) return aruga.reply(from, '¡Este pedido es solo para el propietario del bot!', id)
-            if (args.length == 0) return aruga.reply(from, `Prohibir que alguien pueda usar comandos\n\nCaranya ketik: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
+            if (args.length == 0) return aruga.reply(from, `Prohibir que alguien pueda usar comandos\n\no escribir: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
                 banned.push(args[1]+'@c.us')
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                aruga.reply(from, 'Succes banned target!')
+                aruga.reply(from, '¡Objetivo baneado con éxito!')
             } else
             if (args[0] == 'del') {
                 let xnxx = banned.indexOf(args[1]+'@c.us')
@@ -793,8 +793,8 @@ const start = (aruga = new Client()) => {
             }
             break
         case 'bc': //untuk broadcast atau promosi
-            if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
-            if (args.length == 0) return aruga.reply(from, `Untuk broadcast ke semua chat ketik:\n${prefix}bc [isi chat]`)
+            if (!isOwnerBot) return aruga.reply(from, '¡Este pedido es solo para el propietario del bot!', id)
+            if (args.length == 0) return aruga.reply(from, `Para transmitir a todos los chats, escriba:\n${prefix}bc [rellenar el chat]`)
             let msg = body.slice(4)
             const chatz = await aruga.getAllChatIds()
             for (let idk of chatz) {
