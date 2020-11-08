@@ -500,23 +500,6 @@ const start = (aruga = new Client()) => {
             await aruga.sendFileFromUrl(from, mp4, '', '', id)
             break
 
-        case 'nsfw':
-            var unirest = require("unirest");
-
-var req = unirest("POST", "https://nsfw1.p.rapidapi.com/nsfw");
-
-req.headers({
-	"x-rapidapi-key": "SIGN-UP-FOR-KEY",
-	"x-rapidapi-host": "nsfw1.p.rapidapi.com",
-	"useQueryString": true
-});
-
-
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
-
-	console.log(res.body);
-});
 
         // Random Kata
         case 'fakta':
@@ -553,17 +536,17 @@ req.end(function (res) {
 
         //Random Images
         case 'anime':
-            if (args.length == 0) return aruga.reply(from, `Untuk menggunakan ${prefix}anime\nSilahkan ketik: ${prefix}anime [query]\nContoh: ${prefix}anime random\n\nquery yang tersedia:\nrandom, waifu, husbu, neko`, id)
+            if (args.length == 0) return aruga.reply(from, `Usar ${prefix}anime\nPor favor escribe: ${prefix}anime [consulta]\nejemplo: ${prefix}anime random\n\n consultas disponibles:\n random, waifu, husbu, neko`, id)
             if (args[0] == 'random' || args[0] == 'waifu' || args[0] == 'husbu' || args[0] == 'neko') {
                 fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/' + args[0] + '.txt')
                 .then(res => res.text())
                 .then(body => {
                     let randomnime = body.split('\n')
                     let randomnimex = randomnime[Math.floor(Math.random() * randomnime.length)]
-                    aruga.sendFileFromUrl(from, randomnimex, '', 'Nee..', id)
+                    aruga.sendFileFromUrl(from, randomnimex, '', 'Aqui esta', id)
                 })
             } else {
-                aruga.reply(from, `Maaf query tidak tersedia. Silahkan ketik ${prefix}anime untuk melihat list query`)
+                aruga.reply(from, `Lo sentimos, la consulta no está disponible. Por favor escribe ${prefix}anime para ver la lista de consultas`)
             }
             break
         case 'kpop':
