@@ -876,7 +876,7 @@ const start = (cabe = new Client()) => {
             cabe.reply(from, 'Tiene éxito borrar todo el chat!', id)
             break
         default:
-            console.log(color('[EROR]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'Unregistered Command from', color(pushname))
+            console.log(color('[EROR]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'Comando no registrado de', color(pushname))
             break
         }
     } catch (err) {
