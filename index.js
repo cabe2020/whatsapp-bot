@@ -144,8 +144,8 @@ const start = (cabe = new Client()) => {
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
 
         // [BETA] Avoid Spam Message
-        if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname)) }
-        if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name || formattedTitle)) }
+        if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
+        if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname), 'en', color(name || formattedTitle)) }
         //
         if (!isCmd) { return }
         if (isCmd && !isGroupMsg) { console.log(color('[EXEC]'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
@@ -486,6 +486,65 @@ const start = (cabe = new Client()) => {
             const instag = await rugaapi.insta(args[0])
             await cabe.sendFileFromUrl(from, instag, '', '', id)
             break
+            case 'tiktok':
+                if (args.length !== 1) return cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id)
+                if (!is.Url(url) && !url.includes('tiktok.com')) return cabe.reply(from, 'Lo sentimos, el enlace que envió no es válido. [Enlace no válido]', id)
+                await cabe.reply(from, `_Extracción de metadatos ..._ \n\n${menuId.textDonasi()}`, id)
+                downloader.tiktok(url).then(async (videoMeta) => {
+                    const filename = videoMeta.authorMeta.name + '.mp4'
+                    const caps = `*Metadata:*\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'}`
+                    await cabe.sendFileFromUrl(from, videoMeta.url, filename, videoMeta.NoWaterMark ? caps : `⚠ Los videos sin marca de agua no están disponibles. \n\n${caps}`, '', { headers: { 'User-Agent': 'okhttp/4.5.0', referer: 'https://www.tiktok.com/' } }, true)
+                        .then((serialized) => console.log(`SEnvío exitoso de archivos con id: ${serialized} procesado durante${processTime(t, moment())}`))
+                        .catch((err) => console.error(err))
+                }).catch(() => cabe.reply(from, 'No se pudieron recuperar los metadatos, el vínculo que envió no es válido. [Enlace no válido]', id))
+                break
+                case 'twt':
+                    case 'twitter':
+                        if (args.length !== 1) return cabe.reply(from, 'Maaf, format pesan salah silahkan periksa menu. [Wrong Format]', id)
+                        if (!is.Url(url) & !url.includes('twitter.com') || url.includes('t.co')) return cabe.reply(from, 'Maaf, url yang kamu kirim tidak valid. [Invalid Link]', id)
+                        await cabe.reply(from, `_Scraping Metadata..._ \n\n${menuId.textDonasi()}`, id)
+                        downloader.tweet(url).then(async (data) => {
+                            if (data.type === 'video') {
+                                const content = data.variants.filter(x => x.content_type !== 'application/x-mpegURL').sort((a, b) => b.bitrate - a.bitrate)
+                                const result = await urlShortener(content[0].url)
+                                console.log('Shortlink: ' + result)
+                                await cabe.sendFileFromUrl(from, content[0].url, 'video.mp4', `Link Download: ${result} \n\nProcessed for ${processTime(t, moment())} _Second_`, null, null, true)
+                                    .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                                    .catch((err) => console.error(err))
+                            } else if (data.type === 'photo') {
+                                for (let i = 0; i < data.variants.length; i++) {
+                                    await cabe.sendFileFromUrl(from, data.variants[i], data.variants[i].split('/media/')[1], '', null, null, true)
+                                        .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                                        .catch((err) => console.error(err))
+                                }
+                            }
+                        })
+                            .catch(() => cabe.sendText(from, 'Maaf, link tidak valid atau tidak ada media di link yang kamu kirim. [Invalid Link]'))
+                        break
+                    case 'fb':
+                    case 'facebook':
+                        if (args.length !== 1) return cabe.reply(from, 'Maaf, format pesan salah silahkan periksa menu. [Wrong Format]', id)
+                        if (!is.Url(url) && !url.includes('facebook.com')) return cabe.reply(from, 'Maaf, url yang kamu kirim tidak valid. [Invalid Link]', id)
+                        await cabe.reply(from, '_Scraping Metadata..._ \n\nTerimakasih telah menggunakan bot ini, kamu dapat membantu pengembangan bot ini dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.', id)
+                        downloader.facebook(url).then(async (videoMeta) => {
+                            const title = videoMeta.response.title
+                            const thumbnail = videoMeta.response.thumbnail
+                            const links = videoMeta.response.links
+                            const shorts = []
+                            for (let i = 0; i < links.length; i++) {
+                                const shortener = await urlShortener(links[i].url)
+                                console.log('Shortlink: ' + shortener)
+                                links[i].short = shortener
+                                shorts.push(links[i])
+                            }
+                            const link = shorts.map((x) => `${x.resolution} Quality: ${x.short}`)
+                            const caption = `Text: ${title} \n\nLink Download: \n${link.join('\n')} \n\nProcessed for ${processTime(t, moment())} _Second_`
+                            await cabe.sendFileFromUrl(from, thumbnail, 'videos.jpg', caption, null, null, true)
+                                .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                                .catch((err) => console.error(err))
+                        })
+                            .catch((err) => cabe.reply(from, `Error, url tidak valid atau tidak memuat video. [Invalid Link or No Video] \n\n${err}`, id))
+                        break
         case 'ytmp3':
             if (args.length == 0) return cabe.reply(from, `Para descargar canciones de youtube \n escriba: ${prefix}ytmp3 [link_yt]`, id)
             const mp3 = await rugaapi.ytmp3(args[0])
