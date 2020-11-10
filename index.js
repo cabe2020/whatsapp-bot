@@ -9,6 +9,8 @@ const axios = require('axios')
 const fetch = require('node-fetch')
 
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
+const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
+const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
 
 const { 
     removeBackgroundFromImageBase64
@@ -28,7 +30,8 @@ const {
     images,
     resep,
     rugapoi,
-    rugaapi
+    rugaapi,
+    NSFW
 } = require('./lib')
 
 const { 
@@ -557,8 +560,8 @@ const start = (cabe = new Client()) => {
             await cabe.sendFileFromUrl(from, mp4, '', '', id)
             break
             case 'xnxx':
-                if (!isNsfw) return cabe.reply(from, 'command/Perintah NSFW belum di aktifkan di group ini!', id)
-                if (isLimit(serial)) return cabe.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
+                if (!isNsfw) return cabe.reply(from, 'comando / comando NSFW no activado en este grupo!', id)
+                if (isLimit(serial)) return cabe.reply(from, `Lo siento ${pushname}, Su límite de cuota se ha agotado, escriba #limit para verificar su límite de cuota`, id)
                 
                 await limitAdd(serial)
                 if (args.length === 1) return cabe.reply(from, 'Kirim perintah *#xnxx [linkXnxx]*, untuk contoh silahkan kirim perintah *#readme*')
@@ -617,6 +620,22 @@ const start = (cabe = new Client()) => {
                     cabe.sendText(ownerNumber, 'Google Image Error : ' + err)
                 }
               break
+              case '!nsfw':
+                if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+                if (!isGroupAdmins) return client.reply(from, 'Perintah ini hanya bisa di gunakan oleh Admin group!', id)
+                if (args.length === 1) return client.reply(from, 'Pilih enable atau disable!', id)
+                if (args[1].toLowerCase() === 'enable') {
+                    nsfw_.push(chat.id)
+                    fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
+                    client.reply(from, 'NSWF Command berhasil di aktifkan di group ini! kirim perintah *!nsfwMenu* untuk mengetahui menu', id)
+                } else if (args[1].toLowerCase() === 'disable') {
+                    nsfw_.splice(chat.id, 1)
+                    fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
+                    client.reply(from, 'NSFW Command berhasil di nonaktifkan di group ini!', id)
+                } else {
+                    client.reply(from, 'Pilih enable atau disable udin!', id)
+                }
+                break
         // Random Kata
         case 'fakta':
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/faktaunix.txt')
