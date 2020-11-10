@@ -10,7 +10,6 @@ const fetch = require('node-fetch')
 
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
-const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
 
 const { 
     removeBackgroundFromImageBase64
