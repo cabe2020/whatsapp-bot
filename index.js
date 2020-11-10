@@ -40,6 +40,7 @@ const {
 
 const options = require('./utils/options')
 const { uploadImages } = require('./utils/fetcher')
+const { createBrotliDecompress } = require('zlib')
 
 const { 
     ownerNumber, 
@@ -556,13 +557,12 @@ const start = (cabe = new Client()) => {
             await cabe.sendFileFromUrl(from, mp4, '', '', id)
             break
             case 'xnxx':
-                if (!isGroupMsg) return cabe.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
                 if (!isNsfw) return cabe.reply(from, 'command/Perintah NSFW belum di aktifkan di group ini!', id)
                 if (isLimit(serial)) return cabe.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
                 
                 await limitAdd(serial)
                 if (args.length === 1) return cabe.reply(from, 'Kirim perintah *#xnxx [linkXnxx]*, untuk contoh silahkan kirim perintah *#readme*')
-                if (!args[1].match(isUrl) && !args[1].includes('xnxx.com')) return tobz.reply(from, mess.error.Iv, id)
+                if (!args[1].match(isUrl) && !args[1].includes('xnxx.com')) return cabe.reply(from, mess.error.Iv, id)
                 try {
                     cabe.reply(from, mess.wait, id)
                     const resq = await axios.get('https://mhankbarbar.herokuapp.com/api/xnxx?url='+ args[1] +'&apiKey='+ barbarkey)
@@ -570,17 +570,53 @@ const start = (cabe = new Client()) => {
                      if (resp.error) {
                         cabe.reply(from, ytvv.error, id)
                     } else {
-                        if (Number(resp.result.size.split(' MB')[0]) > 20.00) return tobz.reply(from, 'Maaf durasi video sudah melebihi batas maksimal 20 menit!', id)
-                        tobz.sendFileFromUrl(from, resp.result.thumb, 'thumb.jpg', `➸ *Judul* : ${resp.result.judul}\n➸ *Deskripsi* : ${resp.result.desc}\n➸ *Filesize* : ${resp.result.size}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
-                        await tobz.sendFileFromUrl(from, resp.result.vid, `${resp.result.title}.mp4`, '', id)}
+                        if (Number(resp.result.size.split(' MB')[0]) > 20.00) return cabe.reply(from, 'Maaf durasi video sudah melebihi batas maksimal 20 menit!', id)
+                        cabe.sendFileFromUrl(from, resp.result.thumb, 'thumb.jpg', `➸ *Judul* : ${resp.result.judul}\n➸ *Deskripsi* : ${resp.result.desc}\n➸ *Filesize* : ${resp.result.size}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
+                        await cabe.sendFileFromUrl(from, resp.result.vid, `${resp.result.title}.mp4`, '', id)}
                 } catch (err) {
                     console.log(err)
                     await cabe.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, Video tidak ditemukan')
-                    tobz.sendText(ownerNumber, 'Xnxx Error : ' + err)
+                    cabe.sendText(ownerNumber, 'Xnxx Error : ' + err)
                 }
                 break
                 break
-
+                case 'google':
+            if (isLimit(serial)) return cabe.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
+            
+            await limitAdd(serial)
+            cabe.reply(from, mess.wait, id)
+            const googleQuery = body.slice(8)
+            if(googleQuery == undefined || googleQuery == ' ') return cabe.reply(from, `*Hasil Pencarian : ${googleQuery}* tidak ditemukan`, id)
+            google({ 'query': googleQuery }).then(results => {
+            let vars = `_*Hasil Pencarian : ${googleQuery}*_\n`
+            for (let i = 0; i < results.length; i++) {
+                vars +=  `\n═════════════════\n\n*Judul* : ${results[i].title}\n\n*Deskripsi* : ${results[i].snippet}\n\n*Link* : ${results[i].link}\n\n`
+            }
+                cabe.reply(from, vars, id);
+            }).catch(e => {
+                console.log(e)
+                cabe.sendText(ownerNumber, 'Google Error : ' + e);
+            })
+            break
+            case 'googleimage':
+                if (isLimit(serial)) return cabe.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
+                
+                await limitAdd(serial)
+                if (args.length === 1) return cabe.reply(from, 'Kirim perintah *#googleimage [query]*\nContoh : *#googleimage Elaina*', id)
+                try{
+                    cabe.reply(from, mess.wait, id)
+                    const gimgg = body.slice(13)
+                    const gamb = `https://api.vhtear.com/googleimg?query=${gimgg}&apikey=${vhtearkey}`
+                    const gimg = await axios.get(gamb)
+                    var gimg2 = Math.floor(Math.random() * gimg.data.result.result_search.length)
+                    console.log(gimg2)
+                    await cabe.sendFileFromUrl(from, gimg.data.result.result_search[gimg2], `gam.${gimg.data.result.result_search[gimg2]}`, `*Google Image*\n\n*Hasil Pencarian : ${gimgg}*`, id)
+                } catch (err) {
+                    console.log(err); 
+                    cabe.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, Gambar tidak ditemukan')
+                    cabe.sendText(ownerNumber, 'Google Image Error : ' + err)
+                }
+              break
         // Random Kata
         case 'fakta':
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/faktaunix.txt')
