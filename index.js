@@ -686,6 +686,7 @@ const start = (cabe = new Client()) => {
         
         // Search Any
         case 'imagen':
+        case 'images':
             if (args.length == 0) return cabe.reply(from, `Para buscar imágenes en pinterest\nescriba: ${prefix}imagen [busqueda]\nejemplo: ${prefix}imagen naruto`, id)
             const cariwall = body.slice(8)
             const hasilwall = await images.fdci(cariwall)
@@ -847,19 +848,18 @@ const start = (cabe = new Client()) => {
             break
 
         // Comando para Admins del grupo (solo admins del grupo)
-	    async function add (client, from, chat, message, author, isGroupMsg) {
-            var admins = await client.getGroupAdmins(chat.id)
-            if (isGroupMsg){
-                if (args.length >=2){
-                    const part = args[1]
-                    if (admins.includes(author) == true) {
-                        await client.addParticipant(from, part+'@c.us')
-                    }else{ 
-                        await client.reply(from, 'Solo las admins pueden usar este comando.', message)
-                    }
+	    case 'agregar':
+            if (!isGroupMsg) return cabe.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+            if (!isGroupAdmins) return cabe.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
+            if (!isBotGroupAdmins) return cabe.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
+	        if (args.length !== 1) return cabe.reply(from, `Untuk menggunakan ${prefix}add\nPenggunaan: ${prefix}add <nomor>\ncontoh: ${prefix}add 628xxx`, id)
+                try {
+                    await cabe.addParticipant(from,`${args[0]}@c.us`)
+		            .then(() => cabe.reply(from, 'Hai selamat datang', id))
+                } catch {
+                    cabe.reply(from, 'Tidak dapat menambahkan target', id)
                 }
-            }
-        }
+            break
         case 'eliminar':
             if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id)
             if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id)
