@@ -619,7 +619,7 @@ const start = (cabe = new Client()) => {
                     cabe.sendText(ownerNumber, 'Google Image Error : ' + err)
                 }
               break
-              case '!nsfw':
+              case 'nsfw':
                 if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
                 if (!isGroupAdmins) return client.reply(from, 'Perintah ini hanya bisa di gunakan oleh Admin group!', id)
                 if (args.length === 1) return client.reply(from, 'Pilih enable atau disable!', id)
