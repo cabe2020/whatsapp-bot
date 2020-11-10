@@ -555,7 +555,31 @@ const start = (cabe = new Client()) => {
             const mp4 = await rugaapi.ytmp4(args[0])
             await cabe.sendFileFromUrl(from, mp4, '', '', id)
             break
-
+            case 'xnxx':
+                if (!isGroupMsg) return cabe.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+                if (!isNsfw) return cabe.reply(from, 'command/Perintah NSFW belum di aktifkan di group ini!', id)
+                if (isLimit(serial)) return cabe.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
+                
+                await limitAdd(serial)
+                if (args.length === 1) return cabe.reply(from, 'Kirim perintah *#xnxx [linkXnxx]*, untuk contoh silahkan kirim perintah *#readme*')
+                if (!args[1].match(isUrl) && !args[1].includes('xnxx.com')) return tobz.reply(from, mess.error.Iv, id)
+                try {
+                    cabe.reply(from, mess.wait, id)
+                    const resq = await axios.get('https://mhankbarbar.herokuapp.com/api/xnxx?url='+ args[1] +'&apiKey='+ barbarkey)
+                    const resp = resq.data
+                     if (resp.error) {
+                        cabe.reply(from, ytvv.error, id)
+                    } else {
+                        if (Number(resp.result.size.split(' MB')[0]) > 20.00) return tobz.reply(from, 'Maaf durasi video sudah melebihi batas maksimal 20 menit!', id)
+                        tobz.sendFileFromUrl(from, resp.result.thumb, 'thumb.jpg', `➸ *Judul* : ${resp.result.judul}\n➸ *Deskripsi* : ${resp.result.desc}\n➸ *Filesize* : ${resp.result.size}\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit.`, id)
+                        await tobz.sendFileFromUrl(from, resp.result.vid, `${resp.result.title}.mp4`, '', id)}
+                } catch (err) {
+                    console.log(err)
+                    await cabe.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, Video tidak ditemukan')
+                    tobz.sendText(ownerNumber, 'Xnxx Error : ' + err)
+                }
+                break
+                break
 
         // Random Kata
         case 'fakta':
