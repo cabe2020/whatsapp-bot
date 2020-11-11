@@ -2,7 +2,7 @@ require('dotenv').config()
 const { create, decryptMedia, Client } = require('@open-wa/wa-automate')
 
 const moment = require('moment-timezone')
-moment.tz.setDefault('America/Argentina/Buenos_Aires').locale('id')
+moment.tz.setDefault('Asia/Jakarta').locale('id')
 const figlet = require('figlet')
 const fs = require('fs-extra')
 const axios = require('axios')
@@ -67,17 +67,17 @@ const start = (cabe = new Client()) => {
         if (state === 'CONFLICT' || state === 'UNLAUNCHED') cabe.forceRefocus()
     })
 
-    // cuando el bot es invitado al grupo
+    // // ketika bot diinvite ke dalam group
     cabe.onAddedToGroup(async (chat) => {
 	const groups = await cabe.getAllGroups()
-    // Cuando se alcanza el límite del grupo de bots, cámbielo en el archivo settings/settings.json
+    // kodisi ketika batas group bot telah tercapat, ubah di file settings/setting.json
 	if (groups.length > groupLimit) {
 	await cabe.sendText(chat.id, `Lo sentimos, el grupo de este bot está completo \ El grupo máximo es: ${groupLimit}`).then(() => {
 	      cabe.leaveGroup(chat.id)
 	      cabe.deleteChat(chat.id)
 	  }) 
 	} else {
-	// Condición cuando no se ha alcanzado el límite de miembros del grupo, cámbielo en el archivo settings/settings.json
+	// kondisi ketika batas member group belum tercapai, ubah di file settings/setting.json
 	    if (chat.groupMetadata.participants.length < memberLimit) {
 	    await cabe.sendText(chat.id, `Lo siento, CABE-BOT se sale si los miembros del grupo no exceden ${memberLimit} personas`).then(() => {
 	      cabe.leaveGroup(chat.id)
@@ -91,10 +91,10 @@ const start = (cabe = new Client()) => {
 	}
     })
 
-   // cuando alguien entra/sale del grupo
+   // ketika seseorang masuk/keluar dari group
    aruga.onGlobalParicipantsChanged(async (event) => {
     const host = await aruga.getHostNumber() + '@c.us'
-    // condición cuando alguien invita/se une al grupo a través de un enlace
+    // kondisi ketika seseorang diinvite/join group lewat link
     if (event.action === 'add' && event.action == 'invite') {
         await aruga.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
     }
@@ -104,30 +104,30 @@ const start = (cabe = new Client()) => {
     }
 })
 cabe.onIncomingCall(async (callData) => {
-        // cuando alguien llama al número, el bot enviará un mensaje
+        // ketika seseorang menelpon nomor bot akan mengirim pesan
         await cabe.sendText(callData.peerJid, 'Lo siento, no puedo recibir llamadas de\n\nnadie soy un bot')
         .then(async () => {
-            // el bot bloqueará ese número
+            // bot akan memblock nomor itu
             await cabe.contactBlock(callData.peerJid)
         })
     })
 
-    // cuando alguien envía un mensaje
+    // ketika seseorang mengirim pesan
     cabe.onMessage(async (message) => {
-        cabe.getAmountOfLoadedMessages() // borrar la caché de mensajes si ya hay 3000 mensajes
+        cabe.getAmountOfLoadedMessages() // menghapus pesan cache jika sudah 3000 pesan.
             .then((msg) => {
                 if (msg >= 3000) {
                     console.log('[cabe]', color(`Alcance de mensaje cargado ${msg}, cortando la caché de mensajes...`, 'yellow'))
                     cabe.cutMsgCache()
                 }
             })
-	//Mensaje
+	//Message
     try {
         const { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, quotedMsgObj, mentionedJidList } = message
         let { body } = message
         var { name, formattedTitle } = chat
         let { pushname, verifiedName, formattedName } = sender
-        pushname = pushname || verifiedName || formattedName // El nombre verificado es el nombre de alguien que usa una cuenta comercial
+        pushname = pushname || verifiedName || formattedName // verifiedName is the name of someone who uses a business account
         const botNumber = await cabe.getHostNumber() + '@c.us'
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
         const groupAdmins = isGroupMsg ? await cabe.getGroupAdmins(groupId) : ''
