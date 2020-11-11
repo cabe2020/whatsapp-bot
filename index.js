@@ -92,15 +92,15 @@ const start = (cabe = new Client()) => {
     })
 
    // ketika seseorang masuk/keluar dari group
-   aruga.onGlobalParicipantsChanged(async (event) => {
-    const host = await aruga.getHostNumber() + '@c.us'
+   cabe.onGlobalParicipantsChanged(async (event) => {
+    const host = await cabe.getHostNumber() + '@c.us'
     // kondisi ketika seseorang diinvite/join group lewat link
     if (event.action === 'add' && event.action == 'invite') {
-        await aruga.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
+        await cabe.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
     }
     // kondisi ketika seseorang dikick/keluar dari group
     if (event.action === 'remove' && event.action == 'leave') {
-        await aruga.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos✨`)
+        await cabe.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos✨`)
     }
 })
 cabe.onIncomingCall(async (callData) => {
