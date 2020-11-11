@@ -2,7 +2,7 @@ require('dotenv').config()
 const { create, decryptMedia, Client } = require('@open-wa/wa-automate')
 
 const moment = require('moment-timezone')
-moment.tz.setDefault('Asia/Jakarta').locale('id')
+moment.tz.setDefault('America/Argentina/Buenos_Aires').locale('id')
 const figlet = require('figlet')
 const fs = require('fs-extra')
 const axios = require('axios')
@@ -61,7 +61,7 @@ const start = (cabe = new Client()) => {
     console.log(color('[DEV]'), color('CABE', 'yellow'))
     console.log(color('[~>>]'), color('BOT iniciado!', 'green'))
 
-    // Mantiene la sesión activa
+    // ketika bot diinvite ke dalam group
     cabe.onStateChanged((state) => {
         console.log(color('[~>>]', 'red'), state)
         if (state === 'CONFLICT' || state === 'UNLAUNCHED') cabe.forceRefocus()
