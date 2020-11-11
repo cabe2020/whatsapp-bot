@@ -29,8 +29,7 @@ const {
     images,
     resep,
     rugapoi,
-    rugaapi,
-    NSFW
+    rugaapi
 } = require('./lib')
 
 const { 
@@ -62,25 +61,25 @@ const start = (cabe = new Client()) => {
     console.log(color('[DEV]'), color('CABE', 'yellow'))
     console.log(color('[~>>]'), color('BOT iniciado!', 'green'))
 
-    // Mempertahankan sesi agar tetap nyala
+    // Mantiene la sesión activa
     cabe.onStateChanged((state) => {
         console.log(color('[~>>]', 'red'), state)
         if (state === 'CONFLICT' || state === 'UNLAUNCHED') cabe.forceRefocus()
     })
 
-    // ketika bot diinvite ke dalam group
+    // cuando el bot es invitado al grupo
     cabe.onAddedToGroup(async (chat) => {
 	const groups = await cabe.getAllGroups()
-	// kodisi ketika batas group bot telah tercapat, ubah di file settings/setting.json
+    // Cuando se alcanza el límite del grupo de bots, cámbielo en el archivo settings/settings.json
 	if (groups.length > groupLimit) {
 	await cabe.sendText(chat.id, `Lo sentimos, el grupo de este bot está completo \ El grupo máximo es: ${groupLimit}`).then(() => {
 	      cabe.leaveGroup(chat.id)
 	      cabe.deleteChat(chat.id)
 	  }) 
 	} else {
-	// kondisi ketika batas member group belum tercapai, ubah di file settings/setting.json
+	// Condición cuando no se ha alcanzado el límite de miembros del grupo, cámbielo en el archivo settings/settings.json
 	    if (chat.groupMetadata.participants.length < memberLimit) {
-	    await cabe.sendText(chat.id, `Lo siento, lo siento, BOT sale si los miembros del grupo no exceden ${memberLimit} personas`).then(() => {
+	    await cabe.sendText(chat.id, `Lo siento, CABE-BOT se sale si los miembros del grupo no exceden ${memberLimit} personas`).then(() => {
 	      cabe.leaveGroup(chat.id)
 	      cabe.deleteChat(chat.id)
 	    })
@@ -92,40 +91,43 @@ const start = (cabe = new Client()) => {
 	}
     })
 
-    // ketika seseorang masuk/keluar dari group
-    cabe.onGlobalParicipantsChanged(async (event) => {
-        // kondisi ketika seseorang diinvite/join group lewat link
-        if (event.action === 'add' || event.action === 'invite') await cabe.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
-
-        // kondisi ketika seseorang dikick/keluar dari group
-	    if (event.action === 'remove' || event.action === 'leave') await cabe.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos`)
-    })
-
-    cabe.onIncomingCall(async (callData) => {
-        // ketika seseorang menelpon nomor bot akan mengirim pesan
-        await cabe.sendText(callData.peerJid, 'Lo siento, no puedo recibir llamadas de.\n\n-bot')
+   // cuando alguien entra/sale del grupo
+   aruga.onGlobalParicipantsChanged(async (event) => {
+    const host = await aruga.getHostNumber() + '@c.us'
+    // condición cuando alguien invita/se une al grupo a través de un enlace
+    if (event.action === 'add' && event.action == 'invite') {
+        await aruga.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
+    }
+    // kondisi ketika seseorang dikick/keluar dari group
+    if (event.action === 'remove' && event.action == 'leave') {
+        await aruga.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos✨`)
+    }
+})
+cabe.onIncomingCall(async (callData) => {
+        // cuando alguien llama al número, el bot enviará un mensaje
+        await cabe.sendText(callData.peerJid, 'Lo siento, no puedo recibir llamadas de\n\nnadie soy un bot')
         .then(async () => {
-            // bot akan memblock nomor itu
+            // el bot bloqueará ese número
             await cabe.contactBlock(callData.peerJid)
         })
     })
 
-    // ketika seseorang mengirim pesan
+    // cuando alguien envía un mensaje
     cabe.onMessage(async (message) => {
-        cabe.getAmountOfLoadedMessages() // menghapus pesan cache jika sudah 3000 pesan.
+        cabe.getAmountOfLoadedMessages() // borrar la caché de mensajes si ya hay 3000 mensajes
             .then((msg) => {
                 if (msg >= 3000) {
                     console.log('[cabe]', color(`Alcance de mensaje cargado ${msg}, cortando la caché de mensajes...`, 'yellow'))
                     cabe.cutMsgCache()
                 }
             })
-	//Message
+	//Mensaje
     try {
         const { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, quotedMsgObj, mentionedJidList } = message
         let { body } = message
         var { name, formattedTitle } = chat
         let { pushname, verifiedName, formattedName } = sender
-        pushname = pushname || verifiedName || formattedName // verifiedName is the name of someone who uses a business account
+        pushname = pushname || verifiedName || formattedName // El nombre verificado es el nombre de alguien que usa una cuenta comercial
         const botNumber = await cabe.getHostNumber() + '@c.us'
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
         const groupAdmins = isGroupMsg ? await cabe.getGroupAdmins(groupId) : ''
@@ -185,34 +187,34 @@ const start = (cabe = new Client()) => {
             await cabe.sendText(from, menuId.textDonasi())
             break
         case 'ownerbot':
-            await cabe.sendContact(from, ownerNumber)
+            await cabe.sendContact(from, ownerNumber) 
             .then(() => cabe.sedText(from, 'Si desea donar lo puede hacer por PayPal https://www.paypal.com/paypalme/cabegus?locale.x=es_XC!'))
             break
-        case 'join':
-            if (args.length == 0) return cabe.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link del grupo]`, id)
-            let linkgrup = body.slice(6)
-            let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
-            let chekgrup = await cabe.inviteInfo(islink)
-            if (!islink) return cabe.reply(from, 'Lo sentimos, el enlace del grupo es incorrecto, enviar el enlace correcto', id)
-            if (isOwnerBot) {
-                await cabe.joinGroupViaLink(linkgrup)
-                      .then(async () => {
-                          await cabe.sendText(from, '¡Se unió al grupo con éxito a través del enlace!')
-                          await cabe.sendText(chekgrup.id, `Hola , soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu`)
-                      })
-            } else {
-                let cgrup = await cabe.getAllGroups()
-                if (cgrup.length > groupLimit) return cabe.reply(from, `Lo sentimos, el grupo de este bot está completo \ El grupo máximo es: ${groupLimit}`, id)
-                if (cgrup.size < memberLimit) return cabe.reply(from, `Lo siento, lo siento, BOT no se unirá si los miembros del grupo no superan las${memberLimit} personas`, id)
-                await cabe.joinGroupViaLink(linkgrup)
-                      .then(async () =>{
-                          await cabe.reply(from, '¡Se unió al grupo con éxito a través del enlace!', id)
-                      })
-                      .catch(() => {
-                          cabe.reply(from, '¡Ha fallado!', id)
-                      })
-            }
-            break
+            case 'join':
+                if (args.length == 0) return cabe.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link del grupo]`, id)
+                let linkgrup = body.slice(6)
+                let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
+                let chekgrup = await cabe.inviteInfo(linkgrup)
+                if (!islink) return cabe.reply(from, 'Lo siento, el enlace del grupo es incorrecto, enviar el enlace correcto', id)
+                if (isOwnerBot) {
+                    await cabe.joinGroupViaLink(linkgrup)
+                          .then(async () => {
+                              await cabe.sendText(from, 'Se unió al grupo con éxito a través del enlace!')
+                              await cabe.sendText(chekgrup.id, `Hola, soy CABE-BOT. Para averiguar los comandos de este tipo de bot escriba${prefix}menu`)
+                          })
+                } else {
+                    let cgrup = await cabe.getAllGroups()
+                    if (cgrup.length > groupLimit) return cabe.reply(from, `Lo siento, el grupo de este bot está completo\nEl grupo máximo es: ${groupLimit}`, id)
+                    if (cgrup.size < memberLimit) return cabe.reply(from, `Lo siento, CABE-BOT no se unirá si los miembros del grupo no superan las${memberLimit} personas`, id)
+                    await cabe.joinGroupViaLink(linkgrup)
+                          .then(async () =>{
+                              await cabe.reply(from, 'Se unió al grupo con éxito a través del enlace!', id)
+                          })
+                          .catch(() => {
+                              cabe.reply(from, 'Ha fallado!', id)
+                          })
+                }
+                break
 
         // Sticker Creator
         case 'sticker':
