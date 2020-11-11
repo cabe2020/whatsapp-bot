@@ -95,12 +95,10 @@ const start = (cabe = new Client()) => {
    cabe.onGlobalParicipantsChanged(async (event) => {
     const host = await cabe.getHostNumber() + '@c.us'
     // kondisi ketika seseorang diinvite/join group lewat link
-    if (event.action === 'add' && event.action == 'invite') {
-        await cabe.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
+    if (event.action === 'add' || event.action == 'invite') { await cabe.sendTextWithMentions(event.chat, `Hola bienvenid@ al grupo @${event.who.replace('@c.us', '')} \n\nDiviértete con nosotros✨`)
     }
     // kondisi ketika seseorang dikick/keluar dari group
-    if (event.action === 'remove' && event.action == 'leave') {
-        await cabe.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos✨`)
+    if (event.action === 'remove' || event.action == 'leave') { await cabe.sendTextWithMentions(event.chat, `Adiós @${event.who.replace('@c.us', '')}, Te echaremos de menos✨`)
     }
 })
 cabe.onIncomingCall(async (callData) => {
