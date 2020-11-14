@@ -652,7 +652,7 @@ cabe.onIncomingCall(async (callData) => {
 				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
                 cabe.reply(from, 'mengaktifkan bot simi-simi!', id)
 			} else if (args[0] == 'off') {
-				let inxx = simi.indexOf(chatId)
+				let inxx = simi.indexOf(chat.id)
 				simi.splice(inxx, 1)
 				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
 				cabe.reply(from, 'menonaktifkan bot simi-simi!', id)
