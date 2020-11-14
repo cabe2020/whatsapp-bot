@@ -10,6 +10,7 @@ const fetch = require('node-fetch')
 
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
+const simi = JSON.parse(fs.readFileSync('./settings/simi.json'))
 
 const { 
     removeBackgroundFromImageBase64
@@ -145,6 +146,9 @@ cabe.onIncomingCall(async (callData) => {
         const url = args.length !== 0 ? args[0] : ''
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
+
+        // [IDENTIFY]
+        const isSimi = simi.includes(chat.id)
 
         // [BETA] Avoid Spam Message
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
@@ -635,6 +639,27 @@ cabe.onIncomingCall(async (callData) => {
                     cabe.reply(from, 'Pilih enable atau disable udin!', id)
                 }
                 break
+                case 'simisimi':
+			if (!isGroupMsg) return cabe.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+			cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
+			break
+		case 'simi':
+			if (!isGroupMsg) return cabe.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+            if (!isGroupAdmins) return cabe.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
+			if (args.length !== 1) return cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
+			if (args[0] == 'on') {
+				simi.push(chatId)
+				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
+                cabe.reply(from, 'mengaktifkan bot simi-simi!', id)
+			} else if (args[0] == 'off') {
+				let inxx = simi.indexOf(chatId)
+				simi.splice(inxx, 1)
+				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
+				cabe.reply(from, 'menonaktifkan bot simi-simi!', id)
+			} else {
+				cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
+			}
+			break
         // Random Kata
         case 'fakta':
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/faktaunix.txt')
