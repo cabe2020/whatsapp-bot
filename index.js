@@ -10,8 +10,7 @@ const fetch = require('node-fetch')
 
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
-const newLocal = JSON.parse
-const simi = newLocal(fs.readFileSync('./settings/simi.json'))
+const simi = JSON.parse(fs.readFileSync('./settings/simi.json'))
 
 const { 
     removeBackgroundFromImageBase64
@@ -53,7 +52,8 @@ const {
 } = JSON.parse(fs.readFileSync('./settings/setting.json'))
 
 const {
-    apiNoBg
+    apiNoBg,
+    apiSimi
 } = JSON.parse(fs.readFileSync('./settings/api.json'))
 
 const start = (cabe = new Client()) => {
@@ -147,9 +147,6 @@ cabe.onIncomingCall(async (callData) => {
         const url = args.length !== 0 ? args[0] : ''
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
-
-        // [IDENTIFY]
-        const isSimi = simi.includes(chat.id)
 
         // [BETA] Avoid Spam Message
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
@@ -586,7 +583,6 @@ cabe.onIncomingCall(async (callData) => {
                     cabe.sendText(ownerNumber, 'Xnxx Error : ' + err)
                 }
                 break
-                break
                 case 'google':
             if (isLimit(serial)) return cabe.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
             
@@ -967,7 +963,6 @@ cabe.onIncomingCall(async (callData) => {
             cabe.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
             break
         }
-
         //Owner Group
         case 'kickall': //mengeluarkan semua member
         if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id)
