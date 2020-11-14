@@ -147,7 +147,6 @@ cabe.onIncomingCall(async (callData) => {
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
 // [IDENTIFY]
-const isOwnerBot = ownerNumber.includes(sender.id)
 const isBanned = banned.includes(sender.id)
 const isSimi = simi.includes(chatId)
 
