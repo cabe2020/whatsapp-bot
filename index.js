@@ -147,7 +147,7 @@ cabe.onIncomingCall(async (callData) => {
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
 // [IDENTIFY]
-const isSimi = simi.includes(chatId)
+const isSimi = simi.includes(chat.id)
 
 // Simi-simi function
 
