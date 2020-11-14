@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-cabebot",
-  "version": "1.1.5",
+  "version": "2.0.0",
   "description": "Whatsapp Cabebot - Node Js",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "homepage": "https://github.com/cabe2020/whatsapp-Cabebot",
   "license": "ISC",
   "dependencies": {
-    "@open-wa/wa-automate": "^2.0.28",
+    "@open-wa/wa-automate": "^3.0.15",
     "axios": "^0.21.0",
     "chalk": "^4.1.0",
     "cheerio": "^1.0.0-rc.3",
