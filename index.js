@@ -146,21 +146,7 @@ cabe.onIncomingCall(async (callData) => {
         const url = args.length !== 0 ? args[0] : ''
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
-// [IDENTIFY]
-const isSimi = simi.includes(chat.id)
 
-// Simi-simi function
-
-if ((isGroupMsg && isSimi) && message.type === 'chat') {
-    axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${message.body}&apikey=${apiSimi}`)
-    .then((res) => {
-        if (res.data.status == 403) return cabe.sendText(ownerNumber, `${res.data.result}\n\n${res.data.pesan}`)
-        cabe.reply(from, `simi berkata: ${res.data.result}`, id)
-    })
-    .catch((err) => {
-        cabe.reply(from, `${err}`, id)
-    })
-}
         // [BETA] Avoid Spam Message
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
         if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname), 'en', color(name || formattedTitle)) }
