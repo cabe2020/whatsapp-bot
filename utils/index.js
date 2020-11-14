@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 const moment = require('moment-timezone')
-moment.tz.setDefault('Asia/Jakarta').locale('id')
+moment.tz.setDefault('America/Argentina/Buenos_Aires').locale('id')
 /**
  * Get text with color
  * @param  {String} text

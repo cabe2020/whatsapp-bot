@@ -2,7 +2,7 @@ require('dotenv').config()
 const { create, decryptMedia, Client } = require('@open-wa/wa-automate')
 
 const moment = require('moment-timezone')
-moment.tz.setDefault('Asia/Jakarta').locale('id')
+moment.tz.setDefault('America/Argentina/Buenos_Aires').locale('id')
 const figlet = require('figlet')
 const fs = require('fs-extra')
 const axios = require('axios')
@@ -10,6 +10,7 @@ const fetch = require('node-fetch')
 
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
+const simi = JSON.parse(fs.readFileSync('./settings/simi.json'))
 
 const { 
     removeBackgroundFromImageBase64
@@ -145,7 +146,23 @@ cabe.onIncomingCall(async (callData) => {
         const url = args.length !== 0 ? args[0] : ''
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
 	    const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
+// [IDENTIFY]
+const isOwnerBot = ownerNumber.includes(sender.id)
+const isBanned = banned.includes(sender.id)
+const isSimi = simi.includes(chatId)
 
+// Simi-simi function
+
+if ((isGroupMsg && isSimi) && message.type === 'chat') {
+    axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${message.body}&apikey=${apiSimi}`)
+    .then((res) => {
+        if (res.data.status == 403) return cabe.sendText(ownerNumber, `${res.data.result}\n\n${res.data.pesan}`)
+        cabe.reply(from, `simi berkata: ${res.data.result}`, id)
+    })
+    .catch((err) => {
+        cabe.reply(from, `${err}`, id)
+    })
+}
         // [BETA] Avoid Spam Message
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
         if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname), 'en', color(name || formattedTitle)) }
@@ -223,7 +240,7 @@ cabe.onIncomingCall(async (callData) => {
                 const mediaData = await decryptMedia(encryptMedia, uaOverride)
                 const imageBase64 = `data:${_mimetype};base64,${mediaData.toString('base64')}`
                 cabe.sendImageAsSticker(from, imageBase64).then(() => {
-                    cabe.reply(from, 'Aqui esta tu sticker')
+                    cabe.reply(from, 'Aqui esta tu sticker(si el sticker sale mal, intentar recortarlo he intentar de nuevo)')
                     console.log(`Sticker procesado por ${processTime(t, moment())} Segundo`)
                 })
             } else if (args[0] === 'nobg') {
@@ -824,7 +841,7 @@ cabe.onIncomingCall(async (callData) => {
             cekResi(args[0], args[1]).then((result) => cabe.sendText(from, result))
             break
         case 'tts':
-            if (args.length == 0) return cabe.reply(from, `Cambiar texto a sonido (voz de Google) \n tipo: ${prefix}tts <código de idioma> <texto> \n ejemplos: ${prefix}tts id hola \n para ver el código de idioma aquí: https://anotepad.com/note/read/5xqahdy8`)
+            if (args.length == 0) return cabe.reply(from, `Cambiar texto a sonido (voz de Google) \n tipo: ${prefix}tts <código de idioma> <texto> \n ejemplos: ${prefix}tts es hola \n para ver el código de idioma aquí: https://anotepad.com/note/read/5xqahdy8`)
             const ttsGB = require('node-gtts')(args[0])
             const dataText = body.slice(8)
                 if (dataText === '') return cabe.reply(from, 'cual es el texto..', id)
@@ -867,15 +884,15 @@ cabe.onIncomingCall(async (callData) => {
 
         // Comando para Admins del grupo (solo admins del grupo)
 	    case 'agregar':
-            if (!isGroupMsg) return cabe.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return cabe.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
-            if (!isBotGroupAdmins) return cabe.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
-	        if (args.length !== 1) return cabe.reply(from, `Untuk menggunakan ${prefix}add\nPenggunaan: ${prefix}add <nomor>\ncontoh: ${prefix}add 628xxx`, id)
+            if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, este comando solo se puede usar dentro de grupos', id)
+            if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo!', id)
+            if (!isBotGroupAdmins) return cabe.reply(from, 'Falló, agregue el bot como admin del grupo!', id)
+	        if (args.length !== 1) return cabe.reply(from, `Usar ${prefix}agregar\nUtilizar: ${prefix}agregar <numero>\nejemplo: ${prefix}agregar 54xxxxxx`, id)
                 try {
                     await cabe.addParticipant(from,`${args[0]}@c.us`)
-		            .then(() => cabe.reply(from, 'Hai selamat datang', id))
+		            .then(() => cabe.reply(from, 'Hola bienvenido', id))
                 } catch {
-                    cabe.reply(from, 'Tidak dapat menambahkan target', id)
+                    cabe.reply(from, 'No se pudo agregar el objetivo', id)
                 }
             break
         case 'eliminar':
@@ -886,7 +903,7 @@ cabe.onIncomingCall(async (callData) => {
             if (mentionedJidList[0] === botNumber) return await cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n No puedo expulsar la cuenta del bot por mí mismo', id)
             await cabe.sendTextWithMentions(from, `Solicitud recibida, problema:\n${mentionedJidList.map(x => `@${x.replace('@c.us', '')}`).join('\n')}`)
             for (let i = 0; i < mentionedJidList.length; i++) {
-                if (groupAdmins.includes(mentionedJidList[i])) return await cabe.sendText(from, 'Error, no puede eliminar el administrador del grupo.')
+                if (groupAdmins.includes(mentionedJidList[i])) return await cabe.sendText(from, 'Error, no puede eliminar a el admin del grupo.')
                 await cabe.removeParticipant(groupId, mentionedJidList[i])
             }
             break
@@ -895,7 +912,7 @@ cabe.onIncomingCall(async (callData) => {
             if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id)
             if (!isBotGroupAdmins) return cabe.reply(from, 'Falló, agregue el bot como administrador de grupo.', id)
             if (mentionedJidList.length !== 1) return cabe.reply(from, 'Lo sentimos, solo puedo promover a 1 usuario', id)
-            if (groupAdmins.includes(mentionedJidList[0])) return await cabe.reply(from, 'Lo siento, el usuario ya es administrador.', id)
+            if (groupAdmins.includes(mentionedJidList[0])) return await cabe.reply(from, 'Lo siento, el usuario ya es admin.', id)
             if (mentionedJidList[0] === botNumber) return await cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n no se puede promover la cuenta del bot por sí solo', id)
             await cabe.promoteParticipant(groupId, mentionedJidList[0])
             await cabe.sendTextWithMentions(from, `Solicitud aceptada, agregad@ @${mentionedJidList[0].replace('@c.us', '')} como admin.`)
@@ -905,7 +922,7 @@ cabe.onIncomingCall(async (callData) => {
             if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id)
             if (!isBotGroupAdmins) return cabe.reply(from, 'Falló, agregue el bot como administrador de grupo.', id)
             if (mentionedJidList.length !== 1) return cabe.reply(from, 'Lo sentimos, solo se puede degradar a 1 usuario', id)
-            if (!groupAdmins.includes(mentionedJidList[0])) return await cabe.reply(from, 'Maaf, user tersebut belum menjadi admin.', id)
+            if (!groupAdmins.includes(mentionedJidList[0])) return await cabe.reply(from, 'Lo sentimos, el usuario aún no es administrador.', id)
             if (mentionedJidList[0] === botNumber) return await cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n No se puede eliminar la cuenta del bot.', id)
             await cabe.demoteParticipant(groupId, mentionedJidList[0])
             await cabe.sendTextWithMentions(from, `Solicitud aceptada, eliminar posición @${mentionedJidList[0].replace('@c.us', '')}.`)
@@ -947,7 +964,7 @@ cabe.onIncomingCall(async (callData) => {
         if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id)
         let isOwner = chat.groupMetadata.owner == sender.id
         if (!isOwner) return cabe.reply(from, 'Lo sentimos, este comando solo puede ser utilizado por el propietario del grupo.', id)
-        if (!isBotGroupAdmins) return cabe.reply(from, 'Falló, agregue el bot como administrador de grupo.', id)
+        if (!isBotGroupAdmins) return cabe.reply(from, 'Falló, agregue el bot como admin del grupo.', id)
             const allMem = await cabe.getGroupMembers(groupId)
             for (let i = 0; i < allMem.length; i++) {
                 if (groupAdmins.includes(allMem[i].id)) {
@@ -961,23 +978,23 @@ cabe.onIncomingCall(async (callData) => {
 
         //Owner Bot
         case 'ban':
-            if (!isOwnerBot) return cabe.reply(from, '¡Este pedido es solo para el propietario del bot!', id)
-            if (args.length == 0) return cabe.reply(from, `Prohibir que alguien pueda usar comandos\n\no escribir: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
+            if (!isOwnerBot) return cabe.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
+            if (args.length == 0) return cabe.reply(from, `Untuk banned seseorang agar tidak bisa menggunakan commands\n\nCaranya ketik: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
                 banned.push(args[1]+'@c.us')
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                cabe.reply(from, '¡Objetivo baneado con éxito!')
+                cabe.reply(from, 'Objetivo baneado con éxito!')
             } else
             if (args[0] == 'del') {
                 let xnxx = banned.indexOf(args[1]+'@c.us')
                 banned.splice(xnxx,1)
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                cabe.reply(from, 'Succes unbanned target!')
+                cabe.reply(from, '¡Objetivo no prohibido con éxito!')
             } else {
              for (let i = 0; i < mentionedJidList.length; i++) {
                 banned.push(mentionedJidList[i])
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                    cabe.reply(from, 'Succes ban target!', id)
+                cabe.reply(from, '¡Objetivo de prohibición de éxito!', id)
                 }
             }
             break
