@@ -63,13 +63,13 @@ const start = (cabe = new Client()) => {
     console.log(color('[DEV]'), color('CABE', 'yellow'))
     console.log(color('[~>>]'), color('BOT iniciado!', 'green'))
 
-    // ketika bot diinvite ke dalam group
+    // cuando el bot es invitado al grupo
     cabe.onStateChanged((state) => {
         console.log(color('[~>>]', 'red'), state)
         if (state === 'CONFLICT' || state === 'UNLAUNCHED') cabe.forceRefocus()
     })
 
-    // // ketika bot diinvite ke dalam group
+    // // cuando el bot es invitado al grupo
     cabe.onAddedToGroup(async (chat) => {
 	const groups = await cabe.getAllGroups()
     // kodisi ketika batas group bot telah tercapat, ubah di file settings/setting.json
@@ -87,7 +87,7 @@ const start = (cabe = new Client()) => {
 	    })
 	    } else {
         await cabe.simulateTyping(chat.id, true).then(async () => {
-          await cabe.sendText(chat.id, `Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu`)
+          await cabe.sendText(chat.id, `Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu/n IG: https://www.instagram.com/cabe.gus/`)
         })
 	    }
 	}
@@ -793,7 +793,7 @@ cabe.onIncomingCall(async (callData) => {
             if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}segundos\nsubido:${res.data[0].uploadDate}\nvistas: ${res.data[0].viewCount}\n\nestá siendo enviado`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
                     await cabe.sendPtt(from, `${rest.data.result}`, id)
