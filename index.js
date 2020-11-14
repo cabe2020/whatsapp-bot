@@ -10,7 +10,8 @@ const fetch = require('node-fetch')
 
 const banned = JSON.parse(fs.readFileSync('./settings/banned.json'))
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
-const simi = JSON.parse(fs.readFileSync('./settings/simi.json'))
+const newLocal = JSON.parse
+const simi = newLocal(fs.readFileSync('./settings/simi.json'))
 
 const { 
     removeBackgroundFromImageBase64
