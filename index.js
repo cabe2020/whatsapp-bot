@@ -344,6 +344,9 @@ cabe.onIncomingCall(async (callData) => {
                 const nulisq = body.slice(7)
                 const nulisp = await rugaapi.tulis(nulisq)
                 await cabe.sendImage(from, `${nulisp}`, '', 'Aquí esta', id)
+                .catch(() => {
+                    cabe.reply(from, 'Error!', id)
+                })
                 break
                 
         //Islam Command
