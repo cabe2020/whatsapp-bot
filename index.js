@@ -149,7 +149,7 @@ cabe.onIncomingCall(async (callData) => {
         const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
         
         // [IDENTIFICAR]
-        const isSimi = simi.includes(chatId)
+        const isSimi = simi.includes(chat.id)
         
         // [BETA] Avoid Spam Message
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
@@ -648,7 +648,7 @@ cabe.onIncomingCall(async (callData) => {
             if (!isGroupAdmins) return cabe.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
 			if (args.length !== 1) return cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
 			if (args[0] == 'on') {
-				simi.push(chatId)
+				simi.push(chat.id)
 				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
                 cabe.reply(from, 'mengaktifkan bot simi-simi!', id)
 			} else if (args[0] == 'off') {
