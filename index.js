@@ -73,7 +73,7 @@ const start = (cabe = new Client()) => {
 	const groups = await cabe.getAllGroups()
     // kodisi ketika batas group bot telah tercapat, ubah di file settings/setting.json
 	if (groups.length > groupLimit) {
-	await cabe.sendText(chat.id, `Lo sentimos, el grupo de este bot está completo \ El grupo máximo es: ${groupLimit}`).then(() => {
+	await cabe.sendText(chat.id, `Lo sentimos, el grupo de este bot está completo\nEl grupo máximo es: ${groupLimit}`).then(() => {
 	      cabe.leaveGroup(chat.id)
 	      cabe.deleteChat(chat.id)
 	  }) 
@@ -86,7 +86,7 @@ const start = (cabe = new Client()) => {
 	    })
 	    } else {
         await cabe.simulateTyping(chat.id, true).then(async () => {
-          await cabe.sendText(chat.id, `Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu/n IG: https://www.instagram.com/cabe.gus/`)
+          await cabe.sendText(chat.id, `Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu\nIG: https://www.instagram.com/cabe.gus/`)
         })
 	    }
 	}
@@ -510,32 +510,32 @@ cabe.onIncomingCall(async (callData) => {
                 break
                 case 'twt':
                     case 'twitter':
-                        if (args.length !== 1) return cabe.reply(from, 'Maaf, format pesan salah silahkan periksa menu. [Wrong Format]', id)
-                        if (!is.Url(url) & !url.includes('twitter.com') || url.includes('t.co')) return cabe.reply(from, 'Maaf, url yang kamu kirim tidak valid. [Invalid Link]', id)
+                        if (args.length !== 1) return cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id)
+                        if (!is.Url(url) & !url.includes('twitter.com') || url.includes('t.co')) return cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id)
                         await cabe.reply(from, `_Scraping Metadata..._ \n\n${menuId.textDonasi()}`, id)
                         downloader.tweet(url).then(async (data) => {
                             if (data.type === 'video') {
                                 const content = data.variants.filter(x => x.content_type !== 'application/x-mpegURL').sort((a, b) => b.bitrate - a.bitrate)
                                 const result = await urlShortener(content[0].url)
                                 console.log('Shortlink: ' + result)
-                                await cabe.sendFileFromUrl(from, content[0].url, 'video.mp4', `Link Download: ${result} \n\nProcessed for ${processTime(t, moment())} _Second_`, null, null, true)
-                                    .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                                await cabe.sendFileFromUrl(from, content[0].url, 'video.mp4', `Link de descarga ${result} \n\nProcesado por ${processTime(t, moment())} _segundos`, null, null, true)
+                                    .then((serialized) => console.log(`Envío exitoso de archivos con id: ${serialized} procesado durante ${processTime(t, moment())}`))
                                     .catch((err) => console.error(err))
                             } else if (data.type === 'photo') {
                                 for (let i = 0; i < data.variants.length; i++) {
                                     await cabe.sendFileFromUrl(from, data.variants[i], data.variants[i].split('/media/')[1], '', null, null, true)
-                                        .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                                        .then((serialized) => console.log(`Envío exitoso de archivos con id: ${serialized} procesado durante ${processTime(t, moment())}`))
                                         .catch((err) => console.error(err))
                                 }
                             }
                         })
-                            .catch(() => cabe.sendText(from, 'Maaf, link tidak valid atau tidak ada media di link yang kamu kirim. [Invalid Link]'))
+                            .catch(() => cabe.sendText(from, 'Lo sentimos, el enlace no es válido o no hay medios en el enlace que envió. [Enlace no válido]'))
                         break
                     case 'fb':
                     case 'facebook':
-                        if (args.length !== 1) return cabe.reply(from, 'Maaf, format pesan salah silahkan periksa menu. [Wrong Format]', id)
-                        if (!is.Url(url) && !url.includes('facebook.com')) return cabe.reply(from, 'Maaf, url yang kamu kirim tidak valid. [Invalid Link]', id)
-                        await cabe.reply(from, '_Scraping Metadata..._ \n\nTerimakasih telah menggunakan bot ini, kamu dapat membantu pengembangan bot ini dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.', id)
+                        if (args.length !== 1) return cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id)
+                        if (!is.Url(url) && !url.includes('facebook.com')) return cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id)
+                        await cabe.reply(from, '_Extracción de metadatos..._ \n\nGracias por usar este bot', id)
                         downloader.facebook(url).then(async (videoMeta) => {
                             const title = videoMeta.response.title
                             const thumbnail = videoMeta.response.thumbnail
@@ -548,12 +548,12 @@ cabe.onIncomingCall(async (callData) => {
                                 shorts.push(links[i])
                             }
                             const link = shorts.map((x) => `${x.resolution} Quality: ${x.short}`)
-                            const caption = `Text: ${title} \n\nLink Download: \n${link.join('\n')} \n\nProcessed for ${processTime(t, moment())} _Second_`
+                            const caption = `Text: ${title} \n\nLink de descarga: \n${link.join('\n')} \n\nProcesado por ${processTime(t, moment())} _Segundos_`
                             await cabe.sendFileFromUrl(from, thumbnail, 'videos.jpg', caption, null, null, true)
-                                .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
+                                .then((serialized) => console.log(`Envío exitoso de archivos con ID:${serialized} procesado durante${processTime(t, moment())}`))
                                 .catch((err) => console.error(err))
                         })
-                            .catch((err) => cabe.reply(from, `Error, url tidak valid atau tidak memuat video. [Invalid Link or No Video] \n\n${err}`, id))
+                            .catch((err) => cabe.reply(from, `Error, la URL no es válida o el video no se carga. [Enlace no válido o sin vídeo] \n\n${err}`, id))
                         break
         case 'ytmp3':
             if (args.length == 0) return cabe.reply(from, `Para descargar canciones de youtube \n escriba: ${prefix}ytmp3 [link_yt]`, id)
@@ -570,7 +570,7 @@ cabe.onIncomingCall(async (callData) => {
                 if (isLimit(serial)) return cabe.reply(from, `Lo siento ${pushname}, Su límite de cuota se ha agotado, escriba #limit para verificar su límite de cuota`, id)
                 
                 await limitAdd(serial)
-                if (args.length === 1) return cabe.reply(from, 'Kirim perintah *#xnxx [linkXnxx]*, untuk contoh silahkan kirim perintah *#readme*')
+                if (args.length === 1) return cabe.reply(from, 'Enviar comando *#xnxx [linkXnxx]*, por ejemplo, envíe el comando *#readme*')
                 if (!args[1].match(isUrl) && !args[1].includes('xnxx.com')) return cabe.reply(from, mess.error.Iv, id)
                 try {
                     cabe.reply(from, mess.wait, id)
@@ -626,40 +626,40 @@ cabe.onIncomingCall(async (callData) => {
                 }
               break
               case 'nsfw':
-                if (!isGroupMsg) return cabe.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-                if (!isGroupAdmins) return cabe.reply(from, 'Perintah ini hanya bisa di gunakan oleh Admin group!', id)
-                if (args.length === 1) return cabe.reply(from, 'Pilih enable atau disable!', id)
-                if (args[1].toLowerCase() === 'enable') {
+                if (!isGroupMsg) return cabe.reply(from, '¡Este comando solo se puede usar en grupos!', id)
+                if (!isGroupAdmins) return cabe.reply(from, '¡Este comando solo puede ser utilizado por los admins del grupo!', id)
+                if (args.length === 1) return cabe.reply(from, 'Seleccione habilitar o deshabilitar!', id)
+                if (args[1].toLowerCase() === 'habilitar') {
                     nsfw_.push(chat.id)
                     fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                    cabe.reply(from, 'NSWF Command berhasil di aktifkan di group ini! kirim perintah *!nsfwMenu* untuk mengetahui menu', id)
-                } else if (args[1].toLowerCase() === 'disable') {
+                    cabe.reply(from, '¡El comando NSWF se ha activado con éxito en este grupo! enviar el comando *!nsfwMenu* para encontrar el menú', id)
+                } else if (args[1].toLowerCase() === 'deshabilitar') {
                     nsfw_.splice(chat.id, 1)
                     fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_))
-                    cabe.reply(from, 'NSFW Command berhasil di nonaktifkan di group ini!', id)
+                    cabe.reply(from, 'Comando NSFW desactivado con éxito en este grupo!', id)
                 } else {
-                    cabe.reply(from, 'Pilih enable atau disable udin!', id)
+                    cabe.reply(from, 'Seleccione habilitar o deshabilitar!', id)
                 }
                 break
                 case 'simisimi':
-			if (!isGroupMsg) return cabe.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-			cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
+			if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, este comando solo se puede usar dentro de grupos', id)
+			cabe.reply(from, `Para habilitar simi-simi en el chat grupal\n\nUtilizar\n${prefix}simi on --activar\n${prefix}simi off - desactivar\n`, id)
 			break
 		case 'simi':
-			if (!isGroupMsg) return cabe.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return cabe.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
-			if (args.length !== 1) return cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
+			if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, este comando solo se puede usar dentro de grupos', id)
+            if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por los admins del grupo.', id)
+			if (args.length !== 1) return cabe.reply(from, `Para habilitar simi-simi en el chat grupal\n\nUtilizar\n${prefix}simi on --activar\n${prefix}simi off - desactivar\n`, id)
 			if (args[0] == 'on') {
 				simi.push(chat.id)
 				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
-                cabe.reply(from, 'mengaktifkan bot simi-simi!', id)
+                cabe.reply(from, '¡Activa el bot simi-simi!', id)
 			} else if (args[0] == 'off') {
 				let inxx = simi.indexOf(chat.id)
 				simi.splice(inxx, 1)
 				fs.writeFileSync('./settings/simi.json', JSON.stringify(simi))
-				cabe.reply(from, 'menonaktifkan bot simi-simi!', id)
+				cabe.reply(from, 'inhabilitar el bot simi-simi!', id)
 			} else {
-				cabe.reply(from, `Untuk mengaktifkan simi-simi pada Group Chat\n\nPenggunaan\n${prefix}simi on --mengaktifkan\n${prefix}simi off --nonaktifkan\n`, id)
+				cabe.reply(from, `Para habilitar simi-simi en el chat grupal\n\nUtilizar\n${prefix}simi on --activar\n${prefix}simi off - desactivar\n`, id)
 			}
 			break
         // Random Kata
