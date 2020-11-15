@@ -30,8 +30,7 @@ const {
     images,
     resep,
     rugapoi,
-    rugaapi,
-    NSFW
+    rugaapi
 } = require('./lib')
 
 const { 
