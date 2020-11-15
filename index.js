@@ -272,7 +272,7 @@ cabe.onIncomingCall(async (callData) => {
 			
                     })
                   } else {
-                    cabe.reply(from, `[❗] Enviar un gif con el título*${prefix}stickergif* max 10 seg!`, id)
+                    cabe.reply(from, `[❗] Enviar un gif con el título *${prefix}stickergif* max 10 seg!`, id)
                    }
                 } else {
 		    cabe.reply(from, `[❗] Enviar un gif con el titulo *${prefix}stickergif*`, id)
@@ -1040,11 +1040,11 @@ cabe.onIncomingCall(async (callData) => {
             cabe.reply(from, 'Tiene éxito borrar todo el chat!', id)
             break
         default:
-            console.log(color('[EROR]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'Comando no registrado de', color(pushname))
+            console.log(color('[ERROR]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'Comando no registrado de', color(pushname))
             break
         }
     } catch (err) {
-        console.log(color('[EROR]', 'red'), err)
+        console.log(color('[ERROR]', 'red'), err)
     }
     })
 }
