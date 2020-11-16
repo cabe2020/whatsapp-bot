@@ -798,15 +798,8 @@ cabe.onIncomingCall(async (callData) => {
                 await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Lagu ditemukan\n\nJudul: ${res.data[0].title}\nDurasi: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
-					if (Number(rest.data.filesize.split(' MB')[0]) >= 10.00) return cabe.reply(from, 'Maaf ukuran file terlalu besar!')
                     await cabe.sendPtt(from, `${rest.data.result}`, id)
                 })
-                .catch(() => {
-                    cabe.reply(from, 'Ada yang Error!', id)
-                })
-            })
-            .catch(() => {
-                cabe.reply(from, 'Ada yang Error!', id)
             })
             break
         case 'whatanime':
@@ -818,7 +811,7 @@ cabe.onIncomingCall(async (callData) => {
                 }
                 const fetch = require('node-fetch')
                 const imgBS4 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-                cabe.reply(from, 'Searching....', id)
+                cabe.reply(from, 'Buscando....', id)
                 fetch('https://trace.moe/api/search', {
                     method: 'POST',
                     body: JSON.stringify({ image: imgBS4 }),
