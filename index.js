@@ -792,7 +792,7 @@ cabe.onIncomingCall(async (callData) => {
             await cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id)
             break
             case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
-            if (args.length == 0) return aruga.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: ${prefix}play judul lagu`, id)
+            if (args.length == 0) return cabe.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: ${prefix}play judul lagu`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
                 await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Lagu ditemukan\n\nJudul: ${res.data[0].title}\nDurasi: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
