@@ -795,18 +795,18 @@ cabe.onIncomingCall(async (callData) => {
             if (args.length == 0) return aruga.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: ${prefix}play judul lagu`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await aruga.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Lagu ditemukan\n\nJudul: ${res.data[0].title}\nDurasi: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Lagu ditemukan\n\nJudul: ${res.data[0].title}\nDurasi: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
-					if (Number(rest.data.filesize.split(' MB')[0]) >= 10.00) return aruga.reply(from, 'Maaf ukuran file terlalu besar!')
-                    await aruga.sendPtt(from, `${rest.data.result}`, id)
+					if (Number(rest.data.filesize.split(' MB')[0]) >= 10.00) return cabe.reply(from, 'Maaf ukuran file terlalu besar!')
+                    await cabe.sendPtt(from, `${rest.data.result}`, id)
                 })
                 .catch(() => {
-                    aruga.reply(from, 'Ada yang Error!', id)
+                    cabe.reply(from, 'Ada yang Error!', id)
                 })
             })
             .catch(() => {
-                aruga.reply(from, 'Ada yang Error!', id)
+                cabe.reply(from, 'Ada yang Error!', id)
             })
             break
         case 'whatanime':
