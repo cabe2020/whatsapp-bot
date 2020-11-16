@@ -791,11 +791,11 @@ cabe.onIncomingCall(async (callData) => {
             const scrinshit = await meme.ss(args[0])
             await cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id)
             break
-        case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
+            case 'play':
             if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}segundos\nsubido:${res.data[0].uploadDate}\nvistas: ${res.data[0].viewCount}\n\nestá siendo enviado`, id)
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}segundos\nSubido: ${res.data[0].uploadDate}\nVistas: ${res.data[0].viewCount}\n\nestá siendo enviado`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
                     await cabe.sendPtt(from, `${rest.data.result}`, id)
