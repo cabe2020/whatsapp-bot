@@ -791,15 +791,22 @@ cabe.onIncomingCall(async (callData) => {
             const scrinshit = await meme.ss(args[0])
             await cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id)
             break
-            case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
-            if (args.length == 0) return cabe.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: ${prefix}play judul lagu`, id)
+            case 'play':
+            if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Lagu ditemukan\n\nJudul: ${res.data[0].title}\nDurasi: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}segundos\nSubido: ${res.data[0].uploadDate}\nVistas: ${res.data[0].viewCount}\n\nestá siendo enviado`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
+					if (Number(rest.data.filesize.split(' MB')[0]) >= 10.00) return cabe.reply(from, 'Lo sentimos, el tamaño del archivo es demasiado grande!')
                     await cabe.sendPtt(from, `${rest.data.result}`, id)
                 })
+                .catch(() => {
+                    cabe.reply(from, 'Hay un error!', id)
+                })
+            })
+            .catch(() => {
+                cabe.reply(from, 'Hay un error!', id)
             })
             break
         case 'whatanime':
@@ -844,7 +851,7 @@ cabe.onIncomingCall(async (callData) => {
             
         // Other Command
         case 'resi':
-            if (args.length !== 2) return cabe.reply(from, `Maaf, format pesan salah.\nSilahkan ketik pesan dengan ${prefix}resi <kurir> <no_resi>\n\nKurir yang tersedia:\njne, pos, tiki, wahana, jnt, rpx, sap, sicepat, pcp, jet, dse, first, ninja, lion, idl, rex`, id)
+            if (args.length !== 2) return cabe.reply(from, `Lo sentimos, el formato del mensaje es incorrecto.\nIntroduzca su mensaje con ${prefix}resi <kurir> <no_resi>\n\nKurir yang tersedia:\njne, pos, tiki, wahana, jnt, rpx, sap, sicepat, pcp, jet, dse, first, ninja, lion, idl, rex`, id)
             const kurirs = ['jne', 'pos', 'tiki', 'wahana', 'jnt', 'rpx', 'sap', 'sicepat', 'pcp', 'jet', 'dse', 'first', 'ninja', 'lion', 'idl', 'rex']
             if (!kurirs.includes(args[0])) return cabe.sendText(from, `Maaf, jenis ekspedisi pengiriman tidak didukung layanan ini hanya mendukung ekspedisi pengiriman ${kurirs.join(', ')} Tolong periksa kembali.`)
             console.log('Memeriksa No Resi', args[1], 'dengan ekspedisi', args[0])
