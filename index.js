@@ -1,52 +1,102 @@
 const { create, Client } = require('@open-wa/wa-automate')
 const welcome = require('./lib/welcome')
-const msgHandler = require('./msgHndlr')
+const left = require('./lib/left')
+const msgHandler = require('./tobz')
 const options = require('./options')
+const fs = require('fs-extra')
+const figlet = require('figlet')
 
-const start = async (client = new Client()) => {
+const adminNumber = JSON.parse(fs.readFileSync('./lib/admin.json'))
+const setting = JSON.parse(fs.readFileSync('./lib/setting.json'))
+const isWhite = (chatId) => adminNumber.includes(chatId) ? true : false
+
+let { 
+    limitCount,
+    memberLimit, 
+    groupLimit,
+    mtc: mtcState,
+    banChats,
+    restartState: isRestart
+    } = setting
+
+function restartAwal(tobz){
+    setting.restartState = false
+    isRestart = false
+    tobz.sendText(setting.restartId, 'Restart Succesfull!')
+    setting.restartId = 'undefined'
+    //fs.writeFileSync('./lib/setting.json', JSON.stringify(setting, null,2));
+}
+
+const start = async (tobz = new Client()) => {
+        console.log('------------------------------------------------')
+        console.log(color(figlet.textSync('ELAINA BOT', { horizontalLayout: 'full' })))
+        console.log('------------------------------------------------')
+        console.log('[DEV] TOBZ')
         console.log('[SERVER] Server Started!')
+        if(isRestart){restartAwal(tobz);}
         // Force it to keep the current session
-        client.onStateChanged((state) => {
+        tobz.onStateChanged((state) => {
             console.log('[Client State]', state)
-            if (state === 'CONFLICT' || state === 'UNLAUNCHED') client.forceRefocus()
+            if (state === 'CONFLICT' || state === 'UNLAUNCHED') tobz.forceRefocus()
         })
         // listening on message
-        client.onMessage((async (message) => {
-            client.getAmountOfLoadedMessages()
+        tobz.onMessage((async (message) => {
+
+            tobz.getAllChats()
             .then((msg) => {
-                if (msg >= 3000) {
-                    client.cutMsgCache()
+                if (msg >= 200) {
+                    tobz.deleteChat()
                 }
             })
-            msgHandler(client, message)
+            msgHandler(tobz, message)
         }))
+           
 
-        client.onGlobalParicipantsChanged((async (heuh) => {
-            await welcome(client, heuh)
-            //left(client, heuh)
+        tobz.onGlobalParicipantsChanged((async (heuh) => {
+            await welcome(tobz, heuh) 
+            left(tobz, heuh)
             }))
         
-        client.onAddedToGroup(((chat) => {
-            let totalMem = chat.groupMetadata.participants.length
-            if (totalMem < 30) { 
-            	client.sendText(chat.id, `Cih member nya cuma ${totalMem}, Kalo mau invite bot, minimal jumlah mem ada 30`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
-            } else {
-                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
+        tobz.onAddedToGroup(async (chat) => {
+            if(isWhite(chat.id)) return tobz.sendText(chat.id, 'Halo aku Elaina, Ketik #help Untuk Melihat List Command Ku...')
+            if(mtcState === false){
+                const groups = await tobz.getAllGroups()
+                // BOT group count less than
+                if(groups.length > groupLimit){
+                    await tobz.sendText(chat.id, 'Maaf, Batas group yang dapat Elaina tampung sudah penuh').then(async () =>{
+                        tobz.deleteChat(chat.id)
+                        tobz.leaveGroup(chat.id)
+                    })
+                }else{
+                    if(chat.groupMetadata.participants.length < memberLimit){
+                        await tobz.sendText(chat.id, `Maaf, BOT keluar jika member group tidak melebihi ${memberLimit} orang`).then(async () =>{
+                            tobz.deleteChat(chat.id)
+                            tobz.leaveGroup(chat.id)
+                        })
+                    }else{
+                        if(!chat.isReadOnly) tobz.sendText(chat.id, 'Halo aku Elaina, Ketik #help Untuk Melihat List Command Ku...')
+                    }
+                }
+            }else{
+                await tobz.sendText(chat.id, 'Elaina sedang maintenance, coba lain hari').then(async () => {
+                    tobz.deleteChat(chat.id)
+                    tobz.leaveGroup(chat.id)
+                })
             }
-        }))
+        })
 
-        /*client.onAck((x => {
+        /*tobz.onAck((x => {
             const { from, to, ack } = x
-            if (x !== 3) client.sendSeen(to)
+            if (x !== 3) tobz.sendSeen(to)
         }))*/
 
         // listening on Incoming Call
-        client.onIncomingCall(( async (call) => {
-            await client.sendText(call.peerJid, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!')
-            .then(() => client.contactBlock(call.peerJid))
+        tobz.onIncomingCall(( async (call) => {
+            await tobz.sendText(call.peerJid, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!.\nJika ingin membuka block harap chat Owner!')
+            .then(() => tobz.contactBlock(call.peerJid))
         }))
     }
 
-create('BarBar', options(true, start))
-    .then(client => start(client))
+create('Elaina', options(true, start))
+    .then(tobz => start(tobz))
     .catch((error) => console.log(error))

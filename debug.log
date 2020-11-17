@@ -1,0 +1,5 @@
+[1117/162612.172:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1117/162802.778:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\gustavo\AppData\Local\Temp\puppeteer_dev_chrome_profile-VKLQJI\Crashpad\attachments\082520fd-e6da-4e1c-9eb4-00b02843aef5: El sistema no puede encontrar la ruta especificada. (0x3)
+[1117/162802.860:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name osarch, discarding value x86_64
+[1117/162802.861:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name pid, discarding value 8156
+[1117/162802.861:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name ptype, discarding value utility
