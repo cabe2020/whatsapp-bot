@@ -742,6 +742,7 @@ cabe.onIncomingCall(async (callData) => {
             const carireddit = body.slice(9)
             const hasilreddit = await images.sreddit(carireddit)
             cabe.sendFileFromUrl(from, hasilreddit, '', '', id)
+        break 
         case 'resep':
             if (args.length == 0) return cabe.reply(from, `Para buscar recetas de comida\nescribir: ${prefix}resep [busqueda]\n\nejemplo: ${prefix}resep tahu`, id)
             const cariresep = body.slice(7)
@@ -791,23 +792,15 @@ cabe.onIncomingCall(async (callData) => {
             const scrinshit = await meme.ss(args[0])
             await cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id)
             break
-            case 'play':
+            case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
             if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}segundos\nSubido: ${res.data[0].uploadDate}\nVistas: ${res.data[0].viewCount}\n\nestá siendo enviado`, id)
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
-					if (Number(rest.data.filesize.split(' MB')[0]) >= 10.00) return cabe.reply(from, 'Lo sentimos, el tamaño del archivo es demasiado grande!')
                     await cabe.sendPtt(from, `${rest.data.result}`, id)
                 })
-                .catch(() => {
-                    cabe.reply(from, 'Hay un error!', id)
-                })
-            })
-            .catch(() => {
-                cabe.reply(from, 'Hay un error!', id)
-            })
             break
         case 'whatanime':
             if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
