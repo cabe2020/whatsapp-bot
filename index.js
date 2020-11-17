@@ -941,7 +941,7 @@ cabe.onIncomingCall(async (callData) => {
         case 'bye':
             if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id)
             if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo.', id)
-            cabe.sendText(from, 'Adiós...( ⇀‸↼‶ )').then(() => cabe.leaveGroup(groupId))
+            cabe.sendText(from, 'Adiós, ya no me quieren aqui...( ⇀‸↼‶ )').then(() => cabe.leaveGroup(groupId))
             break
         case 'borrar':
             if (!isGroupAdmins) return cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo!', id)
