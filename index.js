@@ -801,6 +801,7 @@ cabe.onIncomingCall(async (callData) => {
                 .then(async(rest) => {
                     await cabe.sendPtt(from, `${rest.data.result}`, id)
                 })
+             })
             break
         case 'whatanime':
             if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
