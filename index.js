@@ -86,7 +86,7 @@ const start = (cabe = new Client()) => {
 	    })
 	    } else {
         await cabe.simulateTyping(chat.id, true).then(async () => {
-          await cabe.sendText(chat.id, `Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu\nIG: https://www.instagram.com/cabe.gus/`)
+          await cabe.sendText(chat.id, `Hola, soy CABE BOT. Un bot que les facilitara la vida, para ver los comandos de este bot escribe un mensaje con la palabra ${prefix}menu\nY para que sepas mas de mi te dejo mi IG: https://www.instagram.com/cabe.gus/`)
         })
 	    }
 	}

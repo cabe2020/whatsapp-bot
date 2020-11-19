@@ -133,7 +133,7 @@ var start = function start() {
                   switch (_context.prev = _context.next) {
                     case 0:
                       _context.next = 2;
-                      return regeneratorRuntime.awrap(cabe.sendText(chat.id, "Hola, soy CABE BOT. Para averiguar los comandos de este tipo de bot ".concat(prefix, "menu\nIG: https://www.instagram.com/cabe.gus/")));
+                      return regeneratorRuntime.awrap(cabe.sendText(chat.id, "Hola, soy CABE BOT. Un bot que les facilitara la vida, para ver los comandos de este bot escribe un mensaje con la palabra ".concat(prefix, "menu\nY para que sepas mas de mi te dejo mi IG: https://www.instagram.com/cabe.gus/")));
 
                     case 2:
                     case "end":
