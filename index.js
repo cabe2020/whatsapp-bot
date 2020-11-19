@@ -339,15 +339,16 @@ cabe.onIncomingCall(async (callData) => {
             }
             break
             case 'nulis':
-                if (args.length == 0) return cabe.reply(from, `Haz que el bot escriba el texto que se envía como imagen \n Usando: ${prefix}nulis [texto] \n\n ejemplo: ${prefix}nulis te amo 3000`, id)
-                const nulisq = body.slice(7)
-                const nulisp = await rugaapi.tulis(nulisq)
-                await cabe.sendImage(from, `${nulisp}`, '', 'Aquí esta', id)
-                .catch(() => {
-                    cabe.reply(from, 'Error!', id)
-                })
+                if (args.length === 1) return client.reply(from, 'Enviar comando #nulis [Texto]', id)
+                const nulis = encodeURIComponent(body.slice(7))
+                cabe.reply(from, mess.wait, id)
+                let urlnulis = `https://mhankbarbar.herokuapp.com/nulis?text=${nulis}&apiKey=${apiKey}`
+                await fetch(urlnulis, {method: "GET"})
+                .then(res => res.json())
+                .then(async (json) => {
+                    await cabe.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Nih anjim', id)
+                }).catch(e => cabe.reply(from, "Error: "+ e));
                 break
-
         //Media
         case 'instagram':
             if (args.length == 0) return cabe.reply(from, `Para descargar imágenes o videos de instagram \n escriba: ${prefix}instagram [link_ig]`, id)
@@ -423,8 +424,8 @@ cabe.onIncomingCall(async (callData) => {
             const mp4 = await rugaapi.ytmp4(args[0])
             await cabe.sendFileFromUrl(from, mp4, '', '', id)
             break
-            case 'xnxx':
-                if (!isNsfw) return cabe.reply(from, 'comando / comando NSFW no activado en este grupo!', id)
+        case 'xnxx':
+            if (!isNsfw) return cabe.reply(from, 'comando / comando NSFW no activado en este grupo!', id)
                 if (isLimit(serial)) return cabe.reply(from, `Lo siento ${pushname}, Su límite de cuota se ha agotado, escriba #limit para verificar su límite de cuota`, id)
                 
                 await limitAdd(serial)
@@ -700,7 +701,7 @@ cabe.onIncomingCall(async (callData) => {
                 })
             }
             break
-            
+             
         // Other Command
         case 'resi':
             if (args.length !== 2) return cabe.reply(from, `Lo sentimos, el formato del mensaje es incorrecto.\nIntroduzca su mensaje con ${prefix}resi <kurir> <no_resi>\n\nKurir yang tersedia:\njne, pos, tiki, wahana, jnt, rpx, sap, sicepat, pcp, jet, dse, first, ninja, lion, idl, rex`, id)
