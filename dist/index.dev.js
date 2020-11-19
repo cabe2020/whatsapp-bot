@@ -219,7 +219,7 @@ var start = function start() {
   }); // ketika seseorang mengirim pesan
 
   cabe.onMessage(function _callee14(message) {
-    var type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, quotedMsgObj, mentionedJidList, body, name, formattedTitle, pushname, verifiedName, formattedName, botNumber, groupId, groupAdmins, isGroupAdmins, isBotGroupAdmins, isOwnerBot, isBanned, command, arg, args, isCmd, uaOverride, url, isQuotedImage, isQuotedVideo, isSimi, linkgrup, islink, chekgrup, cgrup, encryptMedia, _mimetype, _mediaData, _imageBase, mediaData, imageBase64, base64img, outFile, result, filename, isGiphy, isMediaGiphy, getGiphyCode, giphyCode, smallGifUrl, gifUrl, _smallGifUrl, top, bottom, _encryptMedia, _mediaData2, getUrl, ImageBase64, qmaker, quotes, author, theme, hasilqmaker, nulisq, nulisp, responseh, data, idx, pesan, responseh2, last, responsh, responsih, surah, responsih2, _responsih2$data, name_translations, number_of_ayah, number_of_surah, recitations, solatx, solatj, daerahq, instag, mp3, mp4, resq, resp, googleQuery, gimgg, gamb, gimg, gimg2, inxx, quotex, randmeme, cariwall, hasilwall, carireddit, hasilreddit, cariresep, hasilresep, igstalk, igstalkpict, wikip, wikis, cuacaq, cuacap, chordq, chordp, scrinshit, _fetch, imgBS4, kurirs, ttsGB, dataText, quoteText, zoneStatus, datax, i, _zoneStatus$datax$i, zone, region, _zone, text, shortlink, _i, groupMem, hehex, _i2, loadedMsg, chatIds, groups, isOwner, allMem, _i3, xnxx, _i4, msg, chatz, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, idk, cvk, allChatz, allGroupz, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, gclist, allChatx, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, dchat;
+    var type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, quotedMsgObj, mentionedJidList, body, name, formattedTitle, pushname, verifiedName, formattedName, botNumber, groupId, groupAdmins, isGroupAdmins, isBotGroupAdmins, isOwnerBot, isBanned, command, arg, args, isCmd, uaOverride, url, isQuotedImage, isQuotedVideo, isSimi, linkgrup, islink, chekgrup, cgrup, encryptMedia, _mimetype, _mediaData, _imageBase, mediaData, imageBase64, base64img, outFile, result, filename, isGiphy, isMediaGiphy, getGiphyCode, giphyCode, smallGifUrl, gifUrl, _smallGifUrl, top, bottom, _encryptMedia, _mediaData2, getUrl, ImageBase64, qmaker, quotes, author, theme, hasilqmaker, nulisq, nulisp, instag, mp3, mp4, resq, resp, googleQuery, gimgg, gamb, gimg, gimg2, inxx, quotex, randmeme, cariwall, hasilwall, carireddit, hasilreddit, cariresep, hasilresep, igstalk, igstalkpict, wikip, wikis, cuacaq, cuacap, chordq, chordp, scrinshit, _fetch, imgBS4, kurirs, ttsGB, dataText, quoteText, zoneStatus, datax, i, _zoneStatus$datax$i, zone, region, _zone, text, shortlink, _i, groupMem, hehex, _i2, loadedMsg, chatIds, groups, isOwner, allMem, _i3, xnxx, _i4, msg, chatz, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, idk, cvk, allChatz, allGroupz, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, gclist, allChatx, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, dchat;
 
     return regeneratorRuntime.async(function _callee14$(_context14) {
       while (1) {
@@ -327,7 +327,7 @@ var start = function start() {
 
           case 45:
             _context14.t2 = command;
-            _context14.next = _context14.t2 === 'velocidad' ? 48 : _context14.t2 === 'ping' ? 48 : _context14.t2 === 'tnc' ? 51 : _context14.t2 === 'menu' ? 54 : _context14.t2 === 'help' ? 54 : _context14.t2 === 'menuadmin' ? 57 : _context14.t2 === 'donar' ? 64 : _context14.t2 === 'donar' ? 64 : _context14.t2 === 'ownerbot' ? 67 : _context14.t2 === 'join' ? 70 : _context14.t2 === 'sticker' ? 94 : _context14.t2 === 'stiker' ? 94 : _context14.t2 === 'stickergif' ? 139 : _context14.t2 === 'stikergif' ? 139 : _context14.t2 === 'stikergiphy' ? 157 : _context14.t2 === 'stickergiphy' ? 157 : _context14.t2 === 'meme' ? 181 : _context14.t2 === 'quotemaker' ? 200 : _context14.t2 === 'nulis' ? 220 : _context14.t2 === 'listsurah' ? 229 : _context14.t2 === 'infosurah' ? 231 : _context14.t2 === 'surah' ? 242 : _context14.t2 === 'tafsir' ? 263 : _context14.t2 === 'alaudio' ? 282 : _context14.t2 === 'jsolat' ? 323 : _context14.t2 === 'daerah' ? 332 : _context14.t2 === 'instagram' ? 338 : _context14.t2 === 'tiktok' ? 346 : _context14.t2 === 'twt' ? 354 : _context14.t2 === 'twitter' ? 354 : _context14.t2 === 'fb' ? 362 : _context14.t2 === 'facebook' ? 362 : _context14.t2 === 'ytmp3' ? 370 : _context14.t2 === 'ytmp4' ? 378 : _context14.t2 === 'xnxx' ? 386 : _context14.t2 === 'google' ? 420 : _context14.t2 === 'googleimage' ? 430 : _context14.t2 === 'nsfw' ? 455 : _context14.t2 === 'simisimi' ? 463 : _context14.t2 === 'simi' ? 467 : _context14.t2 === 'fakta' ? 475 : _context14.t2 === 'katabijak' ? 477 : _context14.t2 === 'pantun' ? 479 : _context14.t2 === 'quote' ? 481 : _context14.t2 === 'anime' ? 487 : _context14.t2 === 'kpop' ? 491 : _context14.t2 === 'memes' ? 495 : _context14.t2 === 'imagen' ? 500 : _context14.t2 === 'images' ? 500 : _context14.t2 === 'sreddit' ? 508 : _context14.t2 === 'resep' ? 516 : _context14.t2 === 'nekopoi' ? 524 : _context14.t2 === 'stalkig' ? 527 : _context14.t2 === 'wiki' ? 538 : _context14.t2 === 'clima' ? 547 : _context14.t2 === 'acorde' ? 556 : _context14.t2 === 'ss' ? 565 : _context14.t2 === 'play' ? 573 : _context14.t2 === 'whatanime' ? 577 : _context14.t2 === 'resi' ? 592 : _context14.t2 === 'tts' ? 600 : _context14.t2 === 'translate' ? 608 : _context14.t2 === 'ceklokasi' ? 615 : _context14.t2 === 'shortlink' ? 627 : _context14.t2 === 'agregar' ? 637 : _context14.t2 === 'eliminar' ? 654 : _context14.t2 === 'promover' ? 680 : _context14.t2 === 'degradar' ? 701 : _context14.t2 === 'bye' ? 722 : _context14.t2 === 'borrar' ? 728 : _context14.t2 === 'lista' ? 736 : _context14.t2 === 'lista' ? 736 : _context14.t2 === 'botstat' ? 749 : _context14.t2 === 'kickall' ? 760 : _context14.t2 === 'ban' ? 782 : _context14.t2 === 'bc' ? 788 : _context14.t2 === 'leaveall' ? 827 : _context14.t2 === 'clearall' ? 867 : 900;
+            _context14.next = _context14.t2 === 'velocidad' ? 48 : _context14.t2 === 'ping' ? 48 : _context14.t2 === 'tnc' ? 51 : _context14.t2 === 'menu' ? 54 : _context14.t2 === 'help' ? 54 : _context14.t2 === 'menuadmin' ? 57 : _context14.t2 === 'donar' ? 64 : _context14.t2 === 'donar' ? 64 : _context14.t2 === 'ownerbot' ? 67 : _context14.t2 === 'join' ? 70 : _context14.t2 === 'sticker' ? 94 : _context14.t2 === 'stiker' ? 94 : _context14.t2 === 'stickergif' ? 139 : _context14.t2 === 'stikergif' ? 139 : _context14.t2 === 'stikergiphy' ? 157 : _context14.t2 === 'stickergiphy' ? 157 : _context14.t2 === 'meme' ? 181 : _context14.t2 === 'quotemaker' ? 200 : _context14.t2 === 'nulis' ? 220 : _context14.t2 === 'instagram' ? 229 : _context14.t2 === 'tiktok' ? 237 : _context14.t2 === 'twt' ? 245 : _context14.t2 === 'twitter' ? 245 : _context14.t2 === 'fb' ? 253 : _context14.t2 === 'facebook' ? 253 : _context14.t2 === 'ytmp3' ? 261 : _context14.t2 === 'ytmp4' ? 269 : _context14.t2 === 'xnxx' ? 277 : _context14.t2 === 'google' ? 311 : _context14.t2 === 'googleimage' ? 321 : _context14.t2 === 'nsfw' ? 346 : _context14.t2 === 'simisimi' ? 354 : _context14.t2 === 'simi' ? 358 : _context14.t2 === 'fakta' ? 366 : _context14.t2 === 'katabijak' ? 368 : _context14.t2 === 'pantun' ? 370 : _context14.t2 === 'quote' ? 372 : _context14.t2 === 'anime' ? 378 : _context14.t2 === 'kpop' ? 382 : _context14.t2 === 'memes' ? 386 : _context14.t2 === 'imagen' ? 391 : _context14.t2 === 'images' ? 391 : _context14.t2 === 'sreddit' ? 399 : _context14.t2 === 'resep' ? 407 : _context14.t2 === 'nekopoi' ? 415 : _context14.t2 === 'stalkig' ? 418 : _context14.t2 === 'wiki' ? 429 : _context14.t2 === 'clima' ? 438 : _context14.t2 === 'acorde' ? 447 : _context14.t2 === 'ss' ? 456 : _context14.t2 === 'play' ? 464 : _context14.t2 === 'whatanime' ? 468 : _context14.t2 === 'resi' ? 483 : _context14.t2 === 'tts' ? 491 : _context14.t2 === 'translate' ? 499 : _context14.t2 === 'ceklokasi' ? 506 : _context14.t2 === 'shortlink' ? 518 : _context14.t2 === 'agregar' ? 528 : _context14.t2 === 'eliminar' ? 545 : _context14.t2 === 'promover' ? 571 : _context14.t2 === 'degradar' ? 592 : _context14.t2 === 'bye' ? 613 : _context14.t2 === 'borrar' ? 619 : _context14.t2 === 'lista' ? 627 : _context14.t2 === 'lista' ? 627 : _context14.t2 === 'botstat' ? 640 : _context14.t2 === 'kickall' ? 651 : _context14.t2 === 'ban' ? 673 : _context14.t2 === 'bc' ? 679 : _context14.t2 === 'leaveall' ? 718 : _context14.t2 === 'clearall' ? 758 : 791;
             break;
 
           case 48:
@@ -335,14 +335,14 @@ var start = function start() {
             return regeneratorRuntime.awrap(cabe.sendText(from, "Pong!!!!\nvelocidad: ".concat(processTime(t, moment()), " _Segundos_")));
 
           case 50:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 51:
             _context14.next = 53;
             return regeneratorRuntime.awrap(cabe.sendText(from, menuId.textTnC()));
 
           case 53:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 54:
             _context14.next = 56;
@@ -351,7 +351,7 @@ var start = function start() {
             }));
 
           case 56:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 57:
             if (isGroupMsg) {
@@ -374,14 +374,14 @@ var start = function start() {
             return regeneratorRuntime.awrap(cabe.sendText(from, menuId.textAdmin()));
 
           case 63:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 64:
             _context14.next = 66;
             return regeneratorRuntime.awrap(cabe.sendText(from, menuId.textDonasi()));
 
           case 66:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 67:
             _context14.next = 69;
@@ -390,7 +390,7 @@ var start = function start() {
             }));
 
           case 69:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 70:
             if (!(args.length == 0)) {
@@ -490,7 +490,7 @@ var start = function start() {
             }));
 
           case 93:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 94:
             if (!((isMedia || isQuotedImage) && args.length === 0)) {
@@ -595,7 +595,7 @@ var start = function start() {
             return regeneratorRuntime.awrap(cabe.reply(from, "\xA1Sin imagen! Usar ".concat(prefix, "sticker\n\n\nEnviar im\xE1genes con subt\xEDtulos\n").concat(prefix, "sticker <usual>\n").concat(prefix, "sticker nobg <sin fondo>\n\n o enviar mensaje con\n").concat(prefix, "sticker <link>"), id));
 
           case 138:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 139:
             if (!(isMedia || isQuotedVideo)) {
@@ -659,7 +659,7 @@ var start = function start() {
             cabe.reply(from, "[\u2757] Enviar un gif con el titulo *".concat(prefix, "stickergif*"), id);
 
           case 156:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 157:
             if (!(args.length !== 1)) {
@@ -730,7 +730,7 @@ var start = function start() {
             return regeneratorRuntime.awrap(cabe.reply(from, 'lo siento, los comandos de la etiqueta giphy solo pueden usar enlaces de giphy.  [Solo Giphy]', id));
 
           case 180:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 181:
             if (!((isMedia || isQuotedImage) && args.length >= 2)) {
@@ -769,7 +769,7 @@ var start = function start() {
             return regeneratorRuntime.awrap(cabe.reply(from, "\xA1Sin imagen! Env\xEDe una imagen con la descripcion. ".concat(prefix, "meme <texto superior> | <texto abajo>\nejemplo: ").concat(prefix, "meme texto superior | texto de abajo "), id));
 
           case 199:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 200:
             qmaker = body.trim().split('|');
@@ -806,7 +806,7 @@ var start = function start() {
             cabe.reply(from, "Usar ".concat(prefix, "quotemaker |cita de isi|autor|tema \n\n ejemplo: ").concat(prefix, "quotemaker |Te amo|CabeBot|aleatorio \n\n para el tema usar random s\xED hermano.."));
 
           case 219:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 220:
             if (!(args.length == 0)) {
@@ -829,315 +829,49 @@ var start = function start() {
             }));
 
           case 228:
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
           case 229:
-            try {
-              axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json').then(function (response) {
-                var hehex = '╔══✪〘 List Surah 〙✪══\n';
-
-                for (var i = 0; i < response.data.data.length; i++) {
-                  hehex += '╠➥ ';
-                  hehex += response.data.data[i].name.transliteration.id.toLowerCase() + '\n';
-                }
-
-                hehex += '╚═〘 *CABE BOT* 〙';
-                cabe.reply(from, hehex, id);
-              });
-            } catch (err) {
-              cabe.reply(from, err, id);
-            }
-
-            return _context14.abrupt("break", 902);
-
-          case 231:
             if (!(args.length == 0)) {
-              _context14.next = 233;
-              break;
-            }
-
-            return _context14.abrupt("return", cabe.reply(from, "*_".concat(prefix, "infosurah <nama surah>_*\nMenampilkan informasi lengkap mengenai surah tertentu. Contoh penggunan: ").concat(prefix, "infosurah al-baqarah"), message.id));
-
-          case 233:
-            _context14.next = 235;
-            return regeneratorRuntime.awrap(axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json'));
-
-          case 235:
-            responseh = _context14.sent;
-            data = responseh.data.data;
-            idx = data.findIndex(function (post, index) {
-              if (post.name.transliteration.id.toLowerCase() == args[0].toLowerCase() || post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()) return true;
-            });
-            pesan = "";
-            pesan = pesan + "Nama : " + data[idx].name.transliteration.id + "\n" + "Asma : " + data[idx].name["short"] + "\n" + "Arti : " + data[idx].name.translation.id + "\n" + "Jumlah ayat : " + data[idx].numberOfVerses + "\n" + "Nomor surah : " + data[idx].number + "\n" + "Jenis : " + data[idx].revelation.id + "\n" + "Keterangan : " + data[idx].tafsir.id;
-            cabe.reply(from, pesan, message.id);
-            return _context14.abrupt("break", 902);
-
-          case 242:
-            if (!(args.length == 0)) {
-              _context14.next = 244;
-              break;
-            }
-
-            return _context14.abrupt("return", cabe.reply(from, "*_".concat(prefix, "surah <nama surah> <ayat>_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahannya dalam bahasa Indonesia. Contoh penggunaan : ").concat(prefix, "surah al-baqarah 1\n\n*_").concat(prefix, "surah <nama surah> <ayat> en/id_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahannya dalam bahasa Inggris / Indonesia. Contoh penggunaan : ").concat(prefix, "surah al-baqarah 1 id"), message.id));
-
-          case 244:
-            _context14.next = 246;
-            return regeneratorRuntime.awrap(axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json'));
-
-          case 246:
-            responseh = _context14.sent;
-            data = responseh.data.data;
-            idx = data.findIndex(function (post, index) {
-              if (post.name.transliteration.id.toLowerCase() == args[0].toLowerCase() || post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()) return true;
-            });
-            nmr = data[idx].number;
-
-            if (isNaN(nmr)) {
-              _context14.next = 262;
-              break;
-            }
-
-            _context14.next = 253;
-            return regeneratorRuntime.awrap(axios.get('https://api.quran.sutanlab.id/surah/' + nmr + "/" + args[1]));
-
-          case 253:
-            responseh2 = _context14.sent;
-            data = responseh2.data.data;
-
-            last = function last(array, n) {
-              if (array == null) return void 0;
-              if (n == null) return array[array.length - 1];
-              return array.slice(Math.max(array.length - n, 0));
-            };
-
-            bhs = last(args);
-            pesan = "";
-            pesan = pesan + data.text.arab + "\n\n";
-
-            if (bhs == "en") {
-              pesan = pesan + data.translation.en;
-            } else {
-              pesan = pesan + data.translation.id;
-            }
-
-            pesan = pesan + "\n\n(Q.S. " + data.surah.name.transliteration.id + ":" + args[1] + ")";
-            cabe.reply(from, pesan, message.id);
-
-          case 262:
-            return _context14.abrupt("break", 902);
-
-          case 263:
-            if (!(args.length == 0)) {
-              _context14.next = 265;
-              break;
-            }
-
-            return _context14.abrupt("return", cabe.reply(from, "*_".concat(prefix, "tafsir <nama surah> <ayat>_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahan dan tafsirnya dalam bahasa Indonesia. Contoh penggunaan : ").concat(prefix, "tafsir al-baqarah 1"), message.id));
-
-          case 265:
-            _context14.next = 267;
-            return regeneratorRuntime.awrap(axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json'));
-
-          case 267:
-            responsh = _context14.sent;
-            data = responsh.data.data;
-            idx = data.findIndex(function (post, index) {
-              if (post.name.transliteration.id.toLowerCase() == args[0].toLowerCase() || post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()) return true;
-            });
-            nmr = data[idx].number;
-
-            if (isNaN(nmr)) {
-              _context14.next = 281;
-              break;
-            }
-
-            _context14.next = 274;
-            return regeneratorRuntime.awrap(axios.get('https://api.quran.sutanlab.id/surah/' + nmr + "/" + args[1]));
-
-          case 274:
-            responsih = _context14.sent;
-            data = responsih.data.data;
-            pesan = "";
-            pesan = pesan + "Tafsir Q.S. " + data.surah.name.transliteration.id + ":" + args[1] + "\n\n";
-            pesan = pesan + data.text.arab + "\n\n";
-            pesan = pesan + "_" + data.translation.id + "_" + "\n\n" + data.tafsir.id["long"];
-            cabe.reply(from, pesan, message.id);
-
-          case 281:
-            return _context14.abrupt("break", 902);
-
-          case 282:
-            if (!(args.length == 0)) {
-              _context14.next = 284;
-              break;
-            }
-
-            return _context14.abrupt("return", cabe.reply(from, "*_".concat(prefix, "ALaudio <nama surah>_*\nMenampilkan tautan dari audio surah tertentu. Contoh penggunaan : ").concat(prefix, "ALaudio al-fatihah\n\n*_").concat(prefix, "ALaudio <nama surah> <ayat>_*\nMengirim audio surah dan ayat tertentu beserta terjemahannya dalam bahasa Indonesia. Contoh penggunaan : ").concat(prefix, "ALaudio al-fatihah 1\n\n*_").concat(prefix, "ALaudio <nama surah> <ayat> en_*\nMengirim audio surah dan ayat tertentu beserta terjemahannya dalam bahasa Inggris. Contoh penggunaan : ").concat(prefix, "ALaudio al-fatihah 1 en"), message.id));
-
-          case 284:
-            ayat = "ayat";
-            bhs = "";
-            _context14.next = 288;
-            return regeneratorRuntime.awrap(axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json'));
-
-          case 288:
-            responseh = _context14.sent;
-            surah = responseh.data;
-            idx = surah.data.findIndex(function (post, index) {
-              if (post.name.transliteration.id.toLowerCase() == args[0].toLowerCase() || post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()) return true;
-            });
-            nmr = surah.data[idx].number;
-
-            if (isNaN(nmr)) {
-              _context14.next = 322;
-              break;
-            }
-
-            if (args.length > 2) {
-              ayat = args[1];
-            }
-
-            if (args.length == 2) {
-              last = function last(array, n) {
-                if (array == null) return void 0;
-                if (n == null) return array[array.length - 1];
-                return array.slice(Math.max(array.length - n, 0));
-              };
-
-              ayat = last(args);
-            }
-
-            pesan = "";
-
-            if (!isNaN(ayat)) {
-              _context14.next = 308;
-              break;
-            }
-
-            _context14.next = 299;
-            return regeneratorRuntime.awrap(axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/' + nmr + '.json'));
-
-          case 299:
-            responsih2 = _context14.sent;
-            _responsih2$data = responsih2.data, name = _responsih2$data.name, name_translations = _responsih2$data.name_translations, number_of_ayah = _responsih2$data.number_of_ayah, number_of_surah = _responsih2$data.number_of_surah, recitations = _responsih2$data.recitations;
-            pesan = pesan + "Audio Quran Surah ke-" + number_of_surah + " " + name + " (" + name_translations.ar + ") " + "dengan jumlah " + number_of_ayah + " ayat\n";
-            pesan = pesan + "Dilantunkan oleh " + recitations[0].name + " : " + recitations[0].audio_url + "\n";
-            pesan = pesan + "Dilantunkan oleh " + recitations[1].name + " : " + recitations[1].audio_url + "\n";
-            pesan = pesan + "Dilantunkan oleh " + recitations[2].name + " : " + recitations[2].audio_url + "\n";
-            cabe.reply(from, pesan, message.id);
-            _context14.next = 322;
-            break;
-
-          case 308:
-            _context14.next = 310;
-            return regeneratorRuntime.awrap(axios.get('https://api.quran.sutanlab.id/surah/' + nmr + "/" + ayat));
-
-          case 310:
-            responsih2 = _context14.sent;
-            data = responsih2.data.data;
-
-            last = function last(array, n) {
-              if (array == null) return void 0;
-              if (n == null) return array[array.length - 1];
-              return array.slice(Math.max(array.length - n, 0));
-            };
-
-            bhs = last(args);
-            pesan = "";
-            pesan = pesan + data.text.arab + "\n\n";
-
-            if (bhs == "en") {
-              pesan = pesan + data.translation.en;
-            } else {
-              pesan = pesan + data.translation.id;
-            }
-
-            pesan = pesan + "\n\n(Q.S. " + data.surah.name.transliteration.id + ":" + args[1] + ")";
-            _context14.next = 320;
-            return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, data.audio.secondary[0]));
-
-          case 320:
-            _context14.next = 322;
-            return regeneratorRuntime.awrap(cabe.reply(from, pesan, message.id));
-
-          case 322:
-            return _context14.abrupt("break", 902);
-
-          case 323:
-            if (!(args.length == 0)) {
-              _context14.next = 325;
-              break;
-            }
-
-            return _context14.abrupt("return", cabe.reply(from, "Para ver los horarios de oraci\xF3n para cada regi\xF3n\nescriba ".concat(prefix, "jsolat [daerah]\n\npara una lista de \xE1reas existentes\nescriba: ").concat(prefix, "daerah"), id));
-
-          case 325:
-            solatx = body.slice(8);
-            _context14.next = 328;
-            return regeneratorRuntime.awrap(rugaapi.jadwaldaerah(solatx));
-
-          case 328:
-            solatj = _context14.sent;
-            _context14.next = 331;
-            return regeneratorRuntime.awrap(cabe.reply(from, solatj, id));
-
-          case 331:
-            return _context14.abrupt("break", 902);
-
-          case 332:
-            _context14.next = 334;
-            return regeneratorRuntime.awrap(rugaapi.daerah());
-
-          case 334:
-            daerahq = _context14.sent;
-            _context14.next = 337;
-            return regeneratorRuntime.awrap(cabe.reply(from, daerahq, id));
-
-          case 337:
-            return _context14.abrupt("break", 902);
-
-          case 338:
-            if (!(args.length == 0)) {
-              _context14.next = 340;
+              _context14.next = 231;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para descargar im\xE1genes o videos de instagram \n escriba: ".concat(prefix, "instagram [link_ig]"), id));
 
-          case 340:
-            _context14.next = 342;
+          case 231:
+            _context14.next = 233;
             return regeneratorRuntime.awrap(rugaapi.insta(args[0]));
 
-          case 342:
+          case 233:
             instag = _context14.sent;
-            _context14.next = 345;
+            _context14.next = 236;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, instag, '', '', id));
 
-          case 345:
-            return _context14.abrupt("break", 902);
+          case 236:
+            return _context14.abrupt("break", 793);
 
-          case 346:
+          case 237:
             if (!(args.length !== 1)) {
-              _context14.next = 348;
+              _context14.next = 239;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id));
 
-          case 348:
+          case 239:
             if (!(!is.Url(url) && !url.includes('tiktok.com'))) {
-              _context14.next = 350;
+              _context14.next = 241;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, el enlace que envió no es válido. [Enlace no válido]', id));
 
-          case 350:
-            _context14.next = 352;
+          case 241:
+            _context14.next = 243;
             return regeneratorRuntime.awrap(cabe.reply(from, "_Extracci\xF3n de metadatos ..._ \n\n".concat(menuId.textDonasi()), id));
 
-          case 352:
+          case 243:
             downloader.tiktok(url).then(function _callee9(videoMeta) {
               var filename, caps;
               return regeneratorRuntime.async(function _callee9$(_context9) {
@@ -1167,29 +901,29 @@ var start = function start() {
             })["catch"](function () {
               return cabe.reply(from, 'No se pudieron recuperar los metadatos, el vínculo que envió no es válido. [Enlace no válido]', id);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 354:
+          case 245:
             if (!(args.length !== 1)) {
-              _context14.next = 356;
+              _context14.next = 247;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id));
 
-          case 356:
+          case 247:
             if (!(!is.Url(url) & !url.includes('twitter.com') || url.includes('t.co'))) {
-              _context14.next = 358;
+              _context14.next = 249;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id));
 
-          case 358:
-            _context14.next = 360;
+          case 249:
+            _context14.next = 251;
             return regeneratorRuntime.awrap(cabe.reply(from, "_Scraping Metadata..._ \n\n".concat(menuId.textDonasi()), id));
 
-          case 360:
+          case 251:
             downloader.tweet(url).then(function _callee10(data) {
               var content, _result, i;
 
@@ -1259,29 +993,29 @@ var start = function start() {
             })["catch"](function () {
               return cabe.sendText(from, 'Lo sentimos, el enlace no es válido o no hay medios en el enlace que envió. [Enlace no válido]');
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 362:
+          case 253:
             if (!(args.length !== 1)) {
-              _context14.next = 364;
+              _context14.next = 255;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id));
 
-          case 364:
+          case 255:
             if (!(!is.Url(url) && !url.includes('facebook.com'))) {
-              _context14.next = 366;
+              _context14.next = 257;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id));
 
-          case 366:
-            _context14.next = 368;
+          case 257:
+            _context14.next = 259;
             return regeneratorRuntime.awrap(cabe.reply(from, '_Extracción de metadatos..._ \n\nGracias por usar este bot', id));
 
-          case 368:
+          case 259:
             downloader.facebook(url).then(function _callee11(videoMeta) {
               var title, thumbnail, links, shorts, i, shortener, link, caption;
               return regeneratorRuntime.async(function _callee11$(_context11) {
@@ -1335,157 +1069,157 @@ var start = function start() {
             })["catch"](function (err) {
               return cabe.reply(from, "Error, la URL no es v\xE1lida o el video no se carga. [Enlace no v\xE1lido o sin v\xEDdeo] \n\n".concat(err), id);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 370:
+          case 261:
             if (!(args.length == 0)) {
-              _context14.next = 372;
+              _context14.next = 263;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para descargar canciones de youtube \n escriba: ".concat(prefix, "ytmp3 [link_yt]"), id));
 
-          case 372:
-            _context14.next = 374;
+          case 263:
+            _context14.next = 265;
             return regeneratorRuntime.awrap(rugaapi.ytmp3(args[0]));
 
-          case 374:
+          case 265:
             mp3 = _context14.sent;
-            _context14.next = 377;
+            _context14.next = 268;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, mp3, '', '', id));
 
-          case 377:
-            return _context14.abrupt("break", 902);
+          case 268:
+            return _context14.abrupt("break", 793);
 
-          case 378:
+          case 269:
             if (!(args.length == 0)) {
-              _context14.next = 380;
+              _context14.next = 271;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para descargar videos de youtube \n escriba: ".concat(prefix, "ytmp4 [link_yt]")));
 
-          case 380:
-            _context14.next = 382;
+          case 271:
+            _context14.next = 273;
             return regeneratorRuntime.awrap(rugaapi.ytmp4(args[0]));
 
-          case 382:
+          case 273:
             mp4 = _context14.sent;
-            _context14.next = 385;
+            _context14.next = 276;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, mp4, '', '', id));
 
-          case 385:
-            return _context14.abrupt("break", 902);
+          case 276:
+            return _context14.abrupt("break", 793);
 
-          case 386:
+          case 277:
             if (isNsfw) {
-              _context14.next = 388;
+              _context14.next = 279;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'comando / comando NSFW no activado en este grupo!', id));
 
-          case 388:
+          case 279:
             if (!isLimit(serial)) {
-              _context14.next = 390;
+              _context14.next = 281;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Lo siento ".concat(pushname, ", Su l\xEDmite de cuota se ha agotado, escriba #limit para verificar su l\xEDmite de cuota"), id));
 
-          case 390:
-            _context14.next = 392;
+          case 281:
+            _context14.next = 283;
             return regeneratorRuntime.awrap(limitAdd(serial));
 
-          case 392:
+          case 283:
             if (!(args.length === 1)) {
-              _context14.next = 394;
+              _context14.next = 285;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Enviar comando *#xnxx [linkXnxx]*, por ejemplo, envíe el comando *#readme*'));
 
-          case 394:
+          case 285:
             if (!(!args[1].match(isUrl) && !args[1].includes('xnxx.com'))) {
-              _context14.next = 396;
+              _context14.next = 287;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, mess.error.Iv, id));
 
-          case 396:
-            _context14.prev = 396;
+          case 287:
+            _context14.prev = 287;
             cabe.reply(from, mess.wait, id);
-            _context14.next = 400;
+            _context14.next = 291;
             return regeneratorRuntime.awrap(axios.get('https://mhankbarbar.herokuapp.com/api/xnxx?url=' + args[1] + '&apiKey=' + barbarkey));
 
-          case 400:
+          case 291:
             resq = _context14.sent;
             resp = resq.data;
 
             if (!resp.error) {
-              _context14.next = 406;
+              _context14.next = 297;
               break;
             }
 
             cabe.reply(from, ytvv.error, id);
-            _context14.next = 411;
+            _context14.next = 302;
             break;
 
-          case 406:
+          case 297:
             if (!(Number(resp.result.size.split(' MB')[0]) > 20.00)) {
-              _context14.next = 408;
+              _context14.next = 299;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Maaf durasi video sudah melebihi batas maksimal 20 menit!', id));
 
-          case 408:
+          case 299:
             cabe.sendFileFromUrl(from, resp.result.thumb, 'thumb.jpg', "\u27B8 *Judul* : ".concat(resp.result.judul, "\n\u27B8 *Deskripsi* : ").concat(resp.result.desc, "\n\u27B8 *Filesize* : ").concat(resp.result.size, "\n\nSilahkan tunggu sebentar proses pengiriman file membutuhkan waktu beberapa menit."), id);
-            _context14.next = 411;
+            _context14.next = 302;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, resp.result.vid, "".concat(resp.result.title, ".mp4"), '', id));
 
-          case 411:
-            _context14.next = 419;
+          case 302:
+            _context14.next = 310;
             break;
 
-          case 413:
-            _context14.prev = 413;
-            _context14.t5 = _context14["catch"](396);
+          case 304:
+            _context14.prev = 304;
+            _context14.t5 = _context14["catch"](287);
             console.log(_context14.t5);
-            _context14.next = 418;
+            _context14.next = 309;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, Video tidak ditemukan'));
 
-          case 418:
+          case 309:
             cabe.sendText(ownerNumber, 'Xnxx Error : ' + _context14.t5);
 
-          case 419:
-            return _context14.abrupt("break", 902);
+          case 310:
+            return _context14.abrupt("break", 793);
 
-          case 420:
+          case 311:
             if (!isLimit(serial)) {
-              _context14.next = 422;
+              _context14.next = 313;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Maaf ".concat(pushname, ", Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu"), id));
 
-          case 422:
-            _context14.next = 424;
+          case 313:
+            _context14.next = 315;
             return regeneratorRuntime.awrap(limitAdd(serial));
 
-          case 424:
+          case 315:
             cabe.reply(from, mess.wait, id);
             googleQuery = body.slice(8);
 
             if (!(googleQuery == undefined || googleQuery == ' ')) {
-              _context14.next = 428;
+              _context14.next = 319;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "*Hasil Pencarian : ".concat(googleQuery, "* tidak ditemukan"), id));
 
-          case 428:
+          case 319:
             google({
               'query': googleQuery
             }).then(function (results) {
@@ -1500,82 +1234,82 @@ var start = function start() {
               console.log(e);
               cabe.sendText(ownerNumber, 'Google Error : ' + e);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 430:
+          case 321:
             if (!isLimit(serial)) {
-              _context14.next = 432;
+              _context14.next = 323;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Maaf ".concat(pushname, ", Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu"), id));
 
-          case 432:
-            _context14.next = 434;
+          case 323:
+            _context14.next = 325;
             return regeneratorRuntime.awrap(limitAdd(serial));
 
-          case 434:
+          case 325:
             if (!(args.length === 1)) {
-              _context14.next = 436;
+              _context14.next = 327;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Kirim perintah *#googleimage [query]*\nContoh : *#googleimage Elaina*', id));
 
-          case 436:
-            _context14.prev = 436;
+          case 327:
+            _context14.prev = 327;
             cabe.reply(from, mess.wait, id);
             gimgg = body.slice(13);
             gamb = "https://api.vhtear.com/googleimg?query=".concat(gimgg, "&apikey=").concat(vhtearkey);
-            _context14.next = 442;
+            _context14.next = 333;
             return regeneratorRuntime.awrap(axios.get(gamb));
 
-          case 442:
+          case 333:
             gimg = _context14.sent;
             gimg2 = Math.floor(Math.random() * gimg.data.result.result_search.length);
             console.log(gimg2);
-            _context14.next = 447;
+            _context14.next = 338;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, gimg.data.result.result_search[gimg2], "gam.".concat(gimg.data.result.result_search[gimg2]), "*Google Image*\n\n*Hasil Pencarian : ".concat(gimgg, "*"), id));
 
-          case 447:
-            _context14.next = 454;
+          case 338:
+            _context14.next = 345;
             break;
 
-          case 449:
-            _context14.prev = 449;
-            _context14.t6 = _context14["catch"](436);
+          case 340:
+            _context14.prev = 340;
+            _context14.t6 = _context14["catch"](327);
             console.log(_context14.t6);
             cabe.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, Gambar tidak ditemukan');
             cabe.sendText(ownerNumber, 'Google Image Error : ' + _context14.t6);
 
-          case 454:
-            return _context14.abrupt("break", 902);
+          case 345:
+            return _context14.abrupt("break", 793);
 
-          case 455:
+          case 346:
             if (isGroupMsg) {
-              _context14.next = 457;
+              _context14.next = 348;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, '¡Este comando solo se puede usar en grupos!', id));
 
-          case 457:
+          case 348:
             if (isGroupAdmins) {
-              _context14.next = 459;
+              _context14.next = 350;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, '¡Este comando solo puede ser utilizado por los admins del grupo!', id));
 
-          case 459:
+          case 350:
             if (!(args.length === 1)) {
-              _context14.next = 461;
+              _context14.next = 352;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Seleccione habilitar o deshabilitar!', id));
 
-          case 461:
+          case 352:
             if (args[1].toLowerCase() === 'habilitar') {
               nsfw_.push(chat.id);
               fs.writeFileSync('./lib/NSFW.json', JSON.stringify(nsfw_));
@@ -1588,45 +1322,45 @@ var start = function start() {
               cabe.reply(from, 'Seleccione habilitar o deshabilitar!', id);
             }
 
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 463:
+          case 354:
             if (isGroupMsg) {
-              _context14.next = 465;
+              _context14.next = 356;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, este comando solo se puede usar dentro de grupos', id));
 
-          case 465:
+          case 356:
             cabe.reply(from, "Para habilitar simi-simi en el chat grupal\n\nUtilizar\n".concat(prefix, "simi on --activar\n").concat(prefix, "simi off - desactivar\n"), id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 467:
+          case 358:
             if (isGroupMsg) {
-              _context14.next = 469;
+              _context14.next = 360;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, este comando solo se puede usar dentro de grupos', id));
 
-          case 469:
+          case 360:
             if (isGroupAdmins) {
-              _context14.next = 471;
+              _context14.next = 362;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por los admins del grupo.', id));
 
-          case 471:
+          case 362:
             if (!(args.length !== 1)) {
-              _context14.next = 473;
+              _context14.next = 364;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para habilitar simi-simi en el chat grupal\n\nUtilizar\n".concat(prefix, "simi on --activar\n").concat(prefix, "simi off - desactivar\n"), id));
 
-          case 473:
+          case 364:
             if (args[0] == 'on') {
               simi.push(chat.id);
               fs.writeFileSync('./settings/simi.json', JSON.stringify(simi));
@@ -1640,9 +1374,9 @@ var start = function start() {
               cabe.reply(from, "Para habilitar simi-simi en el chat grupal\n\nUtilizar\n".concat(prefix, "simi on --activar\n").concat(prefix, "simi off - desactivar\n"), id);
             }
 
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 475:
+          case 366:
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/faktaunix.txt').then(function (res) {
               return res.text();
             }).then(function (body) {
@@ -1650,9 +1384,9 @@ var start = function start() {
               var randomnix = splitnix[Math.floor(Math.random() * splitnix.length)];
               cabe.reply(from, randomnix, id);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 477:
+          case 368:
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/katabijax.txt').then(function (res) {
               return res.text();
             }).then(function (body) {
@@ -1660,9 +1394,9 @@ var start = function start() {
               var randombijak = splitbijak[Math.floor(Math.random() * splitbijak.length)];
               cabe.reply(from, randombijak, id);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 479:
+          case 370:
             fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/pantun.txt').then(function (res) {
               return res.text();
             }).then(function (body) {
@@ -1670,29 +1404,29 @@ var start = function start() {
               var randompantun = splitpantun[Math.floor(Math.random() * splitpantun.length)];
               cabe.reply(from, randompantun.replace(/aruga-line/g, "\n"), id);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 481:
-            _context14.next = 483;
+          case 372:
+            _context14.next = 374;
             return regeneratorRuntime.awrap(rugaapi.quote());
 
-          case 483:
+          case 374:
             quotex = _context14.sent;
-            _context14.next = 486;
+            _context14.next = 377;
             return regeneratorRuntime.awrap(cabe.reply(from, quotex, id));
 
-          case 486:
-            return _context14.abrupt("break", 902);
+          case 377:
+            return _context14.abrupt("break", 793);
 
-          case 487:
+          case 378:
             if (!(args.length == 0)) {
-              _context14.next = 489;
+              _context14.next = 380;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Usar ".concat(prefix, "anime\nPor favor escribe: ").concat(prefix, "anime [consulta]\nejemplo: ").concat(prefix, "anime random\n\n consultas disponibles:\n random, waifu, husbu, neko"), id));
 
-          case 489:
+          case 380:
             if (args[0] == 'random' || args[0] == 'waifu' || args[0] == 'husbu' || args[0] == 'neko') {
               fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/' + args[0] + '.txt').then(function (res) {
                 return res.text();
@@ -1705,17 +1439,17 @@ var start = function start() {
               cabe.reply(from, "Lo sentimos, la consulta no est\xE1 disponible. Por favor escribe ".concat(prefix, "anime para ver la lista de consultas"));
             }
 
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 491:
+          case 382:
             if (!(args.length == 0)) {
-              _context14.next = 493;
+              _context14.next = 384;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Usar ".concat(prefix, "kpop\nPor favor escribe: ").concat(prefix, "kpop [consulta]\nEjemplos: ").concat(prefix, "kpop bts\n\nconsultas disponibles:\nblackpink, exo, bts"), id));
 
-          case 493:
+          case 384:
             if (args[0] == 'blackpink' || args[0] == 'exo' || args[0] == 'bts') {
               fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/kpop/' + args[0] + '.txt').then(function (res) {
                 return res.text();
@@ -1728,72 +1462,72 @@ var start = function start() {
               cabe.reply(from, "Lo sentimos, la consulta no est\xE1 disponible. Por favor escribe ".concat(prefix, "kpop para ver la lista de consultas"));
             }
 
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 495:
-            _context14.next = 497;
+          case 386:
+            _context14.next = 388;
             return regeneratorRuntime.awrap(meme.random());
 
-          case 497:
+          case 388:
             randmeme = _context14.sent;
             cabe.sendFileFromUrl(from, randmeme, '', '', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 500:
+          case 391:
             if (!(args.length == 0)) {
-              _context14.next = 502;
+              _context14.next = 393;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para buscar im\xE1genes en pinterest\nescriba: ".concat(prefix, "imagen [busqueda]\nejemplo: ").concat(prefix, "imagen naruto"), id));
 
-          case 502:
+          case 393:
             cariwall = body.slice(8);
-            _context14.next = 505;
+            _context14.next = 396;
             return regeneratorRuntime.awrap(images.fdci(cariwall));
 
-          case 505:
+          case 396:
             hasilwall = _context14.sent;
             cabe.sendFileFromUrl(from, hasilwall, '', '', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 508:
+          case 399:
             if (!(args.length == 0)) {
-              _context14.next = 510;
+              _context14.next = 401;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para buscar im\xE1genes en sub reddit\nescriba: ".concat(prefix, "sreddit [busqueda]\nejemplo: ").concat(prefix, "sreddit naruto"), id));
 
-          case 510:
+          case 401:
             carireddit = body.slice(9);
-            _context14.next = 513;
+            _context14.next = 404;
             return regeneratorRuntime.awrap(images.sreddit(carireddit));
 
-          case 513:
+          case 404:
             hasilreddit = _context14.sent;
             cabe.sendFileFromUrl(from, hasilreddit, '', '', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 516:
+          case 407:
             if (!(args.length == 0)) {
-              _context14.next = 518;
+              _context14.next = 409;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para buscar recetas de comida\nescribir: ".concat(prefix, "resep [busqueda]\n\nejemplo: ").concat(prefix, "resep tahu"), id));
 
-          case 518:
+          case 409:
             cariresep = body.slice(7);
-            _context14.next = 521;
+            _context14.next = 412;
             return regeneratorRuntime.awrap(resep.resep(cariresep));
 
-          case 521:
+          case 412:
             hasilresep = _context14.sent;
             cabe.reply(from, hasilresep + '\n\nEsta es la receta de la comida ...', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 524:
+          case 415:
             cabe.sendText(from, "Buscando los \xFAltimos videos del sitio web de nekopoi ...");
             rugapoi.getLatest().then(function (result) {
               rugapoi.getVideo(result.link).then(function (res) {
@@ -1806,125 +1540,125 @@ var start = function start() {
                 cabe.reply(from, "Titulo: ".concat(res.title, "\n\nLink:\n").concat(heheq, "\nsiendo un probador por un momento :v"));
               });
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 527:
+          case 418:
             if (!(args.length == 0)) {
-              _context14.next = 529;
+              _context14.next = 420;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Acechar la cuenta de Instagram de alguien\nescribir ".concat(prefix, "stalkig [nombre de usuario]\nejemplo: ").concat(prefix, "stalkig ini.arga"), id));
 
-          case 529:
-            _context14.next = 531;
+          case 420:
+            _context14.next = 422;
             return regeneratorRuntime.awrap(rugaapi.stalkig(args[0]));
 
-          case 531:
+          case 422:
             igstalk = _context14.sent;
-            _context14.next = 534;
+            _context14.next = 425;
             return regeneratorRuntime.awrap(rugaapi.stalkigpict(args[0]));
 
-          case 534:
+          case 425:
             igstalkpict = _context14.sent;
-            _context14.next = 537;
+            _context14.next = 428;
             return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, igstalkpict, '', igstalk, id));
 
-          case 537:
-            return _context14.abrupt("break", 902);
+          case 428:
+            return _context14.abrupt("break", 793);
 
-          case 538:
+          case 429:
             if (!(args.length == 0)) {
-              _context14.next = 540;
+              _context14.next = 431;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para encontrar una palabra de wikipedia\nescribir: ".concat(prefix, "wiki [la palabra]"), id));
 
-          case 540:
+          case 431:
             wikip = body.slice(6);
-            _context14.next = 543;
+            _context14.next = 434;
             return regeneratorRuntime.awrap(rugaapi.wiki(wikip));
 
-          case 543:
+          case 434:
             wikis = _context14.sent;
-            _context14.next = 546;
+            _context14.next = 437;
             return regeneratorRuntime.awrap(cabe.reply(from, wikis, id));
 
-          case 546:
-            return _context14.abrupt("break", 902);
+          case 437:
+            return _context14.abrupt("break", 793);
 
-          case 547:
+          case 438:
             if (!(args.length == 0)) {
-              _context14.next = 549;
+              _context14.next = 440;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para ver el clima en un \xE1rea\nescribir: ".concat(prefix, "clima [zona]"), id));
 
-          case 549:
+          case 440:
             cuacaq = body.slice(7);
-            _context14.next = 552;
+            _context14.next = 443;
             return regeneratorRuntime.awrap(rugaapi.cuaca(cuacaq));
 
-          case 552:
+          case 443:
             cuacap = _context14.sent;
-            _context14.next = 555;
+            _context14.next = 446;
             return regeneratorRuntime.awrap(cabe.reply(from, cuacap, id));
 
-          case 555:
-            return _context14.abrupt("break", 902);
+          case 446:
+            return _context14.abrupt("break", 793);
 
-          case 556:
+          case 447:
             if (!(args.length == 0)) {
-              _context14.next = 558;
+              _context14.next = 449;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para buscar la letra y los acordes de una canci\xF3n\bescribir: ".concat(prefix, "acorde [t\xEDtulo_ canci\xF3n]"), id));
 
-          case 558:
+          case 449:
             chordq = body.slice(7);
-            _context14.next = 561;
+            _context14.next = 452;
             return regeneratorRuntime.awrap(rugaapi.chord(chordq));
 
-          case 561:
+          case 452:
             chordp = _context14.sent;
-            _context14.next = 564;
+            _context14.next = 455;
             return regeneratorRuntime.awrap(cabe.reply(from, chordp, id));
 
-          case 564:
-            return _context14.abrupt("break", 902);
+          case 455:
+            return _context14.abrupt("break", 793);
 
-          case 565:
+          case 456:
             if (!(args.length == 0)) {
-              _context14.next = 567;
+              _context14.next = 458;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Convertir la captura de pantalla de los bots en una web\n\nUso: ".concat(prefix, "ss [url]\n\nejemplo: ").concat(prefix, "ss http://google.com"), id));
 
-          case 567:
-            _context14.next = 569;
+          case 458:
+            _context14.next = 460;
             return regeneratorRuntime.awrap(meme.ss(args[0]));
 
-          case 569:
+          case 460:
             scrinshit = _context14.sent;
-            _context14.next = 572;
+            _context14.next = 463;
             return regeneratorRuntime.awrap(cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id));
 
-          case 572:
-            return _context14.abrupt("break", 902);
+          case 463:
+            return _context14.abrupt("break", 793);
 
-          case 573:
+          case 464:
             if (!(args.length == 0)) {
-              _context14.next = 575;
+              _context14.next = 466;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para buscar canciones de youtube\n\nUtilizar: ".concat(prefix, "play t\xEDtulo de la canci\xF3n"), id));
 
-          case 575:
+          case 466:
             axios.get("https://arugaytdl.herokuapp.com/search?q=".concat(body.slice(6))).then(function _callee13(res) {
               return regeneratorRuntime.async(function _callee13$(_context13) {
                 while (1) {
@@ -1957,35 +1691,35 @@ var start = function start() {
                 }
               });
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 577:
+          case 468:
             if (!(isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image')) {
-              _context14.next = 591;
+              _context14.next = 482;
               break;
             }
 
             if (!isMedia) {
-              _context14.next = 584;
+              _context14.next = 475;
               break;
             }
 
-            _context14.next = 581;
+            _context14.next = 472;
             return regeneratorRuntime.awrap(decryptMedia(message, uaOverride));
 
-          case 581:
+          case 472:
             mediaData = _context14.sent;
-            _context14.next = 587;
+            _context14.next = 478;
             break;
 
-          case 584:
-            _context14.next = 586;
+          case 475:
+            _context14.next = 477;
             return regeneratorRuntime.awrap(decryptMedia(quotedMsg, uaOverride));
 
-          case 586:
+          case 477:
             mediaData = _context14.sent;
 
-          case 587:
+          case 478:
             _fetch = require('node-fetch');
             imgBS4 = "data:".concat(mimetype, ";base64,").concat(mediaData.toString('base64'));
             cabe.reply(from, 'Buscando....', id);
@@ -2035,54 +1769,54 @@ var start = function start() {
               cabe.reply(from, 'Error!', id);
             });
 
-          case 591:
-            return _context14.abrupt("break", 902);
+          case 482:
+            return _context14.abrupt("break", 793);
 
-          case 592:
+          case 483:
             if (!(args.length !== 2)) {
-              _context14.next = 594;
+              _context14.next = 485;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Lo sentimos, el formato del mensaje es incorrecto.\nIntroduzca su mensaje con ".concat(prefix, "resi <kurir> <no_resi>\n\nKurir yang tersedia:\njne, pos, tiki, wahana, jnt, rpx, sap, sicepat, pcp, jet, dse, first, ninja, lion, idl, rex"), id));
 
-          case 594:
+          case 485:
             kurirs = ['jne', 'pos', 'tiki', 'wahana', 'jnt', 'rpx', 'sap', 'sicepat', 'pcp', 'jet', 'dse', 'first', 'ninja', 'lion', 'idl', 'rex'];
 
             if (kurirs.includes(args[0])) {
-              _context14.next = 597;
+              _context14.next = 488;
               break;
             }
 
             return _context14.abrupt("return", cabe.sendText(from, "Maaf, jenis ekspedisi pengiriman tidak didukung layanan ini hanya mendukung ekspedisi pengiriman ".concat(kurirs.join(', '), " Tolong periksa kembali.")));
 
-          case 597:
+          case 488:
             console.log('Memeriksa No Resi', args[1], 'dengan ekspedisi', args[0]);
             cekResi(args[0], args[1]).then(function (result) {
               return cabe.sendText(from, result);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 600:
+          case 491:
             if (!(args.length == 0)) {
-              _context14.next = 602;
+              _context14.next = 493;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Cambiar texto a sonido (voz de Google) \n tipo: ".concat(prefix, "tts <c\xF3digo de idioma> <texto> \n ejemplos: ").concat(prefix, "tts es hola \n para ver el c\xF3digo de idioma aqu\xED: https://anotepad.com/note/read/5xqahdy8")));
 
-          case 602:
+          case 493:
             ttsGB = require('node-gtts')(args[0]);
             dataText = body.slice(8);
 
             if (!(dataText === '')) {
-              _context14.next = 606;
+              _context14.next = 497;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'cual es el texto..', id));
 
-          case 606:
+          case 497:
             try {
               ttsGB.save('./media/tts.mp3', dataText, function () {
                 cabe.sendPtt(from, './media/tts.mp3', id);
@@ -2091,47 +1825,47 @@ var start = function start() {
               cabe.reply(from, err, id);
             }
 
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 608:
+          case 499:
             if (!(args.length != 1)) {
-              _context14.next = 610;
+              _context14.next = 501;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Maaf, format pesan salah.\nSilahkan reply sebuah pesan dengan caption ".concat(prefix, "translate <kode_bahasa>\ncontoh ").concat(prefix, "translate id"), id));
 
-          case 610:
+          case 501:
             if (quotedMsg) {
-              _context14.next = 612;
+              _context14.next = 503;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Maaf, format pesan salah.\nSilahkan reply sebuah pesan dengan caption ".concat(prefix, "translate <kode_bahasa>\ncontoh ").concat(prefix, "translate id"), id));
 
-          case 612:
+          case 503:
             quoteText = quotedMsg.type == 'chat' ? quotedMsg.body : quotedMsg.type == 'image' ? quotedMsg.caption : '';
             translate(quoteText, args[0]).then(function (result) {
               return cabe.sendText(from, result);
             })["catch"](function () {
               return cabe.sendText(from, 'Error, Kode bahasa salah.');
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 615:
+          case 506:
             if (!(quotedMsg.type !== 'location')) {
-              _context14.next = 617;
+              _context14.next = 508;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Maaf, format pesan salah.\nKirimkan lokasi dan reply dengan caption ".concat(prefix, "ceklokasi"), id));
 
-          case 617:
+          case 508:
             console.log("Request Status Zona Penyebaran Covid-19 (".concat(quotedMsg.lat, ", ").concat(quotedMsg.lng, ")."));
-            _context14.next = 620;
+            _context14.next = 511;
             return regeneratorRuntime.awrap(getLocationData(quotedMsg.lat, quotedMsg.lng));
 
-          case 620:
+          case 511:
             zoneStatus = _context14.sent;
             if (zoneStatus.kode !== 200) cabe.sendText(from, 'Maaf, Terjadi error ketika memeriksa lokasi yang anda kirim.');
             datax = '';
@@ -2144,374 +1878,374 @@ var start = function start() {
 
             text = "*CEK LOKASI PENYEBARAN COVID-19*\nHasil pemeriksaan dari lokasi yang anda kirim adalah *".concat(zoneStatus.status, "* ").concat(zoneStatus.optional, "\n\nInformasi lokasi terdampak disekitar anda:\n").concat(datax);
             cabe.sendText(from, text);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 627:
+          case 518:
             if (!(args.length == 0)) {
-              _context14.next = 629;
+              _context14.next = 520;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "ketik ".concat(prefix, "shortlink <url>"), message.id));
 
-          case 629:
+          case 520:
             if (isUrl(args[0])) {
-              _context14.next = 631;
+              _context14.next = 522;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Maaf, url yang kamu kirim tidak valid.', message.id));
 
-          case 631:
-            _context14.next = 633;
+          case 522:
+            _context14.next = 524;
             return regeneratorRuntime.awrap(urlShortener(args[0]));
 
-          case 633:
+          case 524:
             shortlink = _context14.sent;
-            _context14.next = 636;
+            _context14.next = 527;
             return regeneratorRuntime.awrap(cabe.sendText(from, shortlink));
 
-          case 636:
-            return _context14.abrupt("break", 902);
+          case 527:
+            return _context14.abrupt("break", 793);
 
-          case 637:
+          case 528:
             if (isGroupMsg) {
-              _context14.next = 639;
+              _context14.next = 530;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, este comando solo se puede usar dentro de grupos', id));
 
-          case 639:
+          case 530:
             if (isGroupAdmins) {
-              _context14.next = 641;
+              _context14.next = 532;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo!', id));
 
-          case 641:
+          case 532:
             if (isBotGroupAdmins) {
-              _context14.next = 643;
+              _context14.next = 534;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, agregue el bot como admin del grupo!', id));
 
-          case 643:
+          case 534:
             if (!(args.length !== 1)) {
-              _context14.next = 645;
+              _context14.next = 536;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Usar ".concat(prefix, "agregar\nUtilizar: ").concat(prefix, "agregar <numero>\nejemplo: ").concat(prefix, "agregar 54xxxxxx"), id));
 
-          case 645:
-            _context14.prev = 645;
-            _context14.next = 648;
+          case 536:
+            _context14.prev = 536;
+            _context14.next = 539;
             return regeneratorRuntime.awrap(cabe.addParticipant(from, "".concat(args[0], "@c.us")).then(function () {
               return cabe.reply(from, 'Hola bienvenido', id);
             }));
 
-          case 648:
-            _context14.next = 653;
+          case 539:
+            _context14.next = 544;
             break;
 
-          case 650:
-            _context14.prev = 650;
-            _context14.t7 = _context14["catch"](645);
+          case 541:
+            _context14.prev = 541;
+            _context14.t7 = _context14["catch"](536);
             cabe.reply(from, 'No se pudo agregar el objetivo', id);
 
-          case 653:
-            return _context14.abrupt("break", 902);
+          case 544:
+            return _context14.abrupt("break", 793);
 
-          case 654:
+          case 545:
             if (isGroupMsg) {
-              _context14.next = 656;
+              _context14.next = 547;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id));
 
-          case 656:
+          case 547:
             if (isGroupAdmins) {
-              _context14.next = 658;
+              _context14.next = 549;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id));
 
-          case 658:
+          case 549:
             if (isBotGroupAdmins) {
-              _context14.next = 660;
+              _context14.next = 551;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, agregue el bot como admin del grupo.', id));
 
-          case 660:
+          case 551:
             if (!(mentionedJidList.length === 0)) {
-              _context14.next = 662;
+              _context14.next = 553;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n etiquete a una o más personas para eliminar del grupo', id));
 
-          case 662:
+          case 553:
             if (!(mentionedJidList[0] === botNumber)) {
-              _context14.next = 666;
+              _context14.next = 557;
               break;
             }
 
-            _context14.next = 665;
+            _context14.next = 556;
             return regeneratorRuntime.awrap(cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n No puedo expulsar la cuenta del bot por mí mismo', id));
 
-          case 665:
+          case 556:
             return _context14.abrupt("return", _context14.sent);
 
-          case 666:
-            _context14.next = 668;
+          case 557:
+            _context14.next = 559;
             return regeneratorRuntime.awrap(cabe.sendTextWithMentions(from, "Solicitud recibida, problema:\n".concat(mentionedJidList.map(function (x) {
               return "@".concat(x.replace('@c.us', ''));
             }).join('\n'))));
 
-          case 668:
+          case 559:
             _i = 0;
 
-          case 669:
+          case 560:
             if (!(_i < mentionedJidList.length)) {
-              _context14.next = 679;
+              _context14.next = 570;
               break;
             }
 
             if (!groupAdmins.includes(mentionedJidList[_i])) {
-              _context14.next = 674;
+              _context14.next = 565;
               break;
             }
 
-            _context14.next = 673;
+            _context14.next = 564;
             return regeneratorRuntime.awrap(cabe.sendText(from, 'Error, no puede eliminar a el admin del grupo.'));
 
-          case 673:
+          case 564:
             return _context14.abrupt("return", _context14.sent);
 
-          case 674:
-            _context14.next = 676;
+          case 565:
+            _context14.next = 567;
             return regeneratorRuntime.awrap(cabe.removeParticipant(groupId, mentionedJidList[_i]));
 
-          case 676:
+          case 567:
             _i++;
-            _context14.next = 669;
+            _context14.next = 560;
             break;
 
-          case 679:
-            return _context14.abrupt("break", 902);
+          case 570:
+            return _context14.abrupt("break", 793);
 
-          case 680:
+          case 571:
             if (isGroupMsg) {
-              _context14.next = 682;
+              _context14.next = 573;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id));
 
-          case 682:
+          case 573:
             if (isGroupAdmins) {
-              _context14.next = 684;
+              _context14.next = 575;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id));
 
-          case 684:
+          case 575:
             if (isBotGroupAdmins) {
-              _context14.next = 686;
+              _context14.next = 577;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, agregue el bot como administrador de grupo.', id));
 
-          case 686:
+          case 577:
             if (!(mentionedJidList.length !== 1)) {
-              _context14.next = 688;
+              _context14.next = 579;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, solo puedo promover a 1 usuario', id));
 
-          case 688:
+          case 579:
             if (!groupAdmins.includes(mentionedJidList[0])) {
-              _context14.next = 692;
+              _context14.next = 583;
               break;
             }
 
-            _context14.next = 691;
+            _context14.next = 582;
             return regeneratorRuntime.awrap(cabe.reply(from, 'Lo siento, el usuario ya es admin.', id));
 
-          case 691:
+          case 582:
             return _context14.abrupt("return", _context14.sent);
 
-          case 692:
+          case 583:
             if (!(mentionedJidList[0] === botNumber)) {
-              _context14.next = 696;
+              _context14.next = 587;
               break;
             }
 
-            _context14.next = 695;
+            _context14.next = 586;
             return regeneratorRuntime.awrap(cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n no se puede promover la cuenta del bot por sí solo', id));
 
-          case 695:
+          case 586:
             return _context14.abrupt("return", _context14.sent);
 
-          case 696:
-            _context14.next = 698;
+          case 587:
+            _context14.next = 589;
             return regeneratorRuntime.awrap(cabe.promoteParticipant(groupId, mentionedJidList[0]));
 
-          case 698:
-            _context14.next = 700;
+          case 589:
+            _context14.next = 591;
             return regeneratorRuntime.awrap(cabe.sendTextWithMentions(from, "Solicitud aceptada, agregad@ @".concat(mentionedJidList[0].replace('@c.us', ''), " como admin.")));
 
-          case 700:
-            return _context14.abrupt("break", 902);
+          case 591:
+            return _context14.abrupt("break", 793);
 
-          case 701:
+          case 592:
             if (isGroupMsg) {
-              _context14.next = 703;
+              _context14.next = 594;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id));
 
-          case 703:
+          case 594:
             if (isGroupAdmins) {
-              _context14.next = 705;
+              _context14.next = 596;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por admins del grupo.', id));
 
-          case 705:
+          case 596:
             if (isBotGroupAdmins) {
-              _context14.next = 707;
+              _context14.next = 598;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, agregue el bot como administrador de grupo.', id));
 
-          case 707:
+          case 598:
             if (!(mentionedJidList.length !== 1)) {
-              _context14.next = 709;
+              _context14.next = 600;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, solo se puede degradar a 1 usuario', id));
 
-          case 709:
+          case 600:
             if (groupAdmins.includes(mentionedJidList[0])) {
-              _context14.next = 713;
+              _context14.next = 604;
               break;
             }
 
-            _context14.next = 712;
+            _context14.next = 603;
             return regeneratorRuntime.awrap(cabe.reply(from, 'Lo sentimos, el usuario aún no es administrador.', id));
 
-          case 712:
+          case 603:
             return _context14.abrupt("return", _context14.sent);
 
-          case 713:
+          case 604:
             if (!(mentionedJidList[0] === botNumber)) {
-              _context14.next = 717;
+              _context14.next = 608;
               break;
             }
 
-            _context14.next = 716;
+            _context14.next = 607;
             return regeneratorRuntime.awrap(cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto. \n No se puede eliminar la cuenta del bot.', id));
 
-          case 716:
+          case 607:
             return _context14.abrupt("return", _context14.sent);
 
-          case 717:
-            _context14.next = 719;
+          case 608:
+            _context14.next = 610;
             return regeneratorRuntime.awrap(cabe.demoteParticipant(groupId, mentionedJidList[0]));
 
-          case 719:
-            _context14.next = 721;
+          case 610:
+            _context14.next = 612;
             return regeneratorRuntime.awrap(cabe.sendTextWithMentions(from, "Solicitud aceptada, eliminar posici\xF3n @".concat(mentionedJidList[0].replace('@c.us', ''), ".")));
 
-          case 721:
-            return _context14.abrupt("break", 902);
+          case 612:
+            return _context14.abrupt("break", 793);
 
-          case 722:
+          case 613:
             if (isGroupMsg) {
-              _context14.next = 724;
+              _context14.next = 615;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id));
 
-          case 724:
+          case 615:
             if (isGroupAdmins) {
-              _context14.next = 726;
+              _context14.next = 617;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo.', id));
 
-          case 726:
+          case 617:
             cabe.sendText(from, 'Adiós, ya no me quieren aqui...( ⇀‸↼‶ )').then(function () {
               return cabe.leaveGroup(groupId);
             });
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 728:
+          case 619:
             if (isGroupAdmins) {
-              _context14.next = 730;
+              _context14.next = 621;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo!', id));
 
-          case 730:
+          case 621:
             if (quotedMsg) {
-              _context14.next = 732;
+              _context14.next = 623;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Lo sentimos, el formato del mensaje es incorrecto, por favor. \n Responde enviar un mensaje al bot con un t\xEDtulo ".concat(prefix, "borrar"), id));
 
-          case 732:
+          case 623:
             if (quotedMsgObj.fromMe) {
-              _context14.next = 734;
+              _context14.next = 625;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Lo sentimos, el formato del mensaje es incorrecto, por favor. \n Responde enviar un mensaje al bot con el t\xEDtulo ".concat(prefix, "borrar"), id));
 
-          case 734:
+          case 625:
             cabe.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 736:
+          case 627:
             if (isGroupMsg) {
-              _context14.next = 738;
+              _context14.next = 629;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id));
 
-          case 738:
+          case 629:
             if (isGroupAdmins) {
-              _context14.next = 740;
+              _context14.next = 631;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, este comando solo puede ser utilizado por administradores de grupo.', id));
 
-          case 740:
-            _context14.next = 742;
+          case 631:
+            _context14.next = 633;
             return regeneratorRuntime.awrap(cabe.getGroupMembers(groupId));
 
-          case 742:
+          case 633:
             groupMem = _context14.sent;
             hehex = '╔══✪〘 Mencionar a todos 〙✪══\n';
 
@@ -2521,109 +2255,109 @@ var start = function start() {
             }
 
             hehex += '╚═〘 *CABE  B O T* 〙';
-            _context14.next = 748;
+            _context14.next = 639;
             return regeneratorRuntime.awrap(cabe.sendTextWithMentions(from, hehex));
 
-          case 748:
-            return _context14.abrupt("break", 902);
+          case 639:
+            return _context14.abrupt("break", 793);
 
-          case 749:
-            _context14.next = 751;
+          case 640:
+            _context14.next = 642;
             return regeneratorRuntime.awrap(cabe.getAmountOfLoadedMessages());
 
-          case 751:
+          case 642:
             loadedMsg = _context14.sent;
-            _context14.next = 754;
+            _context14.next = 645;
             return regeneratorRuntime.awrap(cabe.getAllChatIds());
 
-          case 754:
+          case 645:
             chatIds = _context14.sent;
-            _context14.next = 757;
+            _context14.next = 648;
             return regeneratorRuntime.awrap(cabe.getAllGroups());
 
-          case 757:
+          case 648:
             groups = _context14.sent;
             cabe.sendText(from, "Status :\n- *".concat(loadedMsg, "* Loaded Messages\n- *").concat(groups.length, "* Group Chats\n- *").concat(chatIds.length - groups.length, "* Personal Chats\n- *").concat(chatIds.length, "* Total Chats"));
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 760:
+          case 651:
             if (isGroupMsg) {
-              _context14.next = 762;
+              _context14.next = 653;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id));
 
-          case 762:
+          case 653:
             isOwner = chat.groupMetadata.owner == sender.id;
 
             if (isOwner) {
-              _context14.next = 765;
+              _context14.next = 656;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Lo sentimos, este comando solo puede ser utilizado por el propietario del grupo.', id));
 
-          case 765:
+          case 656:
             if (isBotGroupAdmins) {
-              _context14.next = 767;
+              _context14.next = 658;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Falló, agregue el bot como admin del grupo.', id));
 
-          case 767:
-            _context14.next = 769;
+          case 658:
+            _context14.next = 660;
             return regeneratorRuntime.awrap(cabe.getGroupMembers(groupId));
 
-          case 769:
+          case 660:
             allMem = _context14.sent;
             _i3 = 0;
 
-          case 771:
+          case 662:
             if (!(_i3 < allMem.length)) {
-              _context14.next = 780;
+              _context14.next = 671;
               break;
             }
 
             if (!groupAdmins.includes(allMem[_i3].id)) {
-              _context14.next = 775;
+              _context14.next = 666;
               break;
             }
 
-            _context14.next = 777;
+            _context14.next = 668;
             break;
 
-          case 775:
-            _context14.next = 777;
+          case 666:
+            _context14.next = 668;
             return regeneratorRuntime.awrap(cabe.removeParticipant(groupId, allMem[_i3].id));
 
-          case 777:
+          case 668:
             _i3++;
-            _context14.next = 771;
+            _context14.next = 662;
             break;
 
-          case 780:
+          case 671:
             cabe.reply(from, 'Exito expulsar a todos los miembros', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 782:
+          case 673:
             if (isOwnerBot) {
-              _context14.next = 784;
+              _context14.next = 675;
               break;
             }
 
-            return _context14.abrupt("return", cabe.reply(from, 'Perintah ini hanya untuk Owner bot!', id));
+            return _context14.abrupt("return", cabe.reply(from, '¡Este pedido es solo para el propietario del bot!', id));
 
-          case 784:
+          case 675:
             if (!(args.length == 0)) {
-              _context14.next = 786;
+              _context14.next = 677;
               break;
             }
 
-            return _context14.abrupt("return", cabe.reply(from, "Untuk banned seseorang agar tidak bisa menggunakan commands\n\nCaranya ketik: \n".concat(prefix, "ban add 628xx --untuk mengaktifkan\n").concat(prefix, "ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n").concat(prefix, "ban @tag @tag @tag"), id));
+            return _context14.abrupt("return", cabe.reply(from, "Prohibir que alguien use comandos\n\nEscribir: \n".concat(prefix, "ban add 54xx --Activar\n").concat(prefix, "ban del 54xx --deshabilitar\n\nc\xF3mo prohibir r\xE1pidamente muchos tipos en grupos:\n").concat(prefix, "ban @tag @tag @tag"), id));
 
-          case 786:
+          case 677:
             if (args[0] == 'add') {
               banned.push(args[1] + '@c.us');
               fs.writeFileSync('./settings/banned.json', JSON.stringify(banned));
@@ -2641,273 +2375,273 @@ var start = function start() {
               }
             }
 
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 788:
+          case 679:
             if (isOwnerBot) {
-              _context14.next = 790;
+              _context14.next = 681;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, '¡Este pedido es solo para el propietario del bot!', id));
 
-          case 790:
+          case 681:
             if (!(args.length == 0)) {
-              _context14.next = 792;
+              _context14.next = 683;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, "Para transmitir a todos los chats, escriba:\n".concat(prefix, "bc [rellenar el chat]")));
 
-          case 792:
+          case 683:
             msg = body.slice(4);
-            _context14.next = 795;
+            _context14.next = 686;
             return regeneratorRuntime.awrap(cabe.getAllChatIds());
 
-          case 795:
+          case 686:
             chatz = _context14.sent;
             _iteratorNormalCompletion = true;
             _didIteratorError = false;
             _iteratorError = undefined;
-            _context14.prev = 799;
+            _context14.prev = 690;
             _iterator = chatz[Symbol.iterator]();
 
-          case 801:
+          case 692:
             if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-              _context14.next = 811;
+              _context14.next = 702;
               break;
             }
 
             idk = _step.value;
-            _context14.next = 805;
+            _context14.next = 696;
             return regeneratorRuntime.awrap(cabe.getChatById(idk));
 
-          case 805:
+          case 696:
             cvk = _context14.sent;
             if (!cvk.isReadOnly) cabe.sendText(idk, "\u3018 *C A B E  B C* \u3019\n\n".concat(msg));
             if (cvk.isReadOnly) cabe.sendText(idk, "\u3018 *C A B E  B C* \u3019\n\n".concat(msg));
 
-          case 808:
+          case 699:
             _iteratorNormalCompletion = true;
-            _context14.next = 801;
+            _context14.next = 692;
             break;
 
-          case 811:
-            _context14.next = 817;
+          case 702:
+            _context14.next = 708;
             break;
 
-          case 813:
-            _context14.prev = 813;
-            _context14.t8 = _context14["catch"](799);
+          case 704:
+            _context14.prev = 704;
+            _context14.t8 = _context14["catch"](690);
             _didIteratorError = true;
             _iteratorError = _context14.t8;
 
-          case 817:
-            _context14.prev = 817;
-            _context14.prev = 818;
+          case 708:
+            _context14.prev = 708;
+            _context14.prev = 709;
 
             if (!_iteratorNormalCompletion && _iterator["return"] != null) {
               _iterator["return"]();
             }
 
-          case 820:
-            _context14.prev = 820;
+          case 711:
+            _context14.prev = 711;
 
             if (!_didIteratorError) {
-              _context14.next = 823;
+              _context14.next = 714;
               break;
             }
 
             throw _iteratorError;
 
-          case 823:
-            return _context14.finish(820);
+          case 714:
+            return _context14.finish(711);
 
-          case 824:
-            return _context14.finish(817);
+          case 715:
+            return _context14.finish(708);
 
-          case 825:
+          case 716:
             cabe.reply(from, 'Éxito de la transmisión!', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 827:
+          case 718:
             if (isOwnerBot) {
-              _context14.next = 829;
+              _context14.next = 720;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Este comando es solo para el propietario del bot', id));
 
-          case 829:
-            _context14.next = 831;
+          case 720:
+            _context14.next = 722;
             return regeneratorRuntime.awrap(cabe.getAllChatIds());
 
-          case 831:
+          case 722:
             allChatz = _context14.sent;
-            _context14.next = 834;
+            _context14.next = 725;
             return regeneratorRuntime.awrap(cabe.getAllGroups());
 
-          case 834:
+          case 725:
             allGroupz = _context14.sent;
             _iteratorNormalCompletion2 = true;
             _didIteratorError2 = false;
             _iteratorError2 = undefined;
-            _context14.prev = 838;
+            _context14.prev = 729;
             _iterator2 = allGroupz[Symbol.iterator]();
 
-          case 840:
+          case 731:
             if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-              _context14.next = 851;
+              _context14.next = 742;
               break;
             }
 
             gclist = _step2.value;
-            _context14.next = 844;
+            _context14.next = 735;
             return regeneratorRuntime.awrap(cabe.sendText(gclist.contact.id, "Lo siento, el bot est\xE1 limpiando, el chat total est\xE1 activo : ".concat(allChatz.length)));
 
-          case 844:
-            _context14.next = 846;
+          case 735:
+            _context14.next = 737;
             return regeneratorRuntime.awrap(cabe.leaveGroup(gclist.contact.id));
 
-          case 846:
-            _context14.next = 848;
+          case 737:
+            _context14.next = 739;
             return regeneratorRuntime.awrap(cabe.deleteChat(gclist.contact.id));
 
-          case 848:
+          case 739:
             _iteratorNormalCompletion2 = true;
-            _context14.next = 840;
+            _context14.next = 731;
             break;
 
-          case 851:
-            _context14.next = 857;
+          case 742:
+            _context14.next = 748;
             break;
 
-          case 853:
-            _context14.prev = 853;
-            _context14.t9 = _context14["catch"](838);
+          case 744:
+            _context14.prev = 744;
+            _context14.t9 = _context14["catch"](729);
             _didIteratorError2 = true;
             _iteratorError2 = _context14.t9;
 
-          case 857:
-            _context14.prev = 857;
-            _context14.prev = 858;
+          case 748:
+            _context14.prev = 748;
+            _context14.prev = 749;
 
             if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
               _iterator2["return"]();
             }
 
-          case 860:
-            _context14.prev = 860;
+          case 751:
+            _context14.prev = 751;
 
             if (!_didIteratorError2) {
-              _context14.next = 863;
+              _context14.next = 754;
               break;
             }
 
             throw _iteratorError2;
 
-          case 863:
-            return _context14.finish(860);
+          case 754:
+            return _context14.finish(751);
 
-          case 864:
-            return _context14.finish(857);
+          case 755:
+            return _context14.finish(748);
 
-          case 865:
+          case 756:
             cabe.reply(from, 'Exito dejar todo el grupo!', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 867:
+          case 758:
             if (isOwnerBot) {
-              _context14.next = 869;
+              _context14.next = 760;
               break;
             }
 
             return _context14.abrupt("return", cabe.reply(from, 'Este comando es solo para el propietario del bot', id));
 
-          case 869:
-            _context14.next = 871;
+          case 760:
+            _context14.next = 762;
             return regeneratorRuntime.awrap(cabe.getAllChats());
 
-          case 871:
+          case 762:
             allChatx = _context14.sent;
             _iteratorNormalCompletion3 = true;
             _didIteratorError3 = false;
             _iteratorError3 = undefined;
-            _context14.prev = 875;
+            _context14.prev = 766;
             _iterator3 = allChatx[Symbol.iterator]();
 
-          case 877:
+          case 768:
             if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
-              _context14.next = 884;
+              _context14.next = 775;
               break;
             }
 
             dchat = _step3.value;
-            _context14.next = 881;
+            _context14.next = 772;
             return regeneratorRuntime.awrap(cabe.deleteChat(dchat.id));
 
-          case 881:
+          case 772:
             _iteratorNormalCompletion3 = true;
-            _context14.next = 877;
+            _context14.next = 768;
             break;
 
-          case 884:
-            _context14.next = 890;
+          case 775:
+            _context14.next = 781;
             break;
 
-          case 886:
-            _context14.prev = 886;
-            _context14.t10 = _context14["catch"](875);
+          case 777:
+            _context14.prev = 777;
+            _context14.t10 = _context14["catch"](766);
             _didIteratorError3 = true;
             _iteratorError3 = _context14.t10;
 
-          case 890:
-            _context14.prev = 890;
-            _context14.prev = 891;
+          case 781:
+            _context14.prev = 781;
+            _context14.prev = 782;
 
             if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
               _iterator3["return"]();
             }
 
-          case 893:
-            _context14.prev = 893;
+          case 784:
+            _context14.prev = 784;
 
             if (!_didIteratorError3) {
-              _context14.next = 896;
+              _context14.next = 787;
               break;
             }
 
             throw _iteratorError3;
 
-          case 896:
-            return _context14.finish(893);
+          case 787:
+            return _context14.finish(784);
 
-          case 897:
-            return _context14.finish(890);
+          case 788:
+            return _context14.finish(781);
 
-          case 898:
+          case 789:
             cabe.reply(from, 'Tiene éxito borrar todo el chat!', id);
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 900:
+          case 791:
             console.log(color('[ERROR]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), 'Comando no registrado de', color(pushname));
-            return _context14.abrupt("break", 902);
+            return _context14.abrupt("break", 793);
 
-          case 902:
-            _context14.next = 907;
+          case 793:
+            _context14.next = 798;
             break;
 
-          case 904:
-            _context14.prev = 904;
+          case 795:
+            _context14.prev = 795;
             _context14.t11 = _context14["catch"](1);
             console.log(color('[ERROR]', 'red'), _context14.t11);
 
-          case 907:
+          case 798:
           case "end":
             return _context14.stop();
         }
       }
-    }, null, null, [[1, 904], [106, 122], [206, 213], [396, 413], [436, 449], [645, 650], [799, 813, 817, 825], [818,, 820, 824], [838, 853, 857, 865], [858,, 860, 864], [875, 886, 890, 898], [891,, 893, 897]]);
+    }, null, null, [[1, 795], [106, 122], [206, 213], [287, 304], [327, 340], [536, 541], [690, 704, 708, 716], [709,, 711, 715], [729, 744, 748, 756], [749,, 751, 755], [766, 777, 781, 789], [782,, 784, 788]]);
   });
 };
 

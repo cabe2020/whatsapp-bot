@@ -73,14 +73,6 @@ pls dont remove my github link:)
 | Make a meme from photo|✅|
 | Quotes maker result pict|✅|
 
-| Islam |Yes|
-| ------------- | ------------- |
-| List Surah|✅|
-| Info Surah|✅|
-| Surah|✅|
-| Tafsir Alquran|✅|
-| Alquran Audio/Voice|✅|
-| Jadwal solat|✅|
 
 | Downloader |Yes|
 | ------------- | ------------- |

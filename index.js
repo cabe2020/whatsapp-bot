@@ -347,148 +347,6 @@ cabe.onIncomingCall(async (callData) => {
                     cabe.reply(from, 'Error!', id)
                 })
                 break
-                
-        //Islam Command
-        case 'listsurah':
-            try {
-                axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
-                .then((response) => {
-                    let hehex = '╔══✪〘 List Surah 〙✪══\n'
-                    for (let i = 0; i < response.data.data.length; i++) {
-                        hehex += '╠➥ '
-                        hehex += response.data.data[i].name.transliteration.id.toLowerCase() + '\n'
-                            }
-                        hehex += '╚═〘 *CABE BOT* 〙'
-                    cabe.reply(from, hehex, id)
-                })
-            } catch(err) {
-                cabe.reply(from, err, id)
-            }
-            break
-        case 'infosurah':
-            if (args.length == 0) return cabe.reply(from, `*_${prefix}infosurah <nama surah>_*\nMenampilkan informasi lengkap mengenai surah tertentu. Contoh penggunan: ${prefix}infosurah al-baqarah`, message.id)
-                var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
-                var { data } = responseh.data
-                var idx = data.findIndex(function(post, index) {
-                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
-                    return true;
-                });
-                var pesan = ""
-                pesan = pesan + "Nama : "+ data[idx].name.transliteration.id + "\n" + "Asma : " +data[idx].name.short+"\n"+"Arti : "+data[idx].name.translation.id+"\n"+"Jumlah ayat : "+data[idx].numberOfVerses+"\n"+"Nomor surah : "+data[idx].number+"\n"+"Jenis : "+data[idx].revelation.id+"\n"+"Keterangan : "+data[idx].tafsir.id
-                cabe.reply(from, pesan, message.id)
-              break
-        case 'surah':
-            if (args.length == 0) return cabe.reply(from, `*_${prefix}surah <nama surah> <ayat>_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahannya dalam bahasa Indonesia. Contoh penggunaan : ${prefix}surah al-baqarah 1\n\n*_${prefix}surah <nama surah> <ayat> en/id_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahannya dalam bahasa Inggris / Indonesia. Contoh penggunaan : ${prefix}surah al-baqarah 1 id`, message.id)
-                var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
-                var { data } = responseh.data
-                var idx = data.findIndex(function(post, index) {
-                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
-                    return true;
-                });
-                nmr = data[idx].number
-                if(!isNaN(nmr)) {
-                  var responseh2 = await axios.get('https://api.quran.sutanlab.id/surah/'+nmr+"/"+args[1])
-                  var {data} = responseh2.data
-                  var last = function last(array, n) {
-                    if (array == null) return void 0;
-                    if (n == null) return array[array.length - 1];
-                    return array.slice(Math.max(array.length - n, 0));
-                  };
-                  bhs = last(args)
-                  pesan = ""
-                  pesan = pesan + data.text.arab + "\n\n"
-                  if(bhs == "en") {
-                    pesan = pesan + data.translation.en
-                  } else {
-                    pesan = pesan + data.translation.id
-                  }
-                  pesan = pesan + "\n\n(Q.S. "+data.surah.name.transliteration.id+":"+args[1]+")"
-                  cabe.reply(from, pesan, message.id)
-                }
-              break
-        case 'tafsir':
-            if (args.length == 0) return cabe.reply(from, `*_${prefix}tafsir <nama surah> <ayat>_*\nMenampilkan ayat Al-Quran tertentu beserta terjemahan dan tafsirnya dalam bahasa Indonesia. Contoh penggunaan : ${prefix}tafsir al-baqarah 1`, message.id)
-                var responsh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
-                var {data} = responsh.data
-                var idx = data.findIndex(function(post, index) {
-                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
-                    return true;
-                });
-                nmr = data[idx].number
-                if(!isNaN(nmr)) {
-                  var responsih = await axios.get('https://api.quran.sutanlab.id/surah/'+nmr+"/"+args[1])
-                  var {data} = responsih.data
-                  pesan = ""
-                  pesan = pesan + "Tafsir Q.S. "+data.surah.name.transliteration.id+":"+args[1]+"\n\n"
-                  pesan = pesan + data.text.arab + "\n\n"
-                  pesan = pesan + "_" + data.translation.id + "_" + "\n\n" +data.tafsir.id.long
-                  cabe.reply(from, pesan, message.id)
-              }
-              break
-        case 'alaudio':
-            if (args.length == 0) return cabe.reply(from, `*_${prefix}ALaudio <nama surah>_*\nMenampilkan tautan dari audio surah tertentu. Contoh penggunaan : ${prefix}ALaudio al-fatihah\n\n*_${prefix}ALaudio <nama surah> <ayat>_*\nMengirim audio surah dan ayat tertentu beserta terjemahannya dalam bahasa Indonesia. Contoh penggunaan : ${prefix}ALaudio al-fatihah 1\n\n*_${prefix}ALaudio <nama surah> <ayat> en_*\nMengirim audio surah dan ayat tertentu beserta terjemahannya dalam bahasa Inggris. Contoh penggunaan : ${prefix}ALaudio al-fatihah 1 en`, message.id)
-              ayat = "ayat"
-              bhs = ""
-                var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
-                var surah = responseh.data
-                var idx = surah.data.findIndex(function(post, index) {
-                  if((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase())||(post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
-                    return true;
-                });
-                nmr = surah.data[idx].number
-                if(!isNaN(nmr)) {
-                  if(args.length > 2) {
-                    ayat = args[1]
-                  }
-                  if (args.length == 2) {
-                    var last = function last(array, n) {
-                      if (array == null) return void 0;
-                      if (n == null) return array[array.length - 1];
-                      return array.slice(Math.max(array.length - n, 0));
-                    };
-                    ayat = last(args)
-                  } 
-                  pesan = ""
-                  if(isNaN(ayat)) {
-                    var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
-                    var {name, name_translations, number_of_ayah, number_of_surah,  recitations} = responsih2.data
-                    pesan = pesan + "Audio Quran Surah ke-"+number_of_surah+" "+name+" ("+name_translations.ar+") "+ "dengan jumlah "+ number_of_ayah+" ayat\n"
-                    pesan = pesan + "Dilantunkan oleh "+recitations[0].name+" : "+recitations[0].audio_url+"\n"
-                    pesan = pesan + "Dilantunkan oleh "+recitations[1].name+" : "+recitations[1].audio_url+"\n"
-                    pesan = pesan + "Dilantunkan oleh "+recitations[2].name+" : "+recitations[2].audio_url+"\n"
-                    cabe.reply(from, pesan, message.id)
-                  } else {
-                    var responsih2 = await axios.get('https://api.quran.sutanlab.id/surah/'+nmr+"/"+ayat)
-                    var {data} = responsih2.data
-                    var last = function last(array, n) {
-                      if (array == null) return void 0;
-                      if (n == null) return array[array.length - 1];
-                      return array.slice(Math.max(array.length - n, 0));
-                    };
-                    bhs = last(args)
-                    pesan = ""
-                    pesan = pesan + data.text.arab + "\n\n"
-                    if(bhs == "en") {
-                      pesan = pesan + data.translation.en
-                    } else {
-                      pesan = pesan + data.translation.id
-                    }
-                    pesan = pesan + "\n\n(Q.S. "+data.surah.name.transliteration.id+":"+args[1]+")"
-                    await cabe.sendFileFromUrl(from, data.audio.secondary[0])
-                    await cabe.reply(from, pesan, message.id)
-                  }
-              }
-              break
-        case 'jsolat':
-            if (args.length == 0) return cabe.reply(from, `Para ver los horarios de oración para cada región\nescriba ${prefix}jsolat [daerah]\n\npara una lista de áreas existentes\nescriba: ${prefix}daerah`, id)
-            const solatx = body.slice(8)
-            const solatj = await rugaapi.jadwaldaerah(solatx)
-            await cabe.reply(from, solatj, id)
-            break
-        case 'daerah':
-            const daerahq = await rugaapi.daerah()
-            await cabe.reply(from, daerahq, id)
-            break
 
         //Media
         case 'instagram':
@@ -969,8 +827,8 @@ cabe.onIncomingCall(async (callData) => {
             cabe.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
             break
         }
-        //Owner Group
-        case 'kickall': //mengeluarkan semua member
+        //Grupo propietario
+        case 'kickall': //eliminar todos los miembros
         if (!isGroupMsg) return cabe.reply(from, 'Lo sentimos, ¡este comando solo se puede usar dentro de grupos!', id)
         let isOwner = chat.groupMetadata.owner == sender.id
         if (!isOwner) return cabe.reply(from, 'Lo sentimos, este comando solo puede ser utilizado por el propietario del grupo.', id)
@@ -985,11 +843,10 @@ cabe.onIncomingCall(async (callData) => {
             }
             cabe.reply(from, 'Exito expulsar a todos los miembros', id)
         break
-
-        //Owner Bot
+        //propietario del bot
         case 'ban':
-            if (!isOwnerBot) return cabe.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
-            if (args.length == 0) return cabe.reply(from, `Untuk banned seseorang agar tidak bisa menggunakan commands\n\nCaranya ketik: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
+            if (!isOwnerBot) return cabe.reply(from, '¡Este pedido es solo para el propietario del bot!', id)
+            if (args.length == 0) return cabe.reply(from, `Prohibir que alguien use comandos\n\nEscribir: \n${prefix}ban add 54xx --Activar\n${prefix}ban del 54xx --deshabilitar\n\ncómo prohibir rápidamente muchos tipos en grupos:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
                 banned.push(args[1]+'@c.us')
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
