@@ -188,7 +188,7 @@ cabe.onIncomingCall(async (callData) => {
         case 'donar':
             await cabe.sendText(from, menuId.textDonasi())
             break
-        case 'ownerbot':
+        case 'propietario del bot':
             await cabe.sendContact(from, ownerNumber) 
             .then(() => cabe.sedText(from, 'Si desea donar lo puede hacer por PayPal https://www.paypal.com/paypalme/cabegus?locale.x=es_XC!'))
             break
@@ -339,14 +339,14 @@ cabe.onIncomingCall(async (callData) => {
             }
             break
             case 'nulis':
-                if (args.length === 1) return client.reply(from, 'Enviar comando #nulis [Texto]', id)
+                if (args.length === 1) return cabe.reply(from, 'Enviar comando #nulis [Texto]', id)
                 const nulis = encodeURIComponent(body.slice(7))
                 cabe.reply(from, mess.wait, id)
                 let urlnulis = `https://mhankbarbar.herokuapp.com/nulis?text=${nulis}&apiKey=${apiKey}`
                 await fetch(urlnulis, {method: "GET"})
                 .then(res => res.json())
                 .then(async (json) => {
-                    await cabe.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Nih anjim', id)
+                    await cabe.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Aqui esta', id)
                 }).catch(e => cabe.reply(from, "Error: "+ e));
                 break
         //Media
@@ -682,15 +682,15 @@ cabe.onIncomingCall(async (callData) => {
                 	if (resolt.docs && resolt.docs.length <= 0) {
                 		cabe.reply(from, 'Lo siento, no sé qué anime es este, asegúrese de que la imagen que se buscará no esté borrosa / cortada', id)
                 	}
-                    const { is_adult, title, title_chinese, title_romaji, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
+                    const { is_adult, title, title_chinese, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
                     teks = ''
                     if (similarity < 0.92) {
                     	teks = '*Tengo poca fe en esto* :\n\n'
                     }
-                    teks += `➸ *Title Japanese* : ${title}\n➸ *Title chinese* : ${title_chinese}\n➸ *Title Romaji* : ${title_romaji}\n➸ *Title English* : ${title_english}\n`
+                    teks += `➸ *Título japonés* : ${title}\n➸ *Título chino* : ${title_chinese}\n➸ *Título Inglés* : ${title_english}\n`
                     teks += `➸ *R-18?* : ${is_adult}\n`
                     teks += `➸ *Eps* : ${episode.toString()}\n`
-                    teks += `➸ *Kesamaan* : ${(similarity * 100).toFixed(1)}%\n`
+                    teks += `➸ *Semejanza* : ${(similarity * 100).toFixed(1)}%\n`
                     var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
                     cabe.sendFileFromUrl(from, video, 'anime.mp4', teks, id).catch(() => {
                         cabe.reply(from, teks, id)
@@ -730,20 +730,6 @@ cabe.onIncomingCall(async (callData) => {
             translate(quoteText, args[0])
                 .then((result) => cabe.sendText(from, result))
                 .catch(() => cabe.sendText(from, 'Error, Kode bahasa salah.'))
-            break
-        case 'ceklokasi':
-            if (quotedMsg.type !== 'location') return cabe.reply(from, `Maaf, format pesan salah.\nKirimkan lokasi dan reply dengan caption ${prefix}ceklokasi`, id)
-            console.log(`Request Status Zona Penyebaran Covid-19 (${quotedMsg.lat}, ${quotedMsg.lng}).`)
-            const zoneStatus = await getLocationData(quotedMsg.lat, quotedMsg.lng)
-            if (zoneStatus.kode !== 200) cabe.sendText(from, 'Maaf, Terjadi error ketika memeriksa lokasi yang anda kirim.')
-            let datax = ''
-            for (let i = 0; i < zoneStatus.datax.length; i++) {
-                const { zone, region } = zoneStatus.datax[i]
-                const _zone = zone == 'green' ? 'Hijau* (Aman) \n' : zone == 'yellow' ? 'Kuning* (Waspada) \n' : 'Merah* (Bahaya) \n'
-                datax += `${i + 1}. Kel. *${region}* Berstatus *Zona ${_zone}`
-            }
-            const text = `*CEK LOKASI PENYEBARAN COVID-19*\nHasil pemeriksaan dari lokasi yang anda kirim adalah *${zoneStatus.status}* ${zoneStatus.optional}\n\nInformasi lokasi terdampak disekitar anda:\n${datax}`
-            cabe.sendText(from, text)
             break
         case 'shortlink':
             if (args.length == 0) return cabe.reply(from, `ketik ${prefix}shortlink <url>`, message.id)
@@ -825,7 +811,7 @@ cabe.onIncomingCall(async (callData) => {
             const loadedMsg = await cabe.getAmountOfLoadedMessages()
             const chatIds = await cabe.getAllChatIds()
             const groups = await cabe.getAllGroups()
-            cabe.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
+            cabe.sendText(from, `Estado :\n- *${loadedMsg}* Mensajes cargados\n- *${groups.length}* Chats grupales\n- *${chatIds.length - groups.length}* Chats personales\n- *${chatIds.length}* Total de chats`)
             break
         }
         //Grupo propietario
