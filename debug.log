@@ -3,3 +3,9 @@
 [1117/162802.860:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name osarch, discarding value x86_64
 [1117/162802.861:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name pid, discarding value 8156
 [1117/162802.861:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name ptype, discarding value utility
+[1117/175528.028:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1117/175813.516:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\gustavo\AppData\Local\Temp\puppeteer_dev_chrome_profile-QTwLbr\Crashpad\attachments\4705a192-b812-4f7a-aa97-ae06eb29c640: El sistema no puede encontrar la ruta especificada. (0x3)
+[1117/175813.557:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name osarch, discarding value x86_64
+[1117/175813.557:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name pid, discarding value 12024
+[1117/175813.557:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name ptype, discarding value utility
+[1119/205623.568:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
