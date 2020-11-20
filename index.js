@@ -342,7 +342,7 @@ cabe.onIncomingCall(async (callData) => {
                 if (args.length === 1) return cabe.reply(from, 'Enviar comando #nulis [Texto]', id)
                 const nulis = encodeURIComponent(body.slice(7))
                 cabe.reply(from, mess.wait, id)
-                let urlnulis = `https://mhankbarbar.herokuapp.com/nulis?text=${nulis}&apiKey=${apiKey}`
+                let urlnulis = `https://mhankbarbar.herokuapp.com/nulis?text=${nulis}`
                 await fetch(urlnulis, {method: "GET"})
                 .then(res => res.json())
                 .then(async (json) => {
@@ -652,10 +652,10 @@ cabe.onIncomingCall(async (callData) => {
             await cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id)
             break
             case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
-            if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción`, id)
+            if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción(este comando no anda x el momento,estoy trajando para arreglar)`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim`, id)
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim\n(este comando no anda x el momento,estoy trajando para arreglar)`, id)
                 axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
                 .then(async(rest) => {
                     await cabe.sendPtt(from, `${rest.data.result}`, id)

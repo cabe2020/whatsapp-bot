@@ -819,7 +819,7 @@ var start = function start() {
           case 222:
             nulis = encodeURIComponent(body.slice(7));
             cabe.reply(from, mess.wait, id);
-            urlnulis = "https://mhankbarbar.herokuapp.com/nulis?text=".concat(nulis, "&apiKey=").concat(apiKey);
+            urlnulis = "https://mhankbarbar.herokuapp.com/nulis?text=".concat(nulis);
             _context15.next = 227;
             return regeneratorRuntime.awrap(fetch(urlnulis, {
               method: "GET"
@@ -1671,7 +1671,7 @@ var start = function start() {
               break;
             }
 
-            return _context15.abrupt("return", cabe.reply(from, "Para buscar canciones de youtube\n\nUtilizar: ".concat(prefix, "play t\xEDtulo de la canci\xF3n"), id));
+            return _context15.abrupt("return", cabe.reply(from, "Para buscar canciones de youtube\n\nUtilizar: ".concat(prefix, "play t\xEDtulo de la canci\xF3n(este comando no anda x el momento,estoy trajando para arreglar)"), id));
 
           case 465:
             axios.get("https://arugaytdl.herokuapp.com/search?q=".concat(body.slice(6))).then(function _callee14(res) {
@@ -1680,7 +1680,7 @@ var start = function start() {
                   switch (_context14.prev = _context14.next) {
                     case 0:
                       _context14.next = 2;
-                      return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, "".concat(res.data[0].thumbnail), "", "Canci\xF3n encontrada\n\nT\xEDtulo: ".concat(res.data[0].title, "\nDuraci\xF3n: ").concat(res.data[0].duration, "detik\nUploaded: ").concat(res.data[0].uploadDate, "\nView: ").concat(res.data[0].viewCount, "\n\nsedang dikirim"), id));
+                      return regeneratorRuntime.awrap(cabe.sendFileFromUrl(from, "".concat(res.data[0].thumbnail), "", "Canci\xF3n encontrada\n\nT\xEDtulo: ".concat(res.data[0].title, "\nDuraci\xF3n: ").concat(res.data[0].duration, "detik\nUploaded: ").concat(res.data[0].uploadDate, "\nView: ").concat(res.data[0].viewCount, "\n\nsedang dikirim\n(este comando no anda x el momento,estoy trajando para arreglar)"), id));
 
                     case 2:
                       axios.get("https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/".concat(res.data[0].id)).then(function _callee13(rest) {
