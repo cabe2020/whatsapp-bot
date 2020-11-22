@@ -338,17 +338,15 @@ cabe.onIncomingCall(async (callData) => {
                 cabe.reply(from, `Usar ${prefix}quotemaker |cita de isi|autor|tema \n\n ejemplo: ${prefix}quotemaker |Te amo|CabeBot|aleatorio \n\n para el tema usar random sí hermano..`)
             }
             break
-            case 'nulis':
-                if (args.length === 1) return cabe.reply(from, 'Enviar comando #nulis [Texto]', id)
-                const nulis = encodeURIComponent(body.slice(7))
-                cabe.reply(from, mess.wait, id)
-                let urlnulis = `https://mhankbarbar.herokuapp.com/nulis?text=${nulis}`
-                await fetch(urlnulis, {method: "GET"})
-                .then(res => res.json())
-                .then(async (json) => {
-                    await cabe.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Aqui esta', id)
-                }).catch(e => cabe.reply(from, "Error: "+ e));
-                break
+           case 'escribir':
+            if (args.length == 0) return cabe.reply(from, `Haz que el bot escriba el texto que se envía como imagen\nUilizar: ${prefix}escribir [texto]\n\nEjemplo: ${prefix}escribir hola me llamo Cabebot y mi version es 1.2`, id)
+            const nulisq = body.slice(7)
+            const nulisp = await rugaapi.tulis(nulisq)
+            await cabe.sendImage(from, `${nulisp}`, '', 'Aqui esta tu texto', id)
+            .catch(() => {
+                cabe.reply(from, '¡Hay un Error!', id)
+            })
+            break
         //Media
         case 'instagram':
             if (args.length == 0) return cabe.reply(from, `Para descargar imágenes o videos de instagram \n escriba: ${prefix}instagram [link_ig]`, id)
