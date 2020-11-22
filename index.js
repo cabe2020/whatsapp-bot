@@ -626,18 +626,16 @@ cabe.onIncomingCall(async (callData) => {
             const igstalkpict = await rugaapi.stalkigpict(args[0])
             await cabe.sendFileFromUrl(from, igstalkpict, '', igstalk, id)
             break
-        case 'wiki':
-            if (args.length == 0) return cabe.reply(from, `Para encontrar una palabra de wikipedia\nescribir: ${prefix}wiki [la palabra]`, id)
-            const wikip = body.slice(6)
-            const wikis = await rugaapi.wiki(wikip)
-            await cabe.reply(from, wikis, id)
-            break
-        case 'clima':
-            if (args.length == 0) return cabe.reply(from, `Para ver el clima en un área\nescribir: ${prefix}clima [zona]`, id)
-            const cuacaq = body.slice(7)
-            const cuacap = await rugaapi.cuaca(cuacaq)
-            await cabe.reply(from, cuacap, id)
-            break
+            case 'wiki':
+                if (args.length === 1) return cabe.reply(from, 'Kirim perintah *!wiki [query]*\nContoh : *!wiki asu*', id)
+                const query_ = body.slice(6)
+                const wiki = await get.get(`https://es.wikipedia.org/w/api.php`).json()
+                if (wiki.error) {
+                    cabe.reply(from, wiki.error, id)
+                } else {
+                    cabe.reply(from, `➸ *Query* : ${query_}\n\n➸ *Result* : ${wiki.result}`, id)
+                }
+                break
         case 'acorde':
             if (args.length == 0) return cabe.reply(from, `Para buscar la letra y los acordes de una canción\bescribir: ${prefix}acorde [título_ canción]`, id)
             const chordq = body.slice(7)
