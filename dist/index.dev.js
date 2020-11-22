@@ -1578,7 +1578,7 @@ var start = function start() {
           case 431:
             query_ = body.slice(6);
             _context14.next = 434;
-            return regeneratorRuntime.awrap(get.get("https://es.wikipedia.org/w/api.php").json());
+            return regeneratorRuntime.awrap(get.get("https://es.wikipedia.org/w/api.php".concat(query_)).json());
 
           case 434:
             wiki = _context14.sent;

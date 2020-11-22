@@ -629,7 +629,7 @@ cabe.onIncomingCall(async (callData) => {
             case 'wiki':
                 if (args.length === 1) return cabe.reply(from, 'Kirim perintah *!wiki [query]*\nContoh : *!wiki asu*', id)
                 const query_ = body.slice(6)
-                const wiki = await get.get(`https://es.wikipedia.org/w/api.php`).json()
+                const wiki = await get.get(`https://es.wikipedia.org/w/api.php${query_}`).json()
                 if (wiki.error) {
                     cabe.reply(from, wiki.error, id)
                 } else {
