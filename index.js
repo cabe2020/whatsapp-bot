@@ -339,6 +339,7 @@ cabe.onIncomingCall(async (callData) => {
             }
             break
            case 'escribir':
+            case 'nulis':
             if (args.length == 0) return cabe.reply(from, `Haz que el bot escriba el texto que se envía como imagen\nUilizar: ${prefix}escribir [texto]\n\nEjemplo: ${prefix}escribir hola me llamo Cabebot y mi version es 1.2`, id)
             const nulisq = body.slice(7)
             const nulisp = await rugaapi.tulis(nulisq)
