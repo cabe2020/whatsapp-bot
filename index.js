@@ -25,8 +25,7 @@ const {
     cekResi, 
     urlShortener, 
     meme, 
-    translate, 
-    getLocationData,
+    translate,
     images,
     resep,
     rugapoi,
@@ -169,6 +168,9 @@ cabe.onIncomingCall(async (callData) => {
         case 'velocidad':
         case 'ping':
             await cabe.sendText(from, `Pong!!!!\nvelocidad: ${processTime(t, moment())} _Segundos_`)
+            break
+        case 'TR':
+            await cabe.sendText(from, `HOLA THE REMNANT`)
             break
         case 'tnc':
             await cabe.sendText(from, menuId.textTnC())
