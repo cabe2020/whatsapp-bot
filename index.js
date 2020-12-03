@@ -22,22 +22,22 @@ let {
 function restartAwal(tobz){
     setting.restartState = false
     isRestart = false
-    tobz.sendText(setting.restartId, 'Restart Succesfull!')
-    setting.restartId = 'undefined'
+    tobz.sendText(setting.restartId, 'Reiniciar con éxito!')
+    setting.restartId = 'indefinido'
     //fs.writeFileSync('./lib/setting.json', JSON.stringify(setting, null,2));
 }
 
 const start = async (tobz = new Client()) => {
         console.log('------------------------------------------------')
-        console.log(color(figlet.textSync('ELAINA BOT', { horizontalLayout: 'full' })))
+        console.log(color(figlet.textSync('CABE BOT', { horizontalLayout: 'lleno' })))
         console.log('------------------------------------------------')
-        console.log('[DEV] TOBZ')
-        console.log('[SERVER] Server Started!')
+        console.log('[DEV] CABE')
+        console.log('[SERVIDOR] Servidor iniciado!')
         if(isRestart){restartAwal(tobz);}
         // Force it to keep the current session
         tobz.onStateChanged((state) => {
-            console.log('[Client State]', state)
-            if (state === 'CONFLICT' || state === 'UNLAUNCHED') tobz.forceRefocus()
+            console.log('[Estado del cliente]', state)
+            if (state === 'CONFLICTO' || state === 'NO LANZADO') tobz.forceRefocus()
         })
         // listening on message
         tobz.onMessage((async (message) => {
@@ -58,27 +58,27 @@ const start = async (tobz = new Client()) => {
             }))
         
         tobz.onAddedToGroup(async (chat) => {
-            if(isWhite(chat.id)) return tobz.sendText(chat.id, 'Halo aku Elaina, Ketik #help Untuk Melihat List Command Ku...')
+            if(isWhite(chat.id)) return tobz.sendText(chat.id, 'Hola, soy CABE BOT 2.1, escribe #menu para ver mi lista de comandos...')
             if(mtcState === false){
                 const groups = await tobz.getAllGroups()
                 // BOT group count less than
                 if(groups.length > groupLimit){
-                    await tobz.sendText(chat.id, 'Maaf, Batas group yang dapat Elaina tampung sudah penuh').then(async () =>{
+                    await tobz.sendText(chat.id, 'Lo sentimos, el límite de grupo que CABE BOT puede acomodar está completo').then(async () =>{
                         tobz.deleteChat(chat.id)
                         tobz.leaveGroup(chat.id)
                     })
                 }else{
                     if(chat.groupMetadata.participants.length < memberLimit){
-                        await tobz.sendText(chat.id, `Maaf, BOT keluar jika member group tidak melebihi ${memberLimit} orang`).then(async () =>{
+                        await tobz.sendText(chat.id, `Lo sentimos, BOT sale si el grupo de miembros no excede ${memberLimit} personas`).then(async () =>{
                             tobz.deleteChat(chat.id)
                             tobz.leaveGroup(chat.id)
                         })
                     }else{
-                        if(!chat.isReadOnly) tobz.sendText(chat.id, 'Halo aku Elaina, Ketik #help Untuk Melihat List Command Ku...')
+                        if(!chat.isReadOnly) tobz.sendText(chat.id, 'Hola, soy CABE BOT 2.1, escribe #menu para ver mi lista de comandos ...')
                     }
                 }
             }else{
-                await tobz.sendText(chat.id, 'Elaina sedang maintenance, coba lain hari').then(async () => {
+                await tobz.sendText(chat.id, 'CABE BOT está en mantenimiento, prueba en otro momento favor de tener paciencia y comunicarse con wa.me/543757437404').then(async () => {
                     tobz.deleteChat(chat.id)
                     tobz.leaveGroup(chat.id)
                 })
@@ -92,11 +92,11 @@ const start = async (tobz = new Client()) => {
 
         // listening on Incoming Call
         tobz.onIncomingCall(( async (call) => {
-            await tobz.sendText(call.peerJid, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!.\nJika ingin membuka block harap chat Owner!')
+            await tobz.sendText(call.peerJid, 'Lo siento, no puedo recibir llamadas = bloquear!.\nSi desea abrir un bloque, por favor chatee con el propietario!')
             .then(() => tobz.contactBlock(call.peerJid))
         }))
     }
 
-create('Elaina', options(true, start))
+create('CABE BOT', options(true, start))
     .then(tobz => start(tobz))
     .catch((error) => console.log(error))

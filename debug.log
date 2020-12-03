@@ -9,3 +9,6 @@
 [1117/175813.557:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name pid, discarding value 12024
 [1117/175813.557:WARNING:minidump_to_upload_parameters.cc(67)] duplicate annotation name ptype, discarding value utility
 [1119/205623.568:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1119/231619.928:ERROR:file_io_win.cc(162)] CreateFile C:\Users\gustavo\AppData\Local\Temp\puppeteer_dev_chrome_profile-vkjbAF\Crashpad\settings.dat: El sistema no puede encontrar la ruta especificada. (0x3)
+[1119/231619.930:ERROR:file_io_win.cc(171)] CreateFile C:\Users\gustavo\AppData\Local\Temp\puppeteer_dev_chrome_profile-vkjbAF\Crashpad\reports\7adf0a82-20c8-4762-b7e2-285fc5f4be15.dmp: El sistema no puede encontrar la ruta especificada. (0x3)
+[1119/231619.930:ERROR:crash_report_exception_handler.cc(99)] PrepareNewCrashReport failed

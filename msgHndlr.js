@@ -20,7 +20,7 @@ const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
 const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
 const { RemoveBgResult, removeBackgroundFromImageBase64, removeBackgroundFromImageFile } = require('remove.bg')
 
-moment.tz.setDefault('Asia/Jakarta').locale('id')
+moment.tz.setDefault('America/Argentina/Buenos_Aires').locale('id')
 
 module.exports = msgHandler = async (client, message) => {
     try {
@@ -44,9 +44,9 @@ module.exports = msgHandler = async (client, message) => {
         }
 
         const mess = {
-            wait: '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar',
+            wait: '[ESPERAR] En curso⏳ espere un momento',
             error: {
-                St: '[❗] Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
+                St: '[❗] Envíe la imagen con el título *#Sticker* o la etiqueta de imagen que se ha enviado',
                 Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
                 Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
                 Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
@@ -134,9 +134,9 @@ module.exports = msgHandler = async (client, message) => {
                 }
             }
             break
-        case '!donasi':
-        case '!donate':
-            client.sendLinkWithAutoPreview(from, 'https://saweria.co/donate/mhankbarbar', donate)
+        case '#donar':
+        case '#donar':
+            client.sendLinkWithAutoPreview(from, 'https://paypal.me/cabegus?locale.x=es_XC', donate)
             break
         case '!tts':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo semua*')
@@ -247,8 +247,8 @@ module.exports = msgHandler = async (client, message) => {
             if (epbe.error) return client.reply(from, epbe.error, id)
             client.sendFileFromUrl(from, epbe.result, 'epbe.mp4', epbe.title, id)
             break
-        case '!creator':
-            client.sendContact(from, '6285892766102@c.us')
+        case '#creador':
+            client.sendContact(from, '5493757437404@c.us')
             break
         case '!ig':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!ig [linkIg]* untuk contoh silahkan kirim perintah *!readme*')
@@ -475,16 +475,16 @@ module.exports = msgHandler = async (client, message) => {
             const Owner_ = chat.groupMetadata.owner
             await client.sendTextWithMentions(from, `Owner Group : @${Owner_}`)
             break
-        case '!mentionall':
+        case 'lista':
             if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (!isGroupAdmins) return client.reply(from, 'Perintah ini hanya bisa di gunakan oleh admin group', id)
             const groupMem = await client.getGroupMembers(groupId)
-            let hehe = '╔══✪〘 Mention All 〙✪══\n'
+            let hehe = '╔══✪〘 MENCIONAR A TODOS 〙✪══\n'
             for (let i = 0; i < groupMem.length; i++) {
                 hehe += '╠➥'
                 hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
             }
-            hehe += '╚═〘 Shinomiya Kaguya BOT 〙'
+            hehe += '╚═〘 CABE BOT 〙'
             await client.sendTextWithMentions(from, hehe)
             break
         case '!kickall':
@@ -766,16 +766,16 @@ module.exports = msgHandler = async (client, message) => {
             const { postlink, title, subreddit, url, nsfw, spoiler } = response.data
             client.sendFileFromUrl(from, `${url}`, 'meme.jpg', `${title}`)
             break
-        case '!help':
+        case 'menu':
             client.sendText(from, help)
             break
-        case '!readme':
+        case 'readme':
             client.reply(from, readme, id)
             break
-        case '!info':
+        case 'info':
             client.sendLinkWithAutoPreview(from, 'https://github.com/mhankbarbar/whatsapp-bot', info)
             break
-        case '!snk':
+        case 'snk':
             client.reply(from, snk, id)
             break
         }
