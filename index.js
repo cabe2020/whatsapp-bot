@@ -146,9 +146,6 @@ cabe.onIncomingCall(async (callData) => {
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
         const isQuotedVideo = quotedMsg && quotedMsg.type === 'video'
         
-        // [IDENTIFICAR]
-        const isSimi = simi.includes(chat.id)
-        
         // [BETA] Avoid Spam Message
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname)) }
         if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) { return console.log(color('[SPAM]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'para', color(pushname), 'en', color(name || formattedTitle)) }
@@ -169,10 +166,7 @@ cabe.onIncomingCall(async (callData) => {
         case 'ping':
             await cabe.sendText(from, `Pong!!!!\nvelocidad: ${processTime(t, moment())} _Segundos_`)
             break
-        case 'TR':
-            await cabe.sendText(from, `HOLA THE REMNANT`)
-            break
-        case 'tnc':
+            case 'tnc':
             await cabe.sendText(from, menuId.textTnC())
             break
         case 'menu':
@@ -194,6 +188,7 @@ cabe.onIncomingCall(async (callData) => {
             await cabe.sendContact(from, ownerNumber) 
             .then(() => cabe.sedText(from, 'Si desea donar lo puede hacer por PayPal https://www.paypal.com/paypalme/cabegus?locale.x=es_XC!'))
             break
+
             case 'join':
                 if (args.length == 0) return cabe.reply(from, `Si desea invitar al bot al grupo, invítelo o escriba ${prefix}join [link del grupo]`, id)
                 let linkgrup = body.slice(6)
@@ -371,7 +366,7 @@ cabe.onIncomingCall(async (callData) => {
                 case 'twt':
                     case 'twitter':
                         if (args.length !== 1) return cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id)
-                        if (!is.Url(url) & !url.includes('twitter.com') || url.includes('t.co')) return cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id)
+                        if (!is.Url(url) ||!url.includes('twitter.com') || url.includes('t.co')) return cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id)
                         await cabe.reply(from, `_Scraping Metadata..._ \n\n${menuId.textDonasi()}`, id)
                         downloader.tweet(url).then(async (data) => {
                             if (data.type === 'video') {
@@ -547,7 +542,7 @@ cabe.onIncomingCall(async (callData) => {
             .then(body => {
                 let splitpantun = body.split('\n')
                 let randompantun = splitpantun[Math.floor(Math.random() * splitpantun.length)]
-                cabe.reply(from, randompantun.replace(/aruga-line/g,"\n"), id)
+                cabe.reply(from, randompantun.replace(/cabe-line/g,"\n"), id)
             })
             break
         case 'quote':
@@ -651,55 +646,71 @@ cabe.onIncomingCall(async (callData) => {
             await cabe.sendFile(from, scrinshit, 'ss.jpg', 'cekrek', id)
             break
             case 'play'://silahkan kalian custom sendiri jika ada yang ingin diubah
-            if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción(este comando no anda x el momento,estoy trajando para arreglar)`, id)
+            if (args.length == 0) return cabe.reply(from, `Para buscar canciones de youtube\n\nUtilizar: ${prefix}play título de la canción`, id)
             axios.get(`https://arugaytdl.herokuapp.com/search?q=${body.slice(6)}`)
             .then(async (res) => {
-                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuración: ${res.data[0].duration}detik\nUploaded: ${res.data[0].uploadDate}\nView: ${res.data[0].viewCount}\n\nsedang dikirim\n(este comando no anda x el momento,estoy trajando para arreglar)`, id)
-                axios.get(`https://arugaz.herokuapp.com/api/yta?url=https://youtu.be/${res.data[0].id}`)
-                .then(async(rest) => {
-                    await cabe.sendPtt(from, `${rest.data.result}`, id)
-                })
-             })
+                await cabe.sendFileFromUrl(from, `${res.data[0].thumbnail}`, ``, `Canción encontrada\n\nTítulo: ${res.data[0].title}\nDuracion: ${res.data[0].duration}segundos\nSubido: ${res.data[0].uploadDate}\nVistas: ${res.data[0].viewCount}\n\nestá siendo enviado`, id)
+				rugaapi.ytmp3(`https://youtu.be/${res.data[0].id}`)
+				.then(async(res) => {
+					if (res.status == 'error') return cabe.sendFileFromUrl(from, `${res.link}`, '', `${res.error}`)
+					await cabe.sendFileFromUrl(from, `${res.thumb}`, '', `Canción encontrada\n\nTítulo ${res.title}\n\nPaciencia, enviada de nuevo`, id)
+					await cabe.sendFileFromUrl(from, `${res.link}`, '', '', id)
+					.catch(() => {
+						cabe.reply(from, `ESTA URL ${args[0]} YA DESCARGADO ANTERIORMENTE... LA URL SE REINICIARÁ DESPUÉS DE 60 MINUTOS`, id)
+					})
+				})
+            })
+            .catch(() => {
+                cabe.reply(from, 'Hay un error!', id)
+            })
             break
-        case 'whatanime':
-            if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
-                if (isMedia) {
-                    var mediaData = await decryptMedia(message, uaOverride)
-                } else {
-                    var mediaData = await decryptMedia(quotedMsg, uaOverride)
-                }
-                const fetch = require('node-fetch')
-                const imgBS4 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-                cabe.reply(from, 'Buscando....', id)
-                fetch('https://trace.moe/api/search', {
-                    method: 'POST',
-                    body: JSON.stringify({ image: imgBS4 }),
-                    headers: { "Content-Type": "application/json" }
-                })
-                .then(respon => respon.json())
-                .then(resolt => {
-                	if (resolt.docs && resolt.docs.length <= 0) {
-                		cabe.reply(from, 'Lo siento, no sé qué anime es este, asegúrese de que la imagen que se buscará no esté borrosa / cortada', id)
-                	}
-                    const { is_adult, title, title_chinese, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
-                    teks = ''
-                    if (similarity < 0.92) {
-                    	teks = '*Tengo poca fe en esto* :\n\n'
+            case 'whatanime':
+                if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
+                    if (isMedia) {
+                        var mediaData = await decryptMedia(message, uaOverride)
+                    } else {
+                        var mediaData = await decryptMedia(quotedMsg, uaOverride)
                     }
-                    teks += `➸ *Título japonés* : ${title}\n➸ *Título chino* : ${title_chinese}\n➸ *Título Inglés* : ${title_english}\n`
-                    teks += `➸ *R-18?* : ${is_adult}\n`
-                    teks += `➸ *Eps* : ${episode.toString()}\n`
-                    teks += `➸ *Semejanza* : ${(similarity * 100).toFixed(1)}%\n`
-                    var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
-                    cabe.sendFileFromUrl(from, video, 'anime.mp4', teks, id).catch(() => {
-                        cabe.reply(from, teks, id)
+                    const fetch = require('node-fetch')
+                    const imgBS4 = `data:${mimetype};base64,${mediaData.toString('base64')}`
+                    cabe.reply(from, 'Buscando....', id)
+                    fetch('https://trace.moe/api/search', {
+                        method: 'POST',
+                        body: JSON.stringify({ image: imgBS4 }),
+                        headers: { "Content-Type": "application/json" }
                     })
-                })
-                .catch(() => {
-                    cabe.reply(from, 'Error!', id)
-                })
-            }
-            break
+                    .then(respon => respon.json())
+                    .then(resolt => {
+                        if (resolt.docs && resolt.docs.length <= 0) {
+                            cabe.reply(from, 'Maaf, saya tidak tau ini anime apa, pastikan gambar yang akan di Search tidak Buram/Kepotong', id)
+                        }
+                        const { is_adult, title, title_chinese, title_romaji, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
+                        teks = ''
+                        if (similarity < 0.92) {
+                            teks = '*Saya memiliki keyakinan rendah dalam hal ini* :\n\n'
+                        }
+                        teks += `➸ *Title Japanese* : ${title}\n➸ *Title chinese* : ${title_chinese}\n➸ *Title Romaji* : ${title_romaji}\n➸ *Title English* : ${title_english}\n`
+                        teks += `➸ *R-18?* : ${is_adult}\n`
+                        teks += `➸ *Eps* : ${episode.toString()}\n`
+                        teks += `➸ *Kesamaan* : ${(similarity * 100).toFixed(1)}%\n`
+                        var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
+                        cabe.sendFileFromUrl(from, video, 'anime.mp4', teks, id).catch(() => {
+                            cabe.reply(from, teks, id)
+                        })
+                    })
+                    .catch(() => {
+                        cabe.reply(from, 'Ada yang Error!', id)
+                    })
+                } else {
+                    cabe.reply(from, `Maaf format salah\n\nSilahkan kirim foto dengan caption ${prefix}whatanime\n\nAtau reply foto dengan caption ${prefix}whatanime`, id)
+                }
+                break
+            case 'cersex':
+			rugaapi.cersex()
+			.then(async (res) => {
+				await cabe.reply(from, res.result, id)
+			})
+			break
              
         // Other Command
         case 'resi':
@@ -821,9 +832,10 @@ cabe.onIncomingCall(async (callData) => {
         if (!isBotGroupAdmins) return cabe.reply(from, 'Falló, agregue el bot como admin del grupo.', id)
             const allMem = await cabe.getGroupMembers(groupId)
             for (let i = 0; i < allMem.length; i++) {
-                if (groupAdmins.includes(allMem[i].id)) {
+                if (groupAdmins.includes(allMem[i].id)){
 
-                } else {
+                }
+                else {
                     await cabe.removeParticipant(groupId, allMem[i].id)
                 }
             }
