@@ -382,7 +382,7 @@ var start = function start() {
 
           case 66:
             _context15.next = 68;
-            return regeneratorRuntime.awrap(cabe.sendText(from, menuId.TR()));
+            return regeneratorRuntime.awrap(cabe.sendText(from, menuId.textTR()));
 
           case 68:
             return _context15.abrupt("break", 778);

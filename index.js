@@ -185,7 +185,7 @@ cabe.onIncomingCall(async (callData) => {
             await cabe.sendText(from, menuId.textDonasi())
             break
             case 'TR':
-            await cabe.sendText(from, menuId.TR())
+            await cabe.sendText(from, menuId.textTR())
             break
         case 'propietario del bot':
             await cabe.sendContact(from, ownerNumber) 
