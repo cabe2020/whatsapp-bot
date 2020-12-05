@@ -184,6 +184,9 @@ cabe.onIncomingCall(async (callData) => {
         case 'donar':
             await cabe.sendText(from, menuId.textDonasi())
             break
+            case 'TR':
+            await cabe.sendText(from, menuId.TR())
+            break
         case 'propietario del bot':
             await cabe.sendContact(from, ownerNumber) 
             .then(() => cabe.sedText(from, 'Si desea donar lo puede hacer por PayPal https://www.paypal.com/paypalme/cabegus?locale.x=es_XC!'))
@@ -682,27 +685,27 @@ cabe.onIncomingCall(async (callData) => {
                     .then(respon => respon.json())
                     .then(resolt => {
                         if (resolt.docs && resolt.docs.length <= 0) {
-                            cabe.reply(from, 'Maaf, saya tidak tau ini anime apa, pastikan gambar yang akan di Search tidak Buram/Kepotong', id)
+                            cabe.reply(from, 'Lo siento, no sé qué anime es este, asegúrese de que la imagen que se buscará no esté borrosa/cortada', id)
                         }
-                        const { is_adult, title, title_chinese, title_romaji, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
+                        const { is_adult, title, title_chinese, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
                         teks = ''
                         if (similarity < 0.92) {
-                            teks = '*Saya memiliki keyakinan rendah dalam hal ini* :\n\n'
+                            teks = '*Tengo poca fe en esto* :\n\n'
                         }
-                        teks += `➸ *Title Japanese* : ${title}\n➸ *Title chinese* : ${title_chinese}\n➸ *Title Romaji* : ${title_romaji}\n➸ *Title English* : ${title_english}\n`
+                        teks += `➸ *Título japonés* : ${title}\n➸ *Título chino* : ${title_chinese}\n➸ *Título Inglés* : ${title_english}\n`
                         teks += `➸ *R-18?* : ${is_adult}\n`
                         teks += `➸ *Eps* : ${episode.toString()}\n`
-                        teks += `➸ *Kesamaan* : ${(similarity * 100).toFixed(1)}%\n`
+                        teks += `➸ *Semejanza* : ${(similarity * 100).toFixed(1)}%\n`
                         var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
                         cabe.sendFileFromUrl(from, video, 'anime.mp4', teks, id).catch(() => {
                             cabe.reply(from, teks, id)
                         })
                     })
                     .catch(() => {
-                        cabe.reply(from, 'Ada yang Error!', id)
+                        cabe.reply(from, 'Hay un error!', id)
                     })
                 } else {
-                    cabe.reply(from, `Maaf format salah\n\nSilahkan kirim foto dengan caption ${prefix}whatanime\n\nAtau reply foto dengan caption ${prefix}whatanime`, id)
+                    cabe.reply(from, `Lo siento, el formato es incorrecto\n\nEnvíe una foto con un título ${prefix}whatanime\n\nO responde a las fotos con subtítulos ${prefix}whatanime`, id)
                 }
                 break
             case 'cersex':
@@ -714,9 +717,9 @@ cabe.onIncomingCall(async (callData) => {
              
         // Other Command
         case 'resi':
-            if (args.length !== 2) return cabe.reply(from, `Lo sentimos, el formato del mensaje es incorrecto.\nIntroduzca su mensaje con ${prefix}resi <kurir> <no_resi>\n\nKurir yang tersedia:\njne, pos, tiki, wahana, jnt, rpx, sap, sicepat, pcp, jet, dse, first, ninja, lion, idl, rex`, id)
+            if (args.length !== 2) return cabe.reply(from, `Lo sentimos, el formato del mensaje es incorrecto.\nIntroduzca su mensaje con ${prefix}resi <mensajero> <no_resi>\n\nKurir yang tersedia:\njne, pos, tiki, wahana, jnt, rpx, sap, sicepat, pcp, jet, dse, first, ninja, lion, idl, rex`, id)
             const kurirs = ['jne', 'pos', 'tiki', 'wahana', 'jnt', 'rpx', 'sap', 'sicepat', 'pcp', 'jet', 'dse', 'first', 'ninja', 'lion', 'idl', 'rex']
-            if (!kurirs.includes(args[0])) return cabe.sendText(from, `Maaf, jenis ekspedisi pengiriman tidak didukung layanan ini hanya mendukung ekspedisi pengiriman ${kurirs.join(', ')} Tolong periksa kembali.`)
+            if (!kurirs.includes(args[0])) return cabe.sendText(from, `Lo sentimos, el tipo de expedición de envío no es compatible. Este servicio solo admite expedición de envío ${kurirs.join(', ')} Por favor revise de nuevo.`)
             console.log('Memeriksa No Resi', args[1], 'dengan ekspedisi', args[0])
             cekResi(args[0], args[1]).then((result) => cabe.sendText(from, result))
             break
