@@ -382,7 +382,7 @@ var start = function start() {
 
           case 66:
             _context16.next = 68;
-            return regeneratorRuntime.awrap(cabe.sendText(chatId, "Hello"));
+            return regeneratorRuntime.awrap(cabe.sedText(from, 'holaaaaaaaaaaaaaaaaaa'));
 
           case 68:
             return _context16.abrupt("break", 774);

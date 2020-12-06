@@ -186,7 +186,7 @@ cabe.onIncomingCall(async (callData) => {
             break
             
         case 'TR':
-            await cabe.sendText(chatId, "Hello");
+            await cabe.sedText(from, 'holaaaaaaaaaaaaaaaaaa')
             break
 
         case 'propietario del bot':
