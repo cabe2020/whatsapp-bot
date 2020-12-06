@@ -184,9 +184,11 @@ cabe.onIncomingCall(async (callData) => {
         case 'donar':
             await cabe.sendText(from, menuId.textDonasi())
             break
-            case 'TR':
-            await cabe.sendText(from, menuId.textTR())
+            
+        case 'TR':
+            await cabe.sendText(chatId, "Hello");
             break
+
         case 'propietario del bot':
             await cabe.sendContact(from, ownerNumber) 
             .then(() => cabe.sedText(from, 'Si desea donar lo puede hacer por PayPal https://www.paypal.com/paypalme/cabegus?locale.x=es_XC!'))
@@ -389,30 +391,22 @@ cabe.onIncomingCall(async (callData) => {
                         })
                             .catch(() => cabe.sendText(from, 'Lo sentimos, el enlace no es válido o no hay medios en el enlace que envió. [Enlace no válido]'))
                         break
-                    case 'fb':
-                    case 'facebook':
-                        if (args.length !== 1) return cabe.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto, consulte el menú. [Formato erróneo]', id)
-                        if (!is.Url(url) && !url.includes('facebook.com')) return cabe.reply(from, 'Lo sentimos, la URL que envió no es válida. [Enlace no válido]', id)
-                        await cabe.reply(from, '_Extracción de metadatos..._ \n\nGracias por usar este bot', id)
-                        downloader.facebook(url).then(async (videoMeta) => {
-                            const title = videoMeta.response.title
-                            const thumbnail = videoMeta.response.thumbnail
-                            const links = videoMeta.response.links
-                            const shorts = []
-                            for (let i = 0; i < links.length; i++) {
-                                const shortener = await urlShortener(links[i].url)
-                                console.log('Shortlink: ' + shortener)
-                                links[i].short = shortener
-                                shorts.push(links[i])
-                            }
-                            const link = shorts.map((x) => `${x.resolution} Quality: ${x.short}`)
-                            const caption = `Text: ${title} \n\nLink de descarga: \n${link.join('\n')} \n\nProcesado por ${processTime(t, moment())} _Segundos_`
-                            await cabe.sendFileFromUrl(from, thumbnail, 'videos.jpg', caption, null, null, true)
-                                .then((serialized) => console.log(`Envío exitoso de archivos con ID:${serialized} procesado durante${processTime(t, moment())}`))
-                                .catch((err) => console.error(err))
-                        })
-                            .catch((err) => cabe.reply(from, `Error, la URL no es válida o el video no se carga. [Enlace no válido o sin vídeo] \n\n${err}`, id))
-                        break
+                        case 'fb':
+                            case 'facebook':
+                                if (args.length == 0) return aruga.reply(from, `Untuk mendownload video dari link facebook\nketik: ${prefix}fb [link_fb]`, id)
+                                rugaapi.fb(args[0])
+                                .then(async (res) => {
+                                    const { link, linkhd, linksd } = res
+                                    if (res.status == 'error') return aruga.sendFileFromUrl(from, link, '', 'Maaf url anda tidak dapat ditemukan', id)
+                                    await aruga.sendFileFromUrl(from, linkhd, '', 'Nih ngab videonya', id)
+                                    .catch(async () => {
+                                        await aruga.sendFileFromUrl(from, linksd, '', 'Nih ngab videonya', id)
+                                        .catch(() => {
+                                            aruga.reply(from, 'Maaf url anda tidak dapat ditemukan', id)
+                                        })
+                                    })
+                                })
+                                break
         case 'ytmp3':
             if (args.length == 0) return cabe.reply(from, `Para descargar canciones de youtube \n escriba: ${prefix}ytmp3 [link_yt]`, id)
             const mp3 = await rugaapi.ytmp3(args[0])
